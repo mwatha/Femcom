@@ -1,0 +1,37 @@
+<style>
+  table { 
+      color: #554433; 
+  }
+ 
+  #submitbtn {
+  }
+
+</style>
+
+<div id='news'>
+<form action='create_video_link' method="post">
+<table>
+<tr>
+  <td>Link title:</td><td>&nbsp;<input type='text' name='title' size = '15' /></td>
+</tr>
+<tr>
+  <td>you tube link:</td><td>&nbsp;<input type='text' name='uri' size = '30'/></td>
+</tr>
+<tr>
+  <td colspan="2">Video description:</td>
+</tr>
+</table>
+<table>
+<tr>
+  <td>
+    <textarea cols='50' rows='10' name='description'></textarea>
+  </td>
+</tr>
+<tr>
+  <td>
+    <input type='submit' value = 'Submit' id = 'submitbtn' />
+  </td>
+</tr>
+</table>
+<input type='hidden' name = 'type' value = 'video' />
+</form>

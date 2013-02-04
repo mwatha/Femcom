@@ -1,0 +1,27 @@
+<style>
+  table { 
+      color: #554433; 
+  }
+ 
+  #submitbtn {
+  }
+
+</style>
+
+<div id='news'>
+<form action='upload_pdf' method="post" enctype="multipart/form-data">
+<table>
+<tr>
+  <td>Title:</td><td>&nbsp;<input type='text' name='title' size = '15' /></td>
+</tr>
+<tr>
+  <td>Browse file:</td><td>&nbsp;<%= file_field 'upload', 'datafile' %></td>
+</tr>
+<tr>
+  <td>
+    <input type='submit' value = 'Upload' id = 'submitbtn' />
+  </td>
+</tr>
+</table>
+<input type='hidden' name = 'type' value = 'pdf' />
+</form>

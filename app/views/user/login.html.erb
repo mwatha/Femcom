@@ -1,0 +1,100 @@
+<html>
+
+<head>
+  <%=stylesheet_link_tag "main", :media => "all" %>
+  
+
+  <style>
+    .submit_btns a {
+      color: white !important;
+      text-decoration: none;
+    }
+
+    #image-logo {
+      margin-left: 60px;
+    }
+  </style>
+
+  <script>
+    function submitForm() {
+      document.forms["login"].submit();
+    }
+  </script>
+
+  <title>Comesa:login</title>
+</head>
+
+<body>
+
+<div id="header">
+  <div class="center_wrapper">
+    
+    <div id="toplinks">
+      <div id="toplinks_inner">
+        <a href="#">Webmail</a> | <!--<a href="#">Privacy Policy</a> |--> <a href="#">Login</a>
+      </div>
+    </div>
+    <div class="clearer">&nbsp;</div>
+
+    <div id="site_title">
+      <div style="width:12px;">                                                 
+        <%= image_tag("logo.gif" ,:width => "300")%>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<br></br>
+<br></br>
+
+<div style="text-align:center;">
+
+<div id = "image-logo">                                                        
+   <%= image_tag("keys.png" ,:id => "keys" ,:width => "100",:height => "100",:align => "left")%>
+ </div>                                                                         
+  <div id = "login-box">                                                        
+    <form method = "post" action="login" id="login">                                                      
+      <table id = "login-box-table">                                            
+        <tr>
+          <td>Username:</td><td><input type="text" name="username" /></td>
+        <tr>                                                               
+        <tr>
+          <td>Password:</td><td><input type="password" name="password" /></td>
+        <tr>                                                               
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        <tr>                                                               
+        <tr>
+          <td>&nbsp;</td>
+          <td class ="submit_btns">
+            <button onclick="javascript:location='/home/index';" style="float:left;">Cancel</button>
+            <button onclick="javascript:submitForm();" style="float:left;">Login</button>
+          </td>
+        <tr>
+      </table>                                                                  
+    </form>                                                                     
+  </div>                                                                        
+</div> 
+
+</div>
+
+
+
+<!--div id="footer">
+  <div class="center_wrapper">
+
+    <div class="left">
+      &copy; 2008 Website.com - Your Website Slogan
+    </div>
+    <div class="right">
+      <a href="http://templates.arcsin.se/">Website template</a> by <a href="http://arcsin.se/">Arcsin</a> 
+    </div>
+    
+    <div class="clearer">&nbsp;</div>
+
+  </div>
+</div-->
+
+</body>
+</html>

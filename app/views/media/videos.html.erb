@@ -1,0 +1,260 @@
+<html>                                                                          
+<head>                                                                          
+                                                                                
+<style>                                                                         
+  .thumb {                                                                      
+    width: 75px;                                                                
+    height: 75px;                                                               
+  }                                                                             
+</style>                                                                        
+<%=stylesheet_link_tag "main", :media => "all" %>                               
+
+
+<script>
+  function adminPage(page) {
+   var element = document.getElementById('extFrame');
+   if (page == 'news') {
+     element.src = 'create_news.php'; 
+   }else if (page == 'files') {
+     element.src = 'upload_pdf.php'; 
+   }else if (page == 'event') {
+     element.src = 'create_events.php'; 
+   }else if (page == 'video') {
+     element.src = 'create_video_link.php'; 
+   }
+  }
+
+
+
+</script>
+
+</head>
+
+<body>
+
+<div id="header">                                                               
+  <div class="center_wrapper">                                                  
+                                                                                
+    <div id="toplinks">                                                         
+      <div id="toplinks_inner">                                                 
+        <%if User.current_user.blank? %>                                        
+          <a ihref="#">About us</a> | <a href="/user/login">Login</a>           
+        <%else%>                                                                
+          <a href="/user/admin">Admin</a> | <a ihref="#">About us</a> | <a href="/user/logout">Logout</a>:&nbsp;
+          <font style="color:white;"><%=User.current_user.username%></font>     
+        <%end%>                                                                 
+      </div>                                                                    
+    </div>                                                                      
+    <div class="clearer">&nbsp;</div>                                           
+                                                                                
+    <div id="site_title">                                                       
+      <div style="width:12px;">                                                 
+        <%= image_tag("logo.gif" ,:id => "keys")%>                              
+      </div>                                                                    
+    </div>                                                                      
+                                                                                
+  </div>                                                                        
+</div>
+
+
+
+<div id="navigation">
+  <div class="center_wrapper">
+  
+    <ul>
+      <li class="current_page_item"><a href="index.html">Home</a></li>
+      <li><a href="blog_post.html">About us</a></li>
+      <li><a href="blog_post.html">Services</a></li>
+      <li><a href="style_demo.html">National Chapters</a></li>
+      <li><a href="news.php">News</a></li>
+      <li><a href="empty_page.html">Events</a></li>
+      <li><a href="empty_page.html">Contacts</a></li>
+    </ul>
+
+    <div class="clearer">&nbsp;</div>
+
+  </div>
+</div>
+
+<div id="main_wrapper_outer">
+  <div id="main_wrapper_inner">
+    <div class="center_wrapper">
+
+      <div class="left" id="main">
+        <div id="main_content">
+          
+          <div class="post">
+
+            <div class="post_title"><h2><a href="#">Administration page:</a></h2></div>
+            <!--div class="post_date">Posted on Dec 15th at 20:47 by <a href="#">Viktor Persson</a></div-->
+            
+            <div class="post_body" id = "post_body">
+
+
+            <%(@videos || []).each do |video|%>
+                <iframe class="youtube-player" type="text/html" width="550" height="340" 
+                  src="http://www.youtube.com/embed/<%=video.link%>" frameborder="0">
+                </iframe>
+                <%=video.title%><%unless video.description.blank?%>
+                :&nbsp;<%=video.description%><%end%>
+                <hr></hr>
+            <%end%>
+
+            
+ 
+            </div>
+            <!--div class="post_meta">
+              <a href="#">5 comments</a> | Tagged: <a href="#">Sapien</a>, <a href="#">Sollicitudin</a>, <a href="#">Ligula</a>
+            </div-->
+
+          </div>
+
+          <div class="post">
+
+            <!--div class="post_title"><h2><a href="#">Porttitor posuere</a></h2></div>
+            <div class="post_date">Posted on Dec 11th at 16:12 by <a href="#">Aliquet Quis</a></div>
+            
+            <div class="post_body">
+            
+              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc sagittis. Proin ac felis. Consectetuer adipiscing elit. Pellentesque enim dui, rhoncus ut, pharetra</p>
+              
+              <ul>
+                <li>List item 1</li>
+                <li>List item 2</li>        
+                <li>List item 3</li>
+              </ul> 
+              
+              <p>Luctus vitae, dolor. Nunc mauris eros, vehicula id, fermentum non, semper ac, nisl. Cras sed purus non justo lobortis rhoncus. Morbi consectetuer augue.</p>
+
+              <p>Donec ligula lorem, varius eget, semper eget, aliquet quis, lectus. Vestibulum ipsum nunc, aliquet quis, blandit ac, varius a, est. Praesent dictum. Sed feugiat magna sed lorem. Nulla tempus sodales ipsum. In vitae purus eget quam.</p>
+
+              <blockquote><p>Luctus vitae, dolor. Nunc mauris eros, vehicula id, fermentum non, semper ac, nisl. Cras sed purus non justo lobortis rhoncus. Morbi consectetuer augue</p></blockquote>
+
+              <p>Luctus vitae, dolor. Nunc mauris eros, vehicula id, fermentum non, semper ac, nisl. Cras sed purus non justo lobortis rhoncus. Morbi consectetuer augue.</p>
+
+
+            </div>
+            
+            <div class="post_meta">
+              <a href="#">11 comments</a> | Tagged: <a href="#">Purus</a>, <a href="#">Semper</a>, <a href="#">Vestibulum</a>
+            </div-->
+
+          </div>  
+                
+        </div>
+      </div>
+
+      <div class="right" id="sidebar">
+
+        <!--div id="sidebar_content">
+        
+          <div class="box">
+
+            <div class="box_title">About</div>
+
+            <div class="box_content">
+              Aenean sit amet dui at felis lobortis dignissim. Pellentesque risus nibh, feugiat in, convallis id, congue ac, sem. Sed tempor neque in quam.
+            </div>
+
+          </div-->
+
+          <div class="box">                                                     
+                                                                                
+            <div class="box_title">FEMCOM Board of Directors</div>              
+                                                                                
+            <div class="box_content">                                           
+              <ul>                                                              
+                <li><a href="">Board of directors</a></li>                      
+                <li><a href="http://templates.arcsin.se/category/wordpress-themes/">Services</a></li>
+                <li><a href="http://templates.arcsin.se/professional-templates/">Gallery</a></li>
+              </ul>                                                             
+            </div>                                                              
+                                                                                
+          </div>
+
+
+          <div class="box">                                                     
+                                                                                
+            <div class="box_title">Latest news</div>                            
+                                                                                
+            <div class="box_content">                                           
+              <ul>                                                              
+                <li><a href="">Board of directors</a></li>                      
+                <li><a href="http://templates.arcsin.se/category/wordpress-themes/">Services</a></li>
+                <li><a href="http://templates.arcsin.se/professional-templates/">Gallery</a></li>
+              </ul>                                                             
+            </div>                                                              
+                                                                                
+          </div> 
+
+
+          <div class="box">                                                     
+                                                                                
+            <div class="box_title">Resources</div>                              
+                                                                                
+            <div class="box_content">                                           
+              <ul>                                                              
+                <li><a href="http://templates.arcsin.se/">Downloads (pdf)</a></li>
+                <li><a href="http://www.google.com/" rel="nofollow">Videos</a></li>
+                <li><a href="http://www.google.com/" rel="nofollow">Webmail</a></li>
+              </ul>                                                             
+            </div>                                                              
+                                                                                
+          </div>
+
+
+
+           <div class="box">                                                     
+                                                                                
+            <div class="box_title">Partners</div>                               
+                                                                                
+            <div class="box_content">                                           
+                                                                                
+              <div class="thumbnails">                                          
+                                                                                
+                <a href="#" class="thumb"><%= image_tag("ACTESA.png" ,:class => "thumb")%></a>
+                <a href="#" class="thumb"><%= image_tag("CAABWA-logo.gif" ,:class => "thumb")%></a>
+                <a href="#" class="thumb"><%= image_tag("comesa.png" ,:class => "thumb")%></a>
+                <a href="#" class="thumb"><%= image_tag("KMH.png" ,:class => "thumb")%></a>
+                                                                                
+                <div class="clearer">&nbsp;</div>                               
+                                                                                
+              </div>                                                            
+                                                                                
+            </div>                                                              
+                                                                                
+          </div>                                                                
+                                                                                
+        </div>   
+
+
+      </div>
+      
+      <div class="clearer">&nbsp;</div>
+
+    </div>
+  </div>
+</div>
+
+<div id="dashboard">
+  <!--div id="dashboard_content">
+  </div-->
+</div>
+
+<div id="footer">
+  <div class="center_wrapper">
+
+    <div class="left">
+      &copy; 2008 Website.com - Your Website Slogan
+    </div>
+    <div class="right">
+      <a href="http://templates.arcsin.se/">Website template</a> by <a href="http://arcsin.se/">Arcsin</a> 
+    </div>
+    
+    <div class="clearer">&nbsp;</div>
+
+  </div>
+</div>
+
+</body>
+</html>
