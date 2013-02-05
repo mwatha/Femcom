@@ -6,26 +6,17 @@
     width: 75px;                                                                
     height: 75px;                                                               
   }                                                                             
+
+  .nc_img tr {
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+  }
+
 </style>                                                                        
 <%=stylesheet_link_tag "main", :media => "all" %>                               
 
 
 <script>
-  function adminPage(page) {
-   var element = document.getElementById('extFrame');
-   if (page == 'news') {
-     element.src = '/user/create_news'; 
-   }else if (page == 'files') {
-     element.src = '/user/upload_pdf'; 
-   }else if (page == 'event') {
-     element.src = '/user/create_events'; 
-   }else if (page == 'video') {
-     element.src = '/user/create_video_link'; 
-   }else if (page == 'photo') {
-     element.src = '/user/upload_pictures'; 
-   }
-  }
-
 
 
 </script>
@@ -40,9 +31,9 @@
     <div id="toplinks">                                                         
       <div id="toplinks_inner">                                                 
         <%if User.current_user.blank? %>                                        
-          <a ihref="#">About us</a> | <a href="/user/login">Login</a>           
+          <a href="#">About us</a> | <a href="/user/login">Login</a>           
         <%else%>                                                                
-          <a href="/user/admin">Admin</a> | <a ihref="#">About us</a> | <a href="/user/logout">Logout</a>:&nbsp;
+          <a href="/user/admin">Admin</a> | <a href="#">About us</a> | <a href="/user/logout">Logout</a>:&nbsp;
           <font style="color:white;"><%=User.current_user.username%></font>     
         <%end%>                                                                 
       </div>                                                                    
@@ -85,26 +76,238 @@
           
           <div class="post">
 
-            <div class="post_title"><h2><a href="#">Administration page:</a></h2></div>
+            <div class="post_title"><h2><a href="#">National chapters</a></h2></div>
             <!--div class="post_date">Posted on Dec 15th at 20:47 by <a href="#">Viktor Persson</a></div-->
             
             <div class="post_body" id = "post_body">
             
-                <div>.................................&nbsp;<a href="javascript:adminPage('news');">Create news</a></div>
-                <div>.................................&nbsp;<a href="javascript:adminPage('files');">Upload pdf</a></div>
-                <div>.................................&nbsp;<a href="javascript:adminPage('event');">Create event</a></div>
-                <div>.................................&nbsp;<a href="javascript:adminPage('photo');">Upload photo</a></div>
-                <div>.................................&nbsp;<a href="javascript:adminPage('video');">Create video link</a></div>
-                <hr></hr> 
+                <div>
+                  <table class="nc_img">
+                  <tr>
+                    <td><%= image_tag("nc/BURUNDI.png" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
+                        Ms Alice Remezo, President
+                        Burundi Association of Burundi Women Entrepreneurs,
+                        P.O. Box 1628,
+                        Bujumbura;
+                        Email: alolo15@yahoo.fr / fbafab@yahoo.com</td>
+                    </tr>    
+                    <tr>    
+                    <td><%= image_tag("nc/Comoros.png" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
+                        
+                        Mahamoud Hassan Fatouma, Lawyer
+                        Union Nationale des Femmes de Djibouti (UNFD)
+                        BP 3811 Djibouti
+                        Tel: +253 356 526
+                        Fax: +253 356 528
+                        Mobile: +253 811004
+                        Email: cabinetmahamoud@vahoo.fr
 
-                <br></br>
+                    </tr>
+                    <tr>    
+                    <td><%= image_tag("nc/DRC.png" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
 
-                <iframe id="extFrame" src="blank.php" style="width: 100%;height: 80%;"></iframe>
- 
+                        Tsehaitu Daniel, Head of Women in Business Development Unit
+                        Eritrean National Chamber of Commerce
+                        Box 12756, Eritrea
+                        Tel: +291 1 121 589
+                        Fax: +291 1 121 038
+                        Email: tsehaitu2001@yahoo.ca
+
+                    </tr>
+                    <tr>    
+                    <td><%= image_tag("nc/Kenya.png" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
+
+                        Ms. Joanne Mwangi, Chairperson
+                        Federation of Women Entrepreneurs Association (FEWA)
+                        King’ara Road, Lavington
+                        PO Box 5560-0002000, Nairobi, Kenya
+                        Tel: +254 20 387 747
+                        Mobile: +254 072 251 8880
+                        Email: joanne@pms.co.ke
+                        Website: www.fewa.or.ke
+
+                    </tr>
+                    <tr>    
+                    <td><%= image_tag("nc/Libya.png" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
+
+                        Mrs. Ibstiam Ben Amer, Head of Delegation
+                        (Mr. Isa Ayad Babaa, Managing Director)
+                        Libyan Businessmen Council
+                        Dat el-Emad Complex, Tower #5, 1st Floor
+                        PO Box 91491, Tripoli Libya
+                        Tel: +218 912 132 418/ +218 21 335 0373
+                        Fax: +218 214 777 845/ +218 21 335 0374
+                        Email: ibtisam49@gmail.com; info@lybc.org
+                        Website: www.lybc.org
+
+                    </tr>
+                    <tr>    
+                    <td><%= image_tag("nc/Mauritius.png" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
+
+                        Ms. Villleneuve Anaudin Marie Ginette, Managing Director
+                        Association Mauricienne des Femmes Chefs d’Entreprise (AMFCE)
+                        Charles Cheron Street, Eau-Coulee, Mauritius
+                        Tel: +230 670 1607
+                        Fax: +230 670 7230
+                        Email: consicouette@intnet.mu
+
+                    </tr>
+                    <tr>    
+                    <td><%= image_tag("nc/SEYCHELLES.png" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
+                        Ms. Tessa Siu, Research Officer
+                        Gender Secretariat, Ministry of Employment and Social Affairs
+                        PO Box 190, Victoria Mahe, Seychelles
+                        Tel: +248 281 992
+                        Email: tessasiu@hotmail.com 
+                    </tr>
+                    <tr>    
+                    <td><%= image_tag("nc/Sudan.png" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
+
+                        Ms. Nagat Abdallah Ahmed, Chairperson
+                        AFWOPDR
+                        Reyadh Street 117, Block 37, Flat 19, Khartoum, Sudan
+                        Tel: + 249 123 056 561
+                        Fax: +249 918 356 7650
+                        Email: nagatshouk111@hotmail.com; nagatosmansh@gmail.com
+
+                    </tr>
+                    <tr>    
+                    <td><%= image_tag("nc/Uganda.png" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
+
+                        Ms. Jennifer Mwijukye, Secretary General
+                        Uganda Women Entrepreneurs Association (UWEAL)
+                        Box 12160, Kampala, Uganda
+                        Tel: +256 711 756
+                        Fax: +256 41 23196
+                        Mobile: +256 75/71 73369
+                        Email: jennymwijukye@yahoo.uk; uweal@enterprise.co.ug
+                        Website: www.uweal.co.ug
+
+                    </tr>
+                    <tr>    
+                    <td><%= image_tag("nc/DRC.png" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
+
+                        Ms. Liliane Okende Kalambay, Adminstrator General,
+                        Siege Imm Le Royal BLD du 30 Juin,
+                        Local 202, entree A Kinshasa/ Gombe ,
+                        Republic Democratic of Congo
+                        Phone: +243 (8181) 19080 / +243 9911 39702,
+
+                    </tr>
+                    <tr>    
+                    <td><%= image_tag("nc/Egypt.png" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
+
+                        Dr Amany Asfour, President,
+                        Egyptian Business Woman Association (EBWA),
+                        14 Syria St. Mohandseen
+                        Cairo, Egypt.
+                        Email: ebwaegypt@yahoo.com; info@ebwa.info; asfour2712@vahoo.com
+                        Website: http://www.ebwa.info/
+
+                    </tr>
+                    <tr>    
+                    <td><%= image_tag("nc/Ethiopia.png" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
+
+                        Nigest Haile, Executive Director
+                        Centre of African Women Economic Empowerment (CAWEE)
+                        PO Box 41293, Addis Ababa, Ethiopia
+                        Tel: +251 11 320 6065
+                        Fax: +251 11 320 6066
+                        Mobile: +251 91 140 29257
+                        Email: cawee@ethionet.et; cawee07@yahoo.com
+                        Website: http://www.cawee-ethiopia.org/
+
+
+                    </tr>
+                    <tr>    
+                    <td><%= image_tag("nc/BURUNDI.png" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
+
+                      Ms. Rakotondravelo Radel, Coordinatrice Nationale de DRV
+                      Comite de Concertation et de Coordination des Associations et de Organisations/ Femme de Madagascar
+                      Plate-forme Nationale des Organisations de lo Societe civile de Madagascar
+                      Lot II M71B Antasakoviro
+                      Antsakoviro 101, Madagascar
+                      Tel: +261 331171517
+                      Email: eccpl@wanadoo.mg
+
+
+
+                    </tr>
+                    <tr>    
+                    <td><%= image_tag("nc/Malawi.jpg" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
+                        Ms. Mary Malunga, Executive Director
+                        National Associations of Business Women (NABW)
+                        Chichiri Trade Fair Grounds, Private Bag 56, Blantyre
+                        Tel: +265 1 874 106
+                        Cell: +265 999 951 888
+                        Email: mfmalunga@nbwmalawi.org
+
+                    </tr>
+                    <tr>    
+                    <td><%= image_tag("nc/Rwanda.png" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
+
+                        Ms. Immy Kamarade, Chairperson,
+                        Rwanda Chamber of Women Entrepreneurs
+                        Rwanda Private Sector Federation
+                        BP 6969 Kigali, Rwanda
+                        Mobile: + 250 788 302 113
+                        Email: immy1965@yahoo.com
+
+
+                    </tr>
+                    <tr>    
+                    <td><%= image_tag("nc/Swaziland.png" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
+
+                          Ms. Thandi Nxumalo, Chairperson
+                          Business Women’s Forum of Swaziland (BWFS)
+                          Mobile: +268 604 9418
+                          Email: thandizn@swazi.net
+
+
+                    </tr>
+                    <tr>    
+                    <td><%= image_tag("nc/Zambia.png" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
+
+                          Ms. Nancy Kawandami, Chairperson
+                          Zambia Federation of Associations of Women in Business
+                          Ground Floor Room 9, Kwacha House Annex, Cairo Road, Lusaka
+                          Tel: +260 211 220 812
+                          Fax: +260 211 220 812
+                          Email: zfawib@yahoo.co.uk
+
+
+                    </tr>
+                    <tr>    
+                    <td><%= image_tag("nc/Zimbabwe.png" ,:align => "left",:width => "180", 
+                        :height => "150",:style => "padding:0px 5px 10px 0px;")%>
+                          Phides Mazhawidza, Chairperson
+                          FEMCOM, 3 Acacia Close Bluffhill
+                          Harare, Zimabwe
+                          Tel: + 263 4 331 044
+                          Fax: + 263 4 331 567
+                          Mobile: + 263 712 802 368
+                          Email: phides@comone.co.zw; wflatrust@gamail.com
+                    </tr>
+                  </table>
+                 </div>
             </div>
-            <!--div class="post_meta">
-              <a href="#">5 comments</a> | Tagged: <a href="#">Sapien</a>, <a href="#">Sollicitudin</a>, <a href="#">Ligula</a>
-            </div-->
 
           </div>
 
@@ -163,7 +366,7 @@
                                                                                 
             <div class="box_content">                                           
               <ul>                                                              
-                 <li><a href="#" onclick="window.open('femcom/directors?id=1', 'newwindow', 
+                <li><a href="#" onclick="window.open('femcom/directors?id=1', 'newwindow', 
                   'width=350, height=250'); return false;" title="FEMCOM Board of Directors">Dr. Amany Asfour</a></li>
                 <li><a href="#" onclick="window.open('femcom/directors?id=2', 'newwindow', 
                   'width=350, height=250'); return false;" title="FEMCOM Board of Directors">Mr Sindiso Ndema Ngwenya</a></li>
@@ -183,7 +386,7 @@
               <ul>                                                              
                 <%(latest_news || []).each do |post|%>                          
                   <li><a href="/news/post?id=<%=post.id%>"><%=post.title%></a></li>
-                <%end%> 
+                <%end%>                                                         
               </ul>                                                             
             </div>                                                              
                                                                                 

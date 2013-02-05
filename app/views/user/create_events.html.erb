@@ -24,7 +24,7 @@
     font-size: 15px;                                                             
     padding: 10px;                                                              
     text-align: center;                                                         
-    height: 65px;                                                              
+    height: 5px;                                                              
     z-index: 20;                                                                
     -moz-user-select:none;                                                      
   } 
@@ -99,6 +99,7 @@
   var date_set = [];
   var previous_selected = null;
   current_table_caption = null;
+  var selected_event_date = null;
 
   function setAttributes(){
     current_table_caption = document.getElementsByClassName('title')[0].innerHTML
@@ -113,11 +114,11 @@
       count = JSON.parse(transport.responseText) || "";                         
       if (count) {                                                              
         msgBox.innerHTML = "<span id ='app_date'>" + year + "</span>&nbsp;Total number of events:&nbsp;" + count;
-        document.getElementById('event_date').value = setdate;
       }else{                                                                    
         msgBox.innerHTML = "<span id ='app_date'>" + year + "</span>&nbsp;Total number of events:&nbsp;" + 0;
       }                                                                         
     }});                                                                        
+    selected_event_date = setdate;
   }  
 
   function addDate(set_date) {
@@ -137,12 +138,12 @@
     if (td.style.background.match(/tomato/i)) {
       td.style.background = '#CADCEA';
       //removeDate(set_date);
-      document.getElementById('event_date').value = null;
     }else{ 
       tt_cancel_destination = null;
       td.style.background = 'tomato';
       previous_selected = set_date; 
       showRecordedAppointments(set_date);
+      selected_event_date = set_date;
     }
   }
 
@@ -353,40 +354,16 @@
     } catch(e) {}
   }
 
-  function setHoliday(){
+  function submitForm(){
 
-    submitForm = document.createElement("FORM");
-    submitForm.setAttribute("type","hidden");
-    document.body.appendChild(submitForm);
-    submitForm.method = "POST";
+    submitForm = document.getElementById("event");
 
     newElement = document.createElement("input")
-    newElement.setAttribute("name",'set_appointment_date')
+    newElement.setAttribute("name",'date')
     newElement.setAttribute("type","hidden");
-    newElement.value = previous_selected;
+    newElement.value = selected_event_date;
     submitForm.appendChild(newElement);
 
-    newElement = document.createElement("input")
-    newElement.setAttribute("name",'encounter_id')
-    newElement.setAttribute("type","hidden");
-    newElement.value = "<%=@encounter_id%>";
-    submitForm.appendChild(newElement);
-
-    <%if not @next_appointment_date.blank? %>
-      newElement = document.createElement("input")
-      newElement.setAttribute("name",'new_appointment')
-      newElement.setAttribute("type","hidden");
-      newElement.value = "true";
-      submitForm.appendChild(newElement);
-    <%else%>
-      newElement = document.createElement("input")
-      newElement.setAttribute("name",'new_appointment')
-      newElement.setAttribute("type","hidden");
-      newElement.value = "false";
-      submitForm.appendChild(newElement);
-    <%end%>
-
-    submitForm.action= "/patient/next_appointment_date";
     submitForm.submit();
   }
 
@@ -424,6 +401,7 @@
 
     return month[month_num];
   }
+
 </script>
 
 
@@ -443,25 +421,24 @@
 </div>
 
  <div style="border-style:solid;border-width:1px 0px 0px 0px;">
-  <form action ="create_events" method="post">
+  <form action ="create_events" method="post" id = "event">
   <table id = 'event-description' style="width:100%;">                                                      
     <tr>
-      <td>Title</td><td><input type="text" name="title" /></td>
+      <td>Title</td><td><%= text_field_tag(:title, nil) %></td>
     </tr>
     <tr>
-      <td>Venue</td><td><input type="text" name="venue" /></td>
+      <td>Venue</td><td><%= text_field_tag(:venue, nil) %></td>
     </tr>
     <tr>
       <td colspan="2">Description:</td>
     </tr>
     <tr>
-      <td colspan="2"><textarea name="description" rows=4 cols=25></textarea></td>
+      <td colspan="2"><%= text_area_tag (:description, nil, :size => '50x10') %></td>
     </tr>
     <tr>
-      <td colspan="2"><input type="submit" value="Create event" /></td>
+      <td colspan="2"><button onclick="javascript:submitForm();" style="width: 300px;">Create event</button></td>
     </tr>
   </table>
-  <input type="hidden" name="event_date" id="event_date" />
   </form>
 </div>
 

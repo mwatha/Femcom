@@ -1,33 +1,42 @@
 <html>                                                                          
 <head>                                                                          
+<%= javascript_include_tag "prototype"%>
+<%#= stylesheet_link_tag "demo_table" %>                                 
+<%= stylesheet_link_tag "demo_table_jui" %>                             
+<%= stylesheet_link_tag "demo_page" %>                                  
+                                                                      
+<%=javascript_include_tag "jquery_data_table" %>                        
+<%=javascript_include_tag "jquery.dataTables.min" %>
+<%=stylesheet_link_tag "main", :media => "all" %>                               
+
+
                                                                                 
 <style>                                                                         
   .thumb {                                                                      
     width: 75px;                                                                
     height: 75px;                                                               
   }                                                                             
+
+
+ #events {
+   border-style: solid;
+   border-width: 0px;
+   font: 100%/1.45em "Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+ }
+
+ #events td , th{
+   border-style: solid;
+   border-width: 0px;
+   text-align: justify;
+ }
+
 </style>                                                                        
-<%=stylesheet_link_tag "main", :media => "all" %>                               
 
 
 <script>
-  function adminPage(page) {
-   var element = document.getElementById('extFrame');
-   if (page == 'news') {
-     element.src = '/user/create_news'; 
-   }else if (page == 'files') {
-     element.src = '/user/upload_pdf'; 
-   }else if (page == 'event') {
-     element.src = '/user/create_events'; 
-   }else if (page == 'video') {
-     element.src = '/user/create_video_link'; 
-   }else if (page == 'photo') {
-     element.src = '/user/upload_pictures'; 
-   }
+  function dataT(){                                                       
+    $('#events').dataTable();                                          
   }
-
-
-
 </script>
 
 </head>
@@ -68,7 +77,7 @@
       <li><a href="/femcom/national_chapters">National Chapters</a></li>        
       <li><a href="/femcom/news">News</a></li>                                  
       <li><a href="/femcom/events">Events</a></li>                              
-      <li><a href="femcom/contacts">Contacts</a></li>
+      <li><a href="#">Contacts</a></li>
     </ul>
 
     <div class="clearer">&nbsp;</div>
@@ -85,58 +94,38 @@
           
           <div class="post">
 
-            <div class="post_title"><h2><a href="#">Administration page:</a></h2></div>
-            <!--div class="post_date">Posted on Dec 15th at 20:47 by <a href="#">Viktor Persson</a></div-->
+            <div class="post_title"><h2>News</h2></div>
+            <!--content here-->
             
-            <div class="post_body" id = "post_body">
-            
-                <div>.................................&nbsp;<a href="javascript:adminPage('news');">Create news</a></div>
-                <div>.................................&nbsp;<a href="javascript:adminPage('files');">Upload pdf</a></div>
-                <div>.................................&nbsp;<a href="javascript:adminPage('event');">Create event</a></div>
-                <div>.................................&nbsp;<a href="javascript:adminPage('photo');">Upload photo</a></div>
-                <div>.................................&nbsp;<a href="javascript:adminPage('video');">Create video link</a></div>
-                <hr></hr> 
+            <!--table cellpadding="0" cellspacing="0" border="0" class="display" id="events" style="width:99%;font-size:10px;"-->
+            <table class="display"  class="display" id="events" style="width:99%;font-size:10px;">
+              <thead>
+                <tr>
+                  <th>Headline</th>
+                  <th>Date posted</th>
+                </tr>
+              </thead>
+              <tbody>
+               <%(@news || []).each do |news|%>
+                <tr class="gradeX">
+                  <td class="center"><a href="/news/post?id=<%=news.id%>"><%=news.title%></a></td>
+                  <td class="center"><%=news.created_at%></td>
+                </tr>
+               <%end%>
+              </tbody>
+            </table> 
 
-                <br></br>
 
-                <iframe id="extFrame" src="blank.php" style="width: 100%;height: 80%;"></iframe>
- 
-            </div>
-            <!--div class="post_meta">
-              <a href="#">5 comments</a> | Tagged: <a href="#">Sapien</a>, <a href="#">Sollicitudin</a>, <a href="#">Ligula</a>
-            </div-->
 
+
+
+
+
+            <!--content end here-->
           </div>
 
           <div class="post">
 
-            <!--div class="post_title"><h2><a href="#">Porttitor posuere</a></h2></div>
-            <div class="post_date">Posted on Dec 11th at 16:12 by <a href="#">Aliquet Quis</a></div>
-            
-            <div class="post_body">
-            
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc sagittis. Proin ac felis. Consectetuer adipiscing elit. Pellentesque enim dui, rhoncus ut, pharetra</p>
-              
-              <ul>
-                <li>List item 1</li>
-                <li>List item 2</li>        
-                <li>List item 3</li>
-              </ul> 
-              
-              <p>Luctus vitae, dolor. Nunc mauris eros, vehicula id, fermentum non, semper ac, nisl. Cras sed purus non justo lobortis rhoncus. Morbi consectetuer augue.</p>
-
-              <p>Donec ligula lorem, varius eget, semper eget, aliquet quis, lectus. Vestibulum ipsum nunc, aliquet quis, blandit ac, varius a, est. Praesent dictum. Sed feugiat magna sed lorem. Nulla tempus sodales ipsum. In vitae purus eget quam.</p>
-
-              <blockquote><p>Luctus vitae, dolor. Nunc mauris eros, vehicula id, fermentum non, semper ac, nisl. Cras sed purus non justo lobortis rhoncus. Morbi consectetuer augue</p></blockquote>
-
-              <p>Luctus vitae, dolor. Nunc mauris eros, vehicula id, fermentum non, semper ac, nisl. Cras sed purus non justo lobortis rhoncus. Morbi consectetuer augue.</p>
-
-
-            </div>
-            
-            <div class="post_meta">
-              <a href="#">11 comments</a> | Tagged: <a href="#">Purus</a>, <a href="#">Semper</a>, <a href="#">Vestibulum</a>
-            </div-->
 
           </div>  
                 
@@ -145,17 +134,6 @@
 
       <div class="right" id="sidebar">
 
-        <!--div id="sidebar_content">
-        
-          <div class="box">
-
-            <div class="box_title">About</div>
-
-            <div class="box_content">
-              Aenean sit amet dui at felis lobortis dignissim. Pellentesque risus nibh, feugiat in, convallis id, congue ac, sem. Sed tempor neque in quam.
-            </div>
-
-          </div-->
 
           <div class="box">                                                     
                                                                                 
@@ -163,7 +141,7 @@
                                                                                 
             <div class="box_content">                                           
               <ul>                                                              
-                 <li><a href="#" onclick="window.open('femcom/directors?id=1', 'newwindow', 
+                <li><a href="#" onclick="window.open('femcom/directors?id=1', 'newwindow', 
                   'width=350, height=250'); return false;" title="FEMCOM Board of Directors">Dr. Amany Asfour</a></li>
                 <li><a href="#" onclick="window.open('femcom/directors?id=2', 'newwindow', 
                   'width=350, height=250'); return false;" title="FEMCOM Board of Directors">Mr Sindiso Ndema Ngwenya</a></li>
@@ -183,7 +161,7 @@
               <ul>                                                              
                 <%(latest_news || []).each do |post|%>                          
                   <li><a href="/news/post?id=<%=post.id%>"><%=post.title%></a></li>
-                <%end%> 
+                <%end%>
               </ul>                                                             
             </div>                                                              
                                                                                 
@@ -198,7 +176,7 @@
               <ul>                                                              
                 <li><a href="/femcom/documents">Downloads (pdf)</a></li>        
                 <li><a href="/media/videos" rel="nofollow">Videos</a></li>      
-                <li><a href="http://femcomcomesa.org/webmail" rel="nofollow">Webmail</a></li>
+                <li><a href="http://femcomcomesa.org/webmail" rel="nofollow">Webmail</a></li> 
               </ul>                                                             
             </div>                                                              
                                                                                 
@@ -239,8 +217,6 @@
 </div>
 
 <div id="dashboard">
-  <!--div id="dashboard_content">
-  </div-->
 </div>
 
 <div id="footer">                                                               
@@ -260,6 +236,10 @@
                                                                                 
                                                                                 
 </body>                                                                         
+
+
+<script>
+  dataT();
+</script>
                                                                                 
-                                                                                
-</head>     
+</html>     

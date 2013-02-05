@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
 
   before_filter :perform_basic_auth, :except =>:login
 
+
+   def latest_news                                                               
+     News.order("created_at DESC").limit(7)                                      
+   end
+
   protected
 
   def perform_basic_auth

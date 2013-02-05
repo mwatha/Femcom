@@ -50,7 +50,6 @@
   
     <ul>
       <li class="current_page_item"><a href="/">Home</a></li>
-      <li><a href="/femcom/services">Services</a></li>
       <li><a href="/femcom/national_chapters">National Chapters</a></li>
       <li><a href="/femcom/news">News</a></li>
       <li><a href="/femcom/events">Events</a></li>
@@ -99,7 +98,7 @@
                
 
              <h5>Strategic vision of FEMCOM</h5>
-             <%= image_tag("2.gif" ,:align => "left",:width => "300", :height => "200",:style => "padding:0px 5px 10px 0px;")%>
+             <%= image_tag("4.gif" ,:align => "left",:width => "300", :height => "200",:style => "padding:0px 5px 10px 0px;")%>
              <p>To be recognized worldwide as one of the most 
              effective organisations promoting the interests of women entrepreneurs in Africa.</p>
              <p>FEMCOM has 6 Strategic Priorities in line with its 2009 – 2014 Medium Term Strategic Plan:</p>
@@ -176,9 +175,12 @@
 
             <div class="box_content">
               <ul>
-                <li><a href="">Board of directors</a></li>
-                <li><a href="http://templates.arcsin.se/category/wordpress-themes/">Services</a></li>
-                <li><a href="http://templates.arcsin.se/professional-templates/">Gallery</a></li>
+                <li><a href="#" onclick="window.open('femcom/directors?id=1', 'newwindow', 
+                  'width=350, height=250'); return false;" title="FEMCOM Board of Directors">Dr. Amany Asfour</a></li>
+                <li><a href="#" onclick="window.open('femcom/directors?id=2', 'newwindow', 
+                  'width=350, height=250'); return false;" title="FEMCOM Board of Directors">Mr Sindiso Ndema Ngwenya</a></li>
+                <li><a href="#" onclick="window.open('femcom/directors?id=3', 'newwindow', 
+                  'width=350, height=250'); return false;" title="FEMCOM Board of Directors">Katherine Nyangul Ichoya</a></li>
               </ul>
             </div>
 
@@ -191,9 +193,9 @@
 
             <div class="box_content">
               <ul>
-                <li><a href="">Board of directors</a></li>
-                <li><a href="http://templates.arcsin.se/category/wordpress-themes/">Services</a></li>
-                <li><a href="http://templates.arcsin.se/professional-templates/">Gallery</a></li>
+                <%(latest_news || []).each do |post|%>
+                  <li><a href="/news/post?id=<%=post.id%>"><%=post.title%></a></li>
+                <%end%>
               </ul>
             </div>
 
@@ -208,7 +210,7 @@
 
             <div class="box_content">
               <ul>
-                <li><a href="/media/documents">Downloads (pdf)</a></li>
+                <li><a href="/femcom/documents">Downloads (pdf)</a></li>
                 <li><a href="/media/videos" rel="nofollow">Videos</a></li>
                 <li><a href="http://femcomcomesa.org/webmail" rel="nofollow">Webmail</a></li>
               </ul>

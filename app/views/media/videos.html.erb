@@ -62,13 +62,11 @@
   <div class="center_wrapper">
   
     <ul>
-      <li class="current_page_item"><a href="index.html">Home</a></li>
-      <li><a href="blog_post.html">About us</a></li>
-      <li><a href="blog_post.html">Services</a></li>
-      <li><a href="style_demo.html">National Chapters</a></li>
-      <li><a href="news.php">News</a></li>
-      <li><a href="empty_page.html">Events</a></li>
-      <li><a href="empty_page.html">Contacts</a></li>
+      <li class="current_page_item"><a href="/">Home</a></li>                   
+      <li><a href="/femcom/national_chapters">National Chapters</a></li>        
+      <li><a href="/femcom/news">News</a></li>                                  
+      <li><a href="/femcom/events">Events</a></li>                              
+      <li><a href="femcom/contacts">Contacts</a></li>
     </ul>
 
     <div class="clearer">&nbsp;</div>
@@ -164,9 +162,12 @@
                                                                                 
             <div class="box_content">                                           
               <ul>                                                              
-                <li><a href="">Board of directors</a></li>                      
-                <li><a href="http://templates.arcsin.se/category/wordpress-themes/">Services</a></li>
-                <li><a href="http://templates.arcsin.se/professional-templates/">Gallery</a></li>
+                <li><a href="#" onclick="window.open('femcom/directors?id=1', 'newwindow', 
+                  'width=350, height=250'); return false;" title="FEMCOM Board of Directors">Dr. Amany Asfour</a></li>
+                <li><a href="#" onclick="window.open('femcom/directors?id=2', 'newwindow', 
+                  'width=350, height=250'); return false;" title="FEMCOM Board of Directors">Mr Sindiso Ndema Ngwenya</a></li>
+                <li><a href="#" onclick="window.open('femcom/directors?id=3', 'newwindow', 
+                  'width=350, height=250'); return false;" title="FEMCOM Board of Directors">Katherine Nyangul Ichoya</a></li>
               </ul>                                                             
             </div>                                                              
                                                                                 
@@ -179,9 +180,9 @@
                                                                                 
             <div class="box_content">                                           
               <ul>                                                              
-                <li><a href="">Board of directors</a></li>                      
-                <li><a href="http://templates.arcsin.se/category/wordpress-themes/">Services</a></li>
-                <li><a href="http://templates.arcsin.se/professional-templates/">Gallery</a></li>
+                 <%(latest_news || []).each do |post|%>                          
+                  <li><a href="/news/post?id=<%=post.id%>"><%=post.title%></a></li>
+                <%end%>
               </ul>                                                             
             </div>                                                              
                                                                                 
@@ -193,10 +194,10 @@
             <div class="box_title">Resources</div>                              
                                                                                 
             <div class="box_content">                                           
-              <ul>                                                              
-                <li><a href="http://templates.arcsin.se/">Downloads (pdf)</a></li>
-                <li><a href="http://www.google.com/" rel="nofollow">Videos</a></li>
-                <li><a href="http://www.google.com/" rel="nofollow">Webmail</a></li>
+              <ul>                                                             
+                <li><a href="/femcom/documents">Downloads (pdf)</a></li>        
+                <li><a href="/media/videos" rel="nofollow">Videos</a></li>      
+                <li><a href="http://femcomcomesa.org/webmail" rel="nofollow">Webmail</a></li> 
               </ul>                                                             
             </div>                                                              
                                                                                 
@@ -241,20 +242,25 @@
   </div-->
 </div>
 
-<div id="footer">
-  <div class="center_wrapper">
 
-    <div class="left">
-      &copy; 2008 Website.com - Your Website Slogan
-    </div>
-    <div class="right">
-      <a href="http://templates.arcsin.se/">Website template</a> by <a href="http://arcsin.se/">Arcsin</a> 
-    </div>
-    
-    <div class="clearer">&nbsp;</div>
-
-  </div>
-</div>
-
-</body>
-</html>
+<div id="footer">                                                               
+  <div class="center_wrapper">                                                  
+                                                                                
+    <div class="left">                                                          
+      &copy; <%=Date.today.year%> <a href="http://femcomcomesa.org/">FEMCOMcomesa</a>
+    </div>                                                                      
+    <div class="right">                                                         
+      Designed by <a href="#">Data Tech</a>                                     
+    </div>                                                                      
+                                                                                
+    <div class="clearer">&nbsp;</div>                                           
+                                                                                
+  </div>                                                                        
+</div>                                                                          
+                                                                                
+                                                                                
+</body>                                                                         
+                                                                                
+                                                                                
+</head>                                                                         
+          

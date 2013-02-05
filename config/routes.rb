@@ -1,8 +1,22 @@
 Comesa::Application.routes.draw do
 
+  get "femcom/documents"
+  get "femcom/download"
+
+  get "femcom/directors"
+
+  get "news/post"
+
+  get "femcom/news"
+
+  get "femcom/national_chapters"
+
+  get "femcom/events"
+
   get "user/upload_pictures"
 
   get "user/create_events"
+  post "user/create_events"
 
   get "media/videos"
 

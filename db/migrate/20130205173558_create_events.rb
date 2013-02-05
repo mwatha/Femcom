@@ -3,6 +3,7 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.string :title                                                       
       t.string :venue
+      t.date :date
       t.text :description
       t.string :creator                                                         
       t.boolean :voided
