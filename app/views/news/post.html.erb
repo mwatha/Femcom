@@ -99,9 +99,9 @@
             <!--content here-->
             
 
-            
-              <%=render(:inline => print_news(@post.post))%>
-
+              <%unless @post.post.blank?%> 
+                <%=render(:inline => print_news(@post.post))%>
+              <%end%>
 
 
 
