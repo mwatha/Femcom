@@ -38,7 +38,7 @@ html {
 }
 
 body {
-	background: #353530;
+	background: #1D4A75; /*#353530;*/
 	color: #5A5A50;
 	font: normal 1.3em Georgia,sans-serif;
 	height: 100%;
@@ -270,15 +270,15 @@ input.image {
 }
 
 #header {
-	background: #35322B url('/images/backgrounds.gif') repeat-x 0 0;
+	background: #1D4A75 url('/images/backgrounds.gif') repeat-x 0 0;
 	padding-top: 8px;
 }
 
 
 /* Toplinks */
 #toplinks {
-	background: #353530 url('/images/toplinks.gif') no-repeat left top;
-	color: #554;
+	background: #1D4A75 url('/images/toplinks.gif') no-repeat left top;
+	color: #FFFFFF;
 	float: right;
 	font-size: 0.9em;
 	height: 27px;

@@ -49,4 +49,16 @@ class UserController < ApplicationController
     render :layout => false
   end
 
+  def create_events
+    if request.post?
+      Document.upload(params[:title],params[:upload])
+    end
+    @next_appointment_date = Date.today
+    render :layout => false
+  end
+
+  def number_of_events
+    render :text => Event.where("DATE(created_at)=?",
+      Date.today).count and return
+  end
 end

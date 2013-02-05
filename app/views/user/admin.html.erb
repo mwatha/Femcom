@@ -14,13 +14,15 @@
   function adminPage(page) {
    var element = document.getElementById('extFrame');
    if (page == 'news') {
-     element.src = 'create_news.php'; 
+     element.src = '/user/create_news'; 
    }else if (page == 'files') {
-     element.src = 'upload_pdf.php'; 
+     element.src = 'user/upload_pdf'; 
    }else if (page == 'event') {
-     element.src = 'create_events.php'; 
+     element.src = '/user/create_events'; 
    }else if (page == 'video') {
-     element.src = 'create_video_link.php'; 
+     element.src = '/user/create_video_link'; 
+   }else if (page == 'photo') {
+     element.src = '/user/upload_pictures'; 
    }
   }
 

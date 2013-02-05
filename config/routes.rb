@@ -1,5 +1,9 @@
 Comesa::Application.routes.draw do
 
+  get "user/upload_pictures"
+
+  get "user/create_events"
+
   get "media/videos"
 
   get "user/create_video_link"
@@ -17,6 +21,7 @@ Comesa::Application.routes.draw do
 
   get "user/login"
   get "user/logout"
+  get "user/number_of_events"
   post "user/login"
 
   get "home/index"

@@ -1,0 +1,472 @@
+<html>
+
+<head>
+
+<%= javascript_include_tag "dateformat"%>
+<%= javascript_include_tag "calender"%>
+<%= javascript_include_tag "prototype"%> 
+
+<style>
+  body {
+    -moz-user-select:none;                                                      
+  }
+
+  #event-description td {
+    background-color: white !important;
+    border-style: none;
+    text-align: left !important;
+  }
+    
+  #information {                                                                
+    border: 1px;                                                                
+    border-style: solid;                                                        
+    border-width: 1px 0px 0px 0px;                                                          
+    font-size: 15px;                                                             
+    padding: 10px;                                                              
+    text-align: center;                                                         
+    height: 65px;                                                              
+    z-index: 20;                                                                
+    -moz-user-select:none;                                                      
+  } 
+  
+
+  #buttons {
+    display: block;
+    height: 80px;
+    padding-right: 20px;
+    text-align: center;
+  }
+
+  button {
+    -moz-user-select: none;
+    color: black;
+    display: block;
+    font-size: 15px;
+    height: 38px;
+    margin: 5px;
+    text-align: center;
+    width: 100px;
+  }
+
+  .dates { text-align:center; }
+
+  .months { 
+    display:none; 
+    width:98%;
+  }
+
+  td , th {
+    border-width:1px;
+    border-style:solid;
+    text-align:center;
+    height: 20px;
+    width: 20px;
+    background-color:#CADCEA;
+  }
+
+  th { font-size: 10px; }
+
+  .container { 
+    margin: 0px;
+    text-align: center;
+  }
+
+  #January { display:inline; }
+
+  .title { 
+    font-size: 33px;
+    font-style: normal;
+    font-weight: bold;
+  }
+
+  #previous { float: left;}
+
+  #next  { float: right; }
+
+</style>
+
+
+
+
+
+
+
+
+
+<script>
+  var setNextAppointmentDate = '<%= @next_appointment_date %>';
+
+  var date_set = [];
+  var previous_selected = null;
+  current_table_caption = null;
+
+  function setAttributes(){
+    current_table_caption = document.getElementsByClassName('title')[0].innerHTML
+  }
+
+  function showRecordedAppointments(setdate) {                                  
+    msgBox = $('information');                                        
+    msgBox.style.display = 'block';                                             
+    year = parseFloat(document.getElementById("app_date").innerHTML);
+    msgBox.innerHTML = "<span id ='app_date'>" + year + "</span>&nbsp;Please wait calculating number of events ..";
+    new Ajax.Request("/user/number_of_events?date=" + setdate ,{method:'get',onSuccess: function(transport){
+      count = JSON.parse(transport.responseText) || "";                         
+      if (count) {                                                              
+        msgBox.innerHTML = "<span id ='app_date'>" + year + "</span>&nbsp;Total number of events:&nbsp;" + count;
+        document.getElementById('event_date').value = setdate;
+      }else{                                                                    
+        msgBox.innerHTML = "<span id ='app_date'>" + year + "</span>&nbsp;Total number of events:&nbsp;" + 0;
+      }                                                                         
+    }});                                                                        
+  }  
+
+  function addDate(set_date) {
+    if (set_date == '' || set_date == null)
+      return 
+
+    try {
+      if (previous_selected) {
+        previous_selected_td = document.getElementById(previous_selected);
+        previous_selected_td.style.background = '#CADCEA';
+        date_set = [];
+        previous_selected = null;
+      }
+    }catch(e) { previous_selected = null }
+
+    td = document.getElementById(set_date);
+    if (td.style.background.match(/tomato/i)) {
+      td.style.background = '#CADCEA';
+      //removeDate(set_date);
+      document.getElementById('event_date').value = null;
+    }else{ 
+      tt_cancel_destination = null;
+      td.style.background = 'tomato';
+      previous_selected = set_date; 
+      showRecordedAppointments(set_date);
+    }
+  }
+
+  function removeDate(set_date) {
+    dates = date_set ; date_set = []
+    for (i = 0 ; i < dates.length ; i++) {
+      if (dates[i] != set_date)
+        date_set.push(dates[i])
+    }
+
+    if (date_set == [] || date_set == ''){ 
+      tt_cancel_destination = "/clinic" // /properties/";
+    }
+  }
+
+
+  function previousMonth(){
+    if (current_table_caption == 'January') {
+      currYear = parseFloat(document.getElementById("app_date").innerHTML) - 1
+      document.getElementById("app_date").innerHTML = currYear ;
+      nextDate = new Date("1/1/" + currYear);
+      html = chart(nextDate);
+      document.getElementById("calender").innerHTML = html;
+      document.getElementById("app_date").innerHTML = currYear;
+
+      while (current_table_caption != "December") {
+        nextMonth();
+      }
+
+    } else if  (current_table_caption == 'December') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('November')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if  (current_table_caption == 'November') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('October')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if  (current_table_caption == 'October') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('September')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if  (current_table_caption == 'September') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('August')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if  (current_table_caption == 'August') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('July')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if  (current_table_caption == 'July') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('June')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if  (current_table_caption == 'June') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('May')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if  (current_table_caption == 'May') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('April')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if  (current_table_caption == 'April') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('March')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if (current_table_caption == 'March') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('February')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if (current_table_caption == 'February') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('January')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id;
+    }
+    msgBox = document.getElementById('information');
+    year = document.getElementById('app_date').innerHTML;
+    msgBox.innerHTML = "<span id ='app_date'>" + year + "</span>&nbsp;Total number of events:&nbsp;" + 0;
+    if (previous_selected) {
+      previous_selected_td = document.getElementById(previous_selected);
+      previous_selected_td.style.background = '#CADCEA';
+      date_set = [];
+      previous_selected = null;
+    }
+
+    try {                                                                      
+      td = document.getElementById(setNextAppointmentDate);                                     
+      td.style.background = "tomato"                                            
+      previous_selected = setNextAppointmentDate;                               
+    } catch(e) {}
+  }
+
+  function nextMonth(){
+    if (previous_selected) {
+      try {
+      previous_selected_td = document.getElementById(previous_selected);
+      previous_selected_td.style.background = '#CADCEA';
+      } catch(e) {}
+      date_set = [];
+      previous_selected = null;
+    }
+    if (current_table_caption == 'January') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('February')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if  (current_table_caption == 'February') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('March')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if  (current_table_caption == 'March') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('April')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if  (current_table_caption == 'April') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('May')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if  (current_table_caption == 'May') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('June')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if  (current_table_caption == 'June') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('July')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if  (current_table_caption == 'July') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('August')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if  (current_table_caption == 'August') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('September')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if  (current_table_caption == 'September') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('October')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if  (current_table_caption == 'October') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('November')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if (current_table_caption == 'November') {
+      month = document.getElementById(current_table_caption)
+      month.style.display = 'none';
+      next_month = document.getElementById('December')
+      next_month.style.display = 'inline';
+      current_table_caption = next_month.id
+    } else if (current_table_caption == 'December') {
+      current_table_caption = "January";
+      currYear = parseFloat(document.getElementById("app_date").innerHTML) + 1
+      document.getElementById("app_date").innerHTML = currYear 
+      nextDate = new Date("1/1/" + currYear);
+      html = chart(nextDate);
+      document.getElementById("calender").innerHTML = html;
+      try {
+        document.getElementById("year").innerHTML = currYear;
+      } catch(e) {}
+    }
+    msgBox = document.getElementById('information');
+    year = document.getElementById('app_date').innerHTML;
+    msgBox.innerHTML = "<span id ='app_date'>" + year + "</span>&nbsp;Total number of events:&nbsp;" + 0;
+                                                                                 
+    try {                                                                          
+      td = document.getElementById(setNextAppointmentDate);                                     
+      td.style.background = "tomato"
+      previous_selected = setNextAppointmentDate;                              
+    } catch(e) {}
+  }
+
+  function setHoliday(){
+
+    submitForm = document.createElement("FORM");
+    submitForm.setAttribute("type","hidden");
+    document.body.appendChild(submitForm);
+    submitForm.method = "POST";
+
+    newElement = document.createElement("input")
+    newElement.setAttribute("name",'set_appointment_date')
+    newElement.setAttribute("type","hidden");
+    newElement.value = previous_selected;
+    submitForm.appendChild(newElement);
+
+    newElement = document.createElement("input")
+    newElement.setAttribute("name",'encounter_id')
+    newElement.setAttribute("type","hidden");
+    newElement.value = "<%=@encounter_id%>";
+    submitForm.appendChild(newElement);
+
+    <%if not @next_appointment_date.blank? %>
+      newElement = document.createElement("input")
+      newElement.setAttribute("name",'new_appointment')
+      newElement.setAttribute("type","hidden");
+      newElement.value = "true";
+      submitForm.appendChild(newElement);
+    <%else%>
+      newElement = document.createElement("input")
+      newElement.setAttribute("name",'new_appointment')
+      newElement.setAttribute("type","hidden");
+      newElement.value = "false";
+      submitForm.appendChild(newElement);
+    <%end%>
+
+    submitForm.action= "/patient/next_appointment_date";
+    submitForm.submit();
+  }
+
+  function moveToSetMonth() {
+    var setDate = "<%= @next_appointment_date.to_date.strftime('%m/%d/%Y') %>";
+    
+    if ((new Date(setDate).getMonth()) == 0 &&  (new Date(setDate).getFullYear() ==  new Date().getFullYear())) {
+      addDate(setNextAppointmentDate);
+      return
+    }
+
+    appointment_month = currSetMonth(new Date(setDate).getMonth());
+
+    while (current_table_caption != appointment_month) {
+      nextMonth();
+    }
+    document.getElementById("app_date").innerHTML = new Date(setDate).getFullYear();
+    addDate(setNextAppointmentDate);
+  }
+
+  function currSetMonth(month_num) {
+    var month=new Array(12);
+    month[0]="January";
+    month[1]="February";
+    month[2]="March";
+    month[3]="April";
+    month[4]="May";
+    month[5]="June";
+    month[6]="July";
+    month[7]="August";
+    month[8]="September";
+    month[9]="October";
+    month[10]="November";
+    month[11]="December";
+
+    return month[month_num];
+  }
+</script>
+
+
+</head>
+
+<body onload="setAttributes();moveToSetMonth();">
+<span id="calender"><%=render(:inline => calender(Date.today.to_s)) %></span>
+<br />
+
+<div id = 'information'>                                                      
+  <span id ="app_date"><%=Date.today.year%></span>&nbsp;total number of events:&nbsp; 0                          
+</div>
+
+<div id = "buttons">
+  <button onclick='nextMonth();' id='next' class='button navButton'><span>>|</span></button>
+  <button onclick='previousMonth();' id='previous' class='button navButton'><span>|<</span></button>
+</div>
+
+ <div style="border-style:solid;border-width:1px 0px 0px 0px;">
+  <form action ="create_events" method="post">
+  <table id = 'event-description' style="width:100%;">                                                      
+    <tr>
+      <td>Title</td><td><input type="text" name="title" /></td>
+    </tr>
+    <tr>
+      <td>Venue</td><td><input type="text" name="venue" /></td>
+    </tr>
+    <tr>
+      <td colspan="2">Description:</td>
+    </tr>
+    <tr>
+      <td colspan="2"><textarea name="description" rows=4 cols=25></textarea></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="submit" value="Create event" /></td>
+    </tr>
+  </table>
+  <input type="hidden" name="event_date" id="event_date" />
+  </form>
+</div>
+
+</body>
+
+
+</html>
+

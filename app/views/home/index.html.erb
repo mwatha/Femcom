@@ -6,6 +6,11 @@
     width: 75px;
     height: 75px;
   }
+
+#readmore {
+  color: blue;
+  text-decoration: none;
+}
 </style>
 <%=stylesheet_link_tag "main", :media => "all" %>  
 </head>
@@ -44,12 +49,12 @@
   <div class="center_wrapper">
   
     <ul>
-      <li class="current_page_item"><a href="index.html">Home</a></li>
-      <li><a href="blog_post.html">Services</a></li>
-      <li><a href="style_demo.html">National Chapters</a></li>
-      <li><a href="archives.html">News</a></li>
-      <li><a href="empty_page.html">Events</a></li>
-      <li><a href="empty_page.html">Contacts</a></li>
+      <li class="current_page_item"><a href="/">Home</a></li>
+      <li><a href="/femcom/services">Services</a></li>
+      <li><a href="/femcom/national_chapters">National Chapters</a></li>
+      <li><a href="/femcom/news">News</a></li>
+      <li><a href="/femcom/events">Events</a></li>
+      <li><a href="femcom/contacts">Contacts</a></li>
     </ul>
 
     <div class="clearer">&nbsp;</div>
@@ -66,7 +71,9 @@
           
           <div class="post">
 
-            <div class="post_title"><h2><a href="#">Welcome to FEMCOM</a></h2></div>
+            <div class="post_title">
+             <%= image_tag("home.gif",:width => "540", :height => "230")%>
+            </div>
             <!--div class="post_date">Posted on Dec 15th at 20:47 by <a href="#">Viktor Persson</a></div-->
             
             <div class="post_body">
@@ -87,16 +94,17 @@
               established in July 1993 under Article 155 of the COMESA Treaty.</p> 
               <p>FEMCOM has national chapters in all the 19 COMESA region countries namely: Burundi, Comoros, 
               Democratic Republic of Congo (DRC), Djibouti, Egypt, ,Eritrea, Ethiopia, Kenya, Libya, 
-              Madagascar, Malawi, Mauritius, Rwanda, Seychelles, Sudan, Swaziland, Uganda, Zambia and Zimbabwe</p>
+              Madagascar, Malawi, Mauritius, Rwanda, Seychelles, Sudan, Swaziland, Uganda, Zambia and Zimbabwe&nbsp;<a id="readmore" href="#">Read more ...</a>
+              </p>
                
 
-             <%= image_tag("2.gif" ,:align => "left",:width => "300", :height => "200")%>
- 
-             <p><h5>Strategic vision of FEMCOM</h5></p>
+             <h5>Strategic vision of FEMCOM</h5>
+             <%= image_tag("2.gif" ,:align => "left",:width => "300", :height => "200",:style => "padding:0px 5px 10px 0px;")%>
              <p>To be recognized worldwide as one of the most 
              effective organisations promoting the interests of women entrepreneurs in Africa.</p>
              <p>FEMCOM has 6 Strategic Priorities in line with its 2009 – 2014 Medium Term Strategic Plan:</p>
-
+             <p></p>
+             <p></p>
              <div align=justify style="line-height:1.50;">1. Strengthening FEMCOM for Long-term Sustainability</div>
              <div align=justify style="line-height:1.50;">2. Resource Mobilisation</div>
              <div align=justify style="line-height:1.50;">3. Up-scaling capacity for women in business</div>
@@ -200,9 +208,9 @@
 
             <div class="box_content">
               <ul>
-                <li><a href="http://templates.arcsin.se/">Downloads (pdf)</a></li>
-                <li><a href="http://www.google.com/" rel="nofollow">Videos</a></li>
-                <li><a href="http://www.google.com/" rel="nofollow">Webmail</a></li>
+                <li><a href="/media/documents">Downloads (pdf)</a></li>
+                <li><a href="/media/videos" rel="nofollow">Videos</a></li>
+                <li><a href="http://femcomcomesa.org/webmail" rel="nofollow">Webmail</a></li>
               </ul>
             </div>
 
@@ -216,10 +224,10 @@
 
               <div class="thumbnails">
                 
-                <a href="#" class="thumb"><%= image_tag("ACTESA.png" ,:class => "thumb")%></a>
-                <a href="#" class="thumb"><%= image_tag("CAABWA-logo.gif" ,:class => "thumb")%></a>
-                <a href="#" class="thumb"><%= image_tag("comesa.png" ,:class => "thumb")%></a>
-                <a href="#" class="thumb"><%= image_tag("KMH.png" ,:class => "thumb")%></a>
+                <a href="http://www.actesacomesa.org" class="thumb"><%= image_tag("ACTESA.png" ,:class => "thumb")%></a>
+                <a href="http://www.caabwa.com/" class="thumb"><%= image_tag("CAABWA-logo.gif" ,:class => "thumb")%></a>
+                <a href="http://www.comesa.int" class="thumb"><%= image_tag("comesa.png" ,:class => "thumb")%></a>
+                <a href="http://www.kmhassociates.ca" class="thumb"><%= image_tag("KMH.png" ,:class => "thumb")%></a>
 
                 <div class="clearer">&nbsp;</div>
 
@@ -298,10 +306,10 @@
   <div class="center_wrapper">
 
     <div class="left">
-      &copy; 2008 Website.com - Your Website Slogan
+      &copy; <%=Date.today.year%> <a href="http://femcomcomesa.org/">FEMCOMcomesa</a>
     </div>
     <div class="right">
-      <a href="http://templates.arcsin.se/">Website template</a> by <a href="http://arcsin.se/">Arcsin</a> 
+      Designed by <a href="#">Data Tech</a> 
     </div>
     
     <div class="clearer">&nbsp;</div>
