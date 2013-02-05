@@ -29,7 +29,7 @@ class UserController < ApplicationController
 
   def create_news
     if request.post?
-      News.create(:title => params[:title],:post => params[:body])
+      News.create(:title => params[:title],:post => params[:content])
     end
     render :layout => false
   end
