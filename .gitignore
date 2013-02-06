@@ -6,3 +6,4 @@ tmp/
 *.lock
 config/database.yml
 db/schema.rb
+pdf/*.pdf
