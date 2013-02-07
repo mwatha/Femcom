@@ -13,6 +13,9 @@ class ApplicationController < ActionController::Base
   def perform_basic_auth
     if session[:user_id].blank?
       User.current_user = nil
+      if action_name == 'admin'
+        redirect_to '/'
+      end
     elsif not session[:user_id].blank?
       User.current_user = User.where(:'id' => session[:user_id]).first
     end
