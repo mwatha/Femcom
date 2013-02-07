@@ -92,7 +92,7 @@ body {text-align:center;margin:0}
 </head>
 <body background="/images/old.jpg" bgColor="#C0C0C0">
 <div id="container">
-<div id="g_image4" style="position:absolute; overflow:hidden; left:28px; top:48px; width:1006px; height:964px; z-index:0; background-color:#FFFFFF"><img src="/images/white.jpg" alt="" title="" border=0 width=1006 height=964></div>
+<div id="g_image4" style="position:absolute; overflow:auto; left:28px; top:48px; width:1006px; height:964px; z-index:0; background-color:#FFFFFF"><img src="/images/white.jpg" alt="" title="" border=0 width=1006 height=964></div>
 
 <div id="g_image3" style="position:absolute; overflow:hidden; left:42px; top:62px; width:350px; height:102px; z-index:1"><img src="/images/logo.gif" alt="" title="" border=0 width=350 height=102></div>
 
@@ -226,7 +226,7 @@ count = 0
 
 <div id="text1" style="position:absolute; overflow:hidden; left: 280px; top:238px; width: 69%; height:auto; z-index:40">
 <div class="wpmd">
-<div style="line-height:1.50;"><font face="Cambria"><B><%=@post.title%></B></font>
+<div style="line-height:1.50;height:758px;overflow: auto;"><font face="Cambria"><B><%=@post.title%></B></font>
 <p>
 
   <%unless @post.post.blank?%>
