@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
 
    def latest_news                                                               
-     News.order("created_at DESC").limit(7)                                      
+     News.order("created_at DESC").limit(4)                                      
    end
 
   protected

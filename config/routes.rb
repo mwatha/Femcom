@@ -1,5 +1,7 @@
 Comesa::Application.routes.draw do
 
+  get "femcom/services"
+
   get "femcom/documents"
   get "femcom/download"
 

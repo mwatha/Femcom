@@ -4,7 +4,7 @@ class UserController < ApplicationController
       user = User.find_by_username params[:username]                                      
       if user and user.password_matches?(params[:password])                       
         session[:user_id] = user.id
-        redirect_to "/home/index" and return
+        redirect_to "/" and return
       else                                                                        
         flash[:error] = 'That username and/or password was not valid.'            
       end   
@@ -16,7 +16,7 @@ class UserController < ApplicationController
 
   def logout
     reset_session
-    redirect_to "/home/index" and return
+    redirect_to "/" and return
   end
 
   def admin
