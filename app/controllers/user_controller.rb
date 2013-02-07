@@ -11,7 +11,6 @@ class UserController < ApplicationController
     else
       reset_session
     end
-    render :layout => false
   end
 
   def logout
@@ -20,7 +19,6 @@ class UserController < ApplicationController
   end
 
   def admin
-    render :layout => false
   end
 
   def blank

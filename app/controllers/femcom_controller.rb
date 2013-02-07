@@ -1,22 +1,17 @@
 class FemcomController < ApplicationController
   def events
     @events = Event.all
-    render :layout => false
   end
 
   def news
-    @news = News.all
-    render :layout => false
+    @news = News.order("created_at DESC") 
   end
 
   def directors
-    @picture = params[:id]
-    render :layout => false
   end
 
   def documents
-    @documents = Document.all
-    render :layout => false
+    @documents = Document.order("created_at DESC")
   end
 
   def download

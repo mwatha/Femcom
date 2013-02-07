@@ -5,11 +5,22 @@
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
 <meta name="generator" content="Web Page Maker">
 
-<script>                                                                      
-    function submitForm() {                                                     
-      document.forms["login"].submit();                                         
-    }                                                                           
-</script> 
+<style>
+    .submit_btns a {
+      color: white !important;
+      text-decoration: none;
+    }
+
+    #image-logo {
+      margin-left: 60px;
+    }
+  </style>
+
+  <script>
+    function submitForm() {
+      document.forms["login"].submit();
+    }
+  </script>
 
 <style type="text/css">
 /*----------Text Styles----------*/
@@ -71,7 +82,7 @@ body {text-align:center;margin:0}
 
 <div id="g_text2" style="position:absolute; overflow:hidden; left:129px; top:188px; width:891px; height:22px; z-index:3">
 <div class="wpmd">
-<div><a href="/" title="" class="style1">Home</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/about_us"    title="" class="style1">About Us</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/services" title=""              class="style1">Services</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/national_chapters" title=""              class="style1">National Chapters</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/events" title="" class="style1">Events</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" title="" class="style1">Program</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/news" title=""     class="style1">News</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/allery" title="" class="style1">Gallery</a><font color="#FFFFFF">&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/documents" title="" class="style1">Resources</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/  femcom/contact_us" title="" class="style1">Contact Us</a></div>
+<div><a href="/" title="" class="style1">Home</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/about_us"    title="" class="style1">About Us</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/services" title=""              class="style1">Services</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/national_chapters" title=""              class="style1">National Chapters</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/events" title="" class="style1">Events</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" title="" class="style1">Program</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/news" title=""     class="style1">News</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/gallery" title="" class="style1">Gallery</a><font                        color="#FFFFFF">&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/documents" title="" class="style1">Resources</a>&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp; </font><a href="/femcom/contact_us" title="" class="style1">Contact Us</a></div>
 </div></div>
 
 <div id="g_image1" style="position:absolute; overflow:hidden; left:811px; top:135px; width:210px; height:32px; z-index:4"><img src="/images/arc.gif" alt="" title="" border=0 width=210 height=32></div>
@@ -112,15 +123,14 @@ body {text-align:center;margin:0}
 
 <div id="g_text5" style="position:absolute; overflow:hidden; left:58px; top:615px; width:196px; height:224px; z-index:17">
 <div class="wpmd">
-<div style="line-height:1.50;"><font color="#000000" class="ws9">1. FEMCOM Assists in ICT Training for Grassroots Women</font></div>
+<%                                                                              
+count = 0                                                                       
+(latest_news || []).each do |post|%>                                            
+<div style="line-height:1.50;"><font color="#000000" class="ws9">               
+<%=count+=1%>.&nbsp;<a href="/news/post?id=<%=post.id%>"><%=post.title%></a></font></div>
+<%end%>                                                                         
 <div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9"> 2. Malawi ICT Week &amp; E-Government Conference 2012</font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9">3. FEMCOM Assists a Gem of Africa – Chiccu Clothing Ltd</font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9">4. FEMCOM welcomes an intern from University of Toronto</font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
-</div></div>
+</div></div> 
 
 <div id="g_hr3" style="position:absolute; overflow:hidden; left:231px; top:578px; width:29px; height:17px; z-index:18">
 <hr size=2 width=29>
@@ -198,35 +208,36 @@ body {text-align:center;margin:0}
 
 <div id="text1" style="position:absolute; overflow:hidden; left: 280px; top:238px; width: 69%; height:auto; z-index:40">
 <div class="wpmd">
-<p>
 
-<div id = "image-logo">                                                         
+<p>
+<div style="text-align:center;">
+
+<div id = "image-logo">                                                        
    <%= image_tag("keys.png" ,:id => "keys" ,:width => "100",:height => "100",:align => "left")%>
  </div>                                                                         
   <div id = "login-box">                                                        
-    <form method = "post" action="login" id="login">                            
+    <form method = "post" action="login" id="login">                                                      
       <table id = "login-box-table">                                            
-        <tr>                                                                    
-          <td>Username:</td><td><input type="text" name="username" /></td>      
-        <tr>                                                                    
-        <tr>                                                                    
-          <td>Password:</td><td><input type="password" name="password" /></td>  
-        <tr>                                                                    
-        <tr>                                                                    
-          <td colspan="2">&nbsp;</td>                                           
-        <tr>                                                                    
-        <tr>                                                                    
-          <td>&nbsp;</td>                                                       
-          <td class ="submit_btns">                                             
+        <tr>
+          <td>Username:</td><td><input type="text" name="username" /></td>
+        <tr>                                                               
+        <tr>
+          <td>Password:</td><td><input type="password" name="password" /></td>
+        <tr>                                                               
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        <tr>                                                               
+        <tr>
+          <td>&nbsp;</td>
+          <td class ="submit_btns">
             <button onclick="javascript:submitForm();" style="float:left;width:100%;">Login</button>
-          </td>                                                                 
-        <tr>                                                                    
+          </td>
+        <tr>
       </table>                                                                  
     </form>                                                                     
   </div>                                                                        
-<hr>
-
 </p>
+
 </div>
 </div></div>
 

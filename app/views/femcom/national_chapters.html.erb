@@ -64,7 +64,7 @@ body {text-align:center;margin:0}
 
 <div id="g_text2" style="position:absolute; overflow:hidden; left:129px; top:188px; width:891px; height:22px; z-index:3">
 <div class="wpmd">
-<div><a href="/" title="" class="style1">Home</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/about_us"    title="" class="style1">About Us</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/services" title=""              class="style1">Services</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/national_chapters" title=""              class="style1">National Chapters</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/events" title="" class="style1">Events</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" title="" class="style1">Program</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/news" title=""     class="style1">News</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/allery" title="" class="style1">Gallery</a><font color="#FFFFFF">&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/documents" title="" class="style1">Resources</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/  femcom/contact_us" title="" class="style1">Contact Us</a></div>
+<div><a href="/" title="" class="style1">Home</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/about_us"    title="" class="style1">About Us</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/services" title=""              class="style1">Services</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/national_chapters" title=""              class="style1">National Chapters</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/events" title="" class="style1">Events</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" title="" class="style1">Program</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/news" title=""     class="style1">News</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/gallery" title="" class="style1">Gallery</a><font                        color="#FFFFFF">&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/documents" title="" class="style1">Resources</a>&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp; </font><a href="/femcom/contact_us" title="" class="style1">Contact Us</a></div>
 </div></div>
 
 <div id="g_image1" style="position:absolute; overflow:hidden; left:811px; top:135px; width:210px; height:32px; z-index:4"><img src="/images/arc.gif" alt="" title="" border=0 width=210 height=32></div>
@@ -108,13 +108,12 @@ body {text-align:center;margin:0}
 
 <div id="text1" style="position:absolute; overflow:hidden; left:58px; top:615px; width:196px; height:224px; z-index:17">
 <div class="wpmd">
-<div style="line-height:1.50;"><font color="#000000" class="ws9">1. FEMCOM Assists in ICT Training for Grassroots Women</font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9"> 2. Malawi ICT Week &amp; E-Government Conference 2012</font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9">3. FEMCOM Assists a Gem of Africa – Chiccu Clothing Ltd</font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9">4. FEMCOM welcomes an intern from University of Toronto</font></div>
+<%                                                                              
+count = 0                                                                       
+(latest_news || []).each do |post|%>                                            
+<div style="line-height:1.50;"><font color="#000000" class="ws9">               
+<%=count+=1%>.&nbsp;<a href="/news/post?id=<%=post.id%>"><%=post.title%></a></font></div>
+<%end%>                                                                         
 <div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
 </div></div>
 
@@ -285,21 +284,21 @@ body {text-align:center;margin:0}
 <div>FEMCOM Madagascar</div>
 </div></div>
 
-<div id="shape14" style="position:absolute; overflow:hidden; left:293px; top:2017px; width:197px; height:112px; z-index:42"><img src="images/huj.png" alt="" border=0 width="100%" height="100%"></div>
+<div id="shape14" style="position:absolute; overflow:hidden; left:293px; top:2017px; width:197px; height:112px; z-index:42"><img src="/images/huj.png" alt="" border=0 width="100%" height="100%"></div>
 
-<div id="shape15" style="position:absolute; overflow:hidden; left:292px; top:2157px; width:197px; height:112px; z-index:43"><img src="images/Rwanda.png" alt="" border=0 width="100%" height="100%"></div>
+<div id="shape15" style="position:absolute; overflow:hidden; left:292px; top:2157px; width:197px; height:112px; z-index:43"><img src="/images/Rwanda.png" alt="" border=0 width="100%" height="100%"></div>
 
-<div id="shape16" style="position:absolute; overflow:hidden; left:294px; top:2299px; width:197px; height:112px; z-index:44"><img src="images/Swaziland.png" alt="" border=0 width="100%" height="100%"></div>
+<div id="shape16" style="position:absolute; overflow:hidden; left:294px; top:2299px; width:197px; height:112px; z-index:44"><img src="/images/Swaziland.png" alt="" border=0 width="100%" height="100%"></div>
 
-<div id="shape17" style="position:absolute; overflow:hidden; left:294px; top:2433px; width:197px; height:112px; z-index:45"><img src="images/Zambia.png" alt="" border=0 width="100%" height="100%"></div>
+<div id="shape17" style="position:absolute; overflow:hidden; left:294px; top:2433px; width:197px; height:112px; z-index:45"><img src="/images/Zambia.png" alt="" border=0 width="100%" height="100%"></div>
 
-<div id="shape18" style="position:absolute; overflow:hidden; left:294px; top:2576px; width:197px; height:112px; z-index:46"><img src="images/Zimbabwe.png" alt="" border=0 width="100%" height="100%"></div>
+<div id="shape18" style="position:absolute; overflow:hidden; left:294px; top:2576px; width:197px; height:112px; z-index:46"><img src="/images/Zimbabwe.png" alt="" border=0 width="100%" height="100%"></div>
 
 <div id="hr6" style="position:absolute; overflow:hidden; left:49px; top:833px; width:210px; height:17px; z-index:47">
 <hr size=2 width=210>
 </div>
 
-<div id="image13" style="position:absolute; overflow:hidden; left:82px; top:860px; width:38px; height:28px; z-index:48"><img src="images/newsletter.png" alt="" title="" border=0 width=38 height=28></div>
+<div id="image13" style="position:absolute; overflow:hidden; left:82px; top:860px; width:38px; height:28px; z-index:48"><img src="/images/newsletter.png" alt="" title="" border=0 width=38 height=28></div>
 
 <div id="text7" style="position:absolute; overflow:hidden; left:59px; top:907px; width:39px; height:51px; z-index:49">
 <div class="wpmd">
@@ -319,9 +318,9 @@ body {text-align:center;margin:0}
 <hr size=2 width=33>
 </div>
 
-<div id="image14" style="position:absolute; overflow:hidden; left:41px; top:882px; width:16px; height:121px; z-index:52"><img src="images/line120.gif" alt="" title="" border=0 width=16 height=121></div>
+<div id="image14" style="position:absolute; overflow:hidden; left:41px; top:882px; width:16px; height:121px; z-index:52"><img src="/images/line120.gif" alt="" title="" border=0 width=16 height=121></div>
 
-<div id="image15" style="position:absolute; overflow:hidden; left:252px; top:881px; width:16px; height:121px; z-index:53"><img src="images/line120.gif" alt="" title="" border=0 width=16 height=121></div>
+<div id="image15" style="position:absolute; overflow:hidden; left:252px; top:881px; width:16px; height:121px; z-index:53"><img src="/images/line120.gif" alt="" title="" border=0 width=16 height=121></div>
 
 <div id="hr9" style="position:absolute; overflow:hidden; left:48px; top:994px; width:212px; height:17px; z-index:54">
 <hr size=2 width=212>
@@ -336,7 +335,7 @@ body {text-align:center;margin:0}
 <div><BR></div>
 </div></div>
 
-<div id="image16" style="position:absolute; overflow:hidden; left:122px; top:871px; width:138px; height:20px; z-index:59"><img src="images/Bar1.jpg" alt="" title="" border=0 width=138 height=20></div>
+<div id="image16" style="position:absolute; overflow:hidden; left:122px; top:871px; width:138px; height:20px; z-index:59"><img src="/images/Bar1.jpg" alt="" title="" border=0 width=138 height=20></div>
 
 <div id="text9" style="position:absolute; overflow:hidden; left:156px; top:872px; width:112px; height:22px; z-index:60">
 <div class="wpmd">
@@ -348,7 +347,7 @@ body {text-align:center;margin:0}
 <div style="line-height:1.50;"><font face="Cambria"><B>NATIONAL CHAPTERS</B></font></div>
 </div></div>
 
-<div id="image17" style="position:absolute; overflow:hidden; left:28px; top:2705px; width:1007px; height:53px; z-index:62"><img src="images/Bar1.jpg" alt="" title="" border=0 width=1007 height=53></div>
+<div id="image17" style="position:absolute; overflow:hidden; left:28px; top:2705px; width:1007px; height:53px; z-index:62"><img src="/images/Bar1.jpg" alt="" title="" border=0 width=1007 height=53></div>
 
 </div>
 

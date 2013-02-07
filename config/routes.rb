@@ -1,5 +1,11 @@
 Comesa::Application.routes.draw do
 
+  get "femcom/gallery"
+
+  get "femcom/contact_us"
+
+  get "femcom/about_us"
+
   get "femcom/services"
 
   get "femcom/documents"
