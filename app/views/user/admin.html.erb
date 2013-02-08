@@ -130,15 +130,14 @@ body {text-align:center;margin:0}
 
 <div id="g_text5" style="position:absolute; overflow:hidden; left:58px; top:615px; width:196px; height:224px; z-index:17">
 <div class="wpmd">
-<div style="line-height:1.50;"><font color="#000000" class="ws9">1. FEMCOM Assists in ICT Training for Grassroots Women</font></div>
+<%                                                                              
+count = 0                                                                       
+(latest_news || []).each do |post|%>                                            
+<div style="line-height:1.50;"><font color="#000000" class="ws9">               
+<%=count+=1%>.&nbsp;<a href="/news/post?id=<%=post.id%>"><%=post.title%></a></font></div>
+<%end%>                                                                         
 <div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9"> 2. Malawi ICT Week &amp; E-Government Conference 2012</font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9">3. FEMCOM Assists a Gem of Africa – Chiccu Clothing Ltd</font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9">4. FEMCOM welcomes an intern from University of Toronto</font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
-</div></div>
+</div></div> 
 
 <div id="g_hr3" style="position:absolute; overflow:hidden; left:231px; top:578px; width:29px; height:17px; z-index:18">
 <hr size=2 width=29>
