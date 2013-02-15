@@ -2,17 +2,21 @@ class FemcomController < ApplicationController
 
   def events
     @events = Event.all
+    @page_heading = 'Events'
   end
 
   def news
     @news = News.order("created_at DESC") 
+    @page_heading = 'News'
   end
 
   def directors
+    @page_heading = 'Directors'
   end
 
   def documents
     @documents = Document.order("created_at DESC")
+    @page_heading = 'Documents (pdf)'
   end
 
   def download
@@ -22,6 +26,18 @@ class FemcomController < ApplicationController
 
   def about_us
     @page_heading = "About us"
+  end
+
+  def services
+    @page_heading = "Services"
+  end
+
+  def national_chapters
+    @page_heading = "National chapters"
+  end
+
+  def contact_us
+    @page_heading = "Contact us"
   end
 
 end

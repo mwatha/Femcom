@@ -1,75 +1,26 @@
-<%= javascript_include_tag "prototype"%>
-
-<%#= stylesheet_link_tag "demo_table" %>
-<%= stylesheet_link_tag "demo_table_jui" %>
-<%= stylesheet_link_tag "demo_page" %>
-
-<%=javascript_include_tag "jquery_data_table" %>
-<%=javascript_include_tag "jquery.dataTables.min" %>
-
-<script>
-  function dataT(){
-    $('#events').dataTable();
-  }
-</script>
-
-
-<style type="text/css">
-
+<style>
 body { 
   font-size: 12px;
 }
-
-.thumb {
-    width: 75px;
-    height: 75px;
-  }
-
-
- #events {
-   border-style: solid;
-   border-width: 0px;
-   font: 100%/1.45em "Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
- }
-
-
-
- #events td , th{
-   border-style: solid;
-   border-width: 0px;
-   text-align: justify;
- }
-
-
 </style>
 
 <div>
-  <font color="#1D4A75" face="Arial Narrow" class="ws9">Calender Events</font>
+  <font color="#1D4A75" face="Arial Narrow" class="ws9">Videos</font>
   <hr style="background-color:#1D4A75;height:3px;"></hr>
 </div>
 
-
-<p>
-
 <%(@videos || []).each do |video|%>                                             
-  <div style="border-style:solid;border-width:0px 0px 1px 0px;">                  
+  <div style="border-style:solid;border-width:0px 0px 1px 0px;">                
   <table>                                                                       
     <tr>                                                                        
-      <td><iframe class="youtube-player" type="text/html" width="200" height="150" 
-      src="http://www.youtube.com/embed/<%=video.link%>" frameborder="0">
-      </td>
+      <td><iframe class="youtube-player" type="text/html" width="315" height="200" 
+      src="http://www.youtube.com/embed/<%=video.link%>" frameborder="0"></iframe>
+      </td>                                                                     
       <td style="font-size:12px; vertical-align: sub;">                         
-        <%=video.title%><%unless video.description.blank?%>:&nbsp;       
+        <%=video.title%><%unless video.description.blank?%>:&nbsp;              
         <br /><%=video.description%><%end%>                                     
       </td>                                                                     
     </tr>                                                                       
   </table>                                                                      
-</div> 
-<%end%>                                                                         
-
-</p>
-
-
-<script>
-  dataT();
-</script>
+</div>                                                                          
+<%end%>

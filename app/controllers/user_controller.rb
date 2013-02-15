@@ -11,6 +11,7 @@ class UserController < ApplicationController
     else
       reset_session
     end
+    @page_heading = 'Login'
   end
 
   def logout
@@ -19,6 +20,7 @@ class UserController < ApplicationController
   end
 
   def admin
+    @page_heading = 'Administartion'
   end
 
   def blank

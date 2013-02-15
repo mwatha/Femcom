@@ -1,15 +1,31 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>FEMCOMcomesai &#45; <%=@page_heading%></title>
+<title>FEMCOMcomesa &#45; <%=@page_heading%></title>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
-<meta name="generator" content="Web Page Maker">
+<meta name="generator" content="FEMCOMcomesa">
 
 <%= stylesheet_link_tag    "application", :media => "all" %>                  
 <%#= javascript_include_tag "application" %>                                   
 <%= csrf_meta_tag %>  
 
 <style type="text/css">
+.latest_news {
+  margin-left: -20px !important;
+}
+
+.latest_news a{
+  color: #1D4A75 !important;
+}
+
+.latest_events {
+  margin-left: -20px !important;
+}
+
+.small_links {
+  width: 200px;
+}
+
 /*----------Text Styles----------*/
 .ws6 {font-size: 8px;}
 .ws7 {font-size: 9.3px;}
@@ -156,12 +172,13 @@ body {text-align:center;margin:0}
 
 <div id="text13" style="position:absolute; overflow:hidden; left:872px; top:200px; width:179px; height:204px; z-index:21">
 <div class="wpmd">
+<ol class='latest_news'>
 <%                                                                              
-count = 0                                                                       
 (latest_news || []).each do |post|%>                                            
 <div style="line-height:1.50;"><font color="#000000" class="ws9">               
-<%=count+=1%>.&nbsp;<a href="/news/post?id=<%=post.id%>"><%=post.title%></a></font></div>
-<%end%>                                                                         
+<li>.&nbsp;<a href="/news/post?id=<%=post.id%>"><%=post.title%></a></li></font></div>
+<%end%>                                                                 
+</ol>        
 <div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
 </div></div>
 
@@ -185,7 +202,7 @@ count = 0
 
 <div id="text20" style="position:absolute; overflow:hidden; left:874px; top:502px; width:179px; height:99px; z-index:26">
 <div class="wpmd">
-<div align=justify style="line-height:1.50;"><font class="ws9">FEMCOM adapts and fosters COMESA&#39;s Holistic Cluster Approach, which is designed as a means of enhancing collective efficiency ....&nbsp;<a href="#">read more</a></font></div>
+<div align=justify style="line-height:1.50;"><font class="ws9">FEMCOM adapts and fosters COMESA&#39;s Holistic Cluster Approach, which is designed as a means of enhancing collective efficiency ....&nbsp;<a href="/femcom/about_us">read more</a></font></div>
 </div></div>
 
 
@@ -281,12 +298,21 @@ count = 0
 
 <div id="g_text6" style="position:absolute; overflow:hidden; left:139px; top:659px; width:108px; height:18px; z-index:51">
 <div class="wpmd">
-<div><font color="#FFFFFF" class="ws9">Videos</font></div>
+<div><font color="#FFFFFF" class="ws9">Events</font></div>
 </div></div>
 
 <div id="g_text5" style="position:absolute; overflow:hidden; left:75px; top:688px; width:181px; height:251px; z-index:52">
 <div class="wpmd">
-<div><font class="ws9">Watch</font></div>
+<div><font class="ws9">
+
+<ul class="latest_events">                                                                              
+<%
+(latest_events || []).each do |post|%>                                            
+<div style="line-height:1.50;"><font color="#000000" class="ws9">               
+<li>.&nbsp;<%=post.title%></font></li></div>
+<%end%>                                                                         
+</ul>
+</font></div>
 </div></div>
 
 <div id="g_image8" style="position:absolute; overflow:hidden; left:124px; top:607px; width:93px; height:23px; z-index:53">
@@ -295,7 +321,7 @@ count = 0
 
 <div id="g_text4" style="position:absolute; overflow:hidden; left:136px; top:610px; width:71px; height:15px; z-index:54">
 <div class="wpmd">
-<div><font class="ws8"><a href="board.php" title="" class="style1">View Profile</a></font></div>
+<div><font class="ws8"><a href="/femcom/directors" title="" class="style1">View Profile</a></font></div>
 </div></div>
 
 <div id="g_text8" style="position:absolute; overflow:hidden; left:990px; top:581px; width:58px; height:19px; z-index:55">
@@ -312,11 +338,17 @@ count = 0
 <div><a href="/" title="" class="style1">Home</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/about_us"    title="" class="style1">About Us</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/services" title=""              class="style1">Services</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/national_chapters" title=""              class="style1">National Chapters</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/events" title="" class="style1">Events</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" title="" class="style1">Program</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/news" title=""     class="style1">News</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/gallery" title="" class="style1">Gallery</a><font                        color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/documents" title="" class="style1">Documents</a>&nbsp;&nbsp;&nbsp;&nbsp;    &nbsp; </font><a href="/media/videos" title="" class="style1">Videos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/contact_us" title=""    class="style1">Contact Us</a></div>
 </div></div>
 
-<div id="g_text11" style="position:absolute; overflow:hidden; left:1002px; top:4px; width:39px; height:21px; z-index:58">
-<div class="wpmd">
+<div id="g_text11" style="position:absolute; overflow:hidden; left:850px; top:4px; width:300px; height:21px; z-index:58">
+<div class="wpmd small_links">
 <div><font face="Arial Narrow" class="ws9">
 <a href="ftp://www.hostmonster.com/cgi/webmail?referer=http://femcomcomesa.org:2095/" title="" class="style1">Webmail</a>
-<a href="ftp://www.hostmonster.com/cgi/webmail?referer=http://femcomcomesa.org:2095/" title="" class="style1">Login</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<%if User.current_user.blank?%>
+  <a href="/user/login" title="" class="style1">Login</a>
+<%else%>
+  <a href="/user/logout" title="" class="style1">Logout</a>&nbsp;
+  <a href="/user/admin" class="style1"><%=User.current_user.username[0..8]%></a>
+<%end%>
 </font></div>
 </div></div>
 
