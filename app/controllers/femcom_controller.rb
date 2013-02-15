@@ -1,4 +1,5 @@
 class FemcomController < ApplicationController
+
   def events
     @events = Event.all
   end
@@ -17,6 +18,10 @@ class FemcomController < ApplicationController
   def download
     uri = params[:uri]
     send_file "#{Rails.root}/#{uri}", :type=>"application/zip" 
+  end
+
+  def about_us
+    @page_heading = "About us"
   end
 
 end

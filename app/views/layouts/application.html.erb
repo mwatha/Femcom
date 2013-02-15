@@ -4,6 +4,11 @@
 <title>FEMCOMcomesai &#45; <%=@page_heading%></title>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
 <meta name="generator" content="Web Page Maker">
+
+<%= stylesheet_link_tag    "application", :media => "all" %>                  
+<%= javascript_include_tag "application" %>                                   
+<%= csrf_meta_tag %>  
+
 <style type="text/css">
 /*----------Text Styles----------*/
 .ws6 {font-size: 8px;}
@@ -24,7 +29,7 @@
 .ws36 {font-size: 48px;}
 .ws48 {font-size: 64px;}
 .ws72 {font-size: 96px;}
-.wpmd {font-size: 13px;font-family: Arial,Helvetica,Sans-Serif;font-style: normal;font-weight: normal;}
+.wpmd {font-size: 12px;font-family: Arial,Helvetica,Sans-Serif;font-style: normal;font-weight: normal;}
 /*----------Para Styles----------*/
 DIV,UL,OL /* Left */
 {
@@ -39,7 +44,7 @@ DIV,UL,OL /* Left */
     top: 185px;
     width: 574px;
     z-index: 20;
-    height: 700px;
+    height: 760px;
     overflow: auto;
 }
 
@@ -68,39 +73,65 @@ body {text-align:center;margin:0}
 </head>
 <body bgColor="#333333">
 <div id="container">
-<div id="shape1" style="position:absolute; overflow:hidden; left:34px; top:0px; width:1061px; height:1003px; z-index:0"><img border=0 width="100%" height="100%" alt="" src="images/shape19946312.gif"></div>
+<div id="shape1" style="position:absolute; overflow:hidden; left:34px; top:0px; width:1061px; height:1003px; z-index:0">
+  <%= image_tag("shape19946312.gif" , :border => 0 ,:width =>"100%" ,:height =>"100%")%>
+</div>
 
-<div id="image1" style="position:absolute; overflow:hidden; left:906px; top:49px; width:99px; height:96px; z-index:1"><img src="images/FADE.jpg" alt="" title="" border=0 width=99 height=96></div>
+<div id="image1" style="position:absolute; overflow:hidden; left:906px; top:49px; width:99px; height:96px; z-index:1">
+  <%= image_tag("FADE.jpg" , :border => 0 ,:width =>99 ,:height =>96)%>
+</div>
 
-<div id="image2" style="position:absolute; overflow:hidden; left:70px; top:38px; width:328px; height:81px; z-index:2"><img src="images/logo1.gif" alt="" title="" border=0 width=328 height=81></div>
+<div id="image2" style="position:absolute; overflow:hidden; left:70px; top:38px; width:328px; height:81px; z-index:2">
+  <%= image_tag("logo1.gif" , :border => 0 ,:width =>328 ,:height =>81)%>
+</div>
 
-<div id="image6" style="position:absolute; overflow:hidden; left:68px; top:128px; width:988px; height:29px; z-index:3"><img src="images/Bar1.jpg" alt="" title="" border=0 width=988 height=29></div>
+<div id="image6" style="position:absolute; overflow:hidden; left:68px; top:128px; width:988px; height:29px; z-index:3">
+  <%= image_tag("Bar1.jpg" , :border => 0 ,:width =>988 ,:height =>29)%>
+</div>
 
 <input name="formtext1" type="text" style="position:absolute;width:161px;left:836px;top:64px;z-index:4">
-<div id="shape2" style="position:absolute; overflow:hidden; left:69px; top:181px; width:191px; height:232px; z-index:5"><img border=0 width="100%" height="100%" alt="" src="images/shape19946281.gif"></div>
+<div id="shape2" style="position:absolute; overflow:hidden; left:69px; top:181px; width:191px; height:232px; z-index:5">
+  <%= image_tag("shape19946281.gif" , :border => 0 ,:width =>'100%' ,:height =>'100%')%>
+</div>
 
-<div id="g_image3" style="position:absolute; overflow:hidden; left:133px; top:257px; width:54px; height:43px; z-index:6"><a href="ftp://www.actesacomesa.org"><img src="images/ACTESA.png" alt="" title="" border=0 width=54 height=43></a></div>
+<div id="g_image3" style="position:absolute; overflow:hidden; left:133px; top:257px; width:54px; height:43px; z-index:6"><a href="ftp://www.actesacomesa.org"><%= image_tag("ACTESA.png" , :border => 0 ,:width =>54 ,:height =>43)%></a>
+</div>
 
-<div id="g_image4" style="position:absolute; overflow:hidden; left:126px; top:200px; width:61px; height:51px; z-index:7"><a href="ftp://www.comesa.int"><img src="images/lo.png" alt="" title="" border=0 width=61 height=51></a></div>
+<div id="g_image4" style="position:absolute; overflow:hidden; left:126px; top:200px; width:61px; height:51px; z-index:7"><a href="ftp://www.comesa.int">
+<%= image_tag("lo.png" , :border => 0 ,:width =>61 ,:height =>51)%></a>
+</div>
 
-<div id="g_image1" style="position:absolute; overflow:hidden; left:107px; top:307px; width:109px; height:66px; z-index:8"><a href="ftp://www.caabwa.com"><img src="images/caa.png" alt="" title="" border=0 width=109 height=66></a></div>
+<div id="g_image1" style="position:absolute; overflow:hidden; left:107px; top:307px; width:109px; height:66px; z-index:8"><a href="ftp://www.caabwa.com">
+<%= image_tag("caa.png" , :border => 0 ,:width =>109 ,:height =>66)%></a>
+</div>
 
-<div id="g_image2" style="position:absolute; overflow:hidden; left:96px; top:377px; width:133px; height:37px; z-index:9"><a href="ftp://kmhassociates.ca"><img src="images/KMH.png" alt="" title="" border=0 width=133 height=37></a></div>
+<div id="g_image2" style="position:absolute; overflow:hidden; left:96px; top:377px; width:133px; height:37px; z-index:9"><a href="ftp://kmhassociates.ca"><%= image_tag("KMH.png" , :border => 0 ,:width =>133 ,:height =>37)%></a>
+</div>
 
-<div id="shape3" style="position:absolute; overflow:hidden; left:865px; top:182px; width:191px; height:228px; z-index:10"><img border=0 width="100%" height="100%" alt="" src="images/shape19946265.gif"></div>
+<div id="shape3" style="position:absolute; overflow:hidden; left:865px; top:182px; width:191px; height:228px; z-index:10">
+<%= image_tag("shape19946265.gif" , :border => 0 ,:width =>'100%' ,:height =>'100%')%>
+</div>
 
-<div id="image13" style="position:absolute; overflow:hidden; left:45px; top:0px; width:1033px; height:37px; z-index:11"><img src="images/line blue.jpg" alt="" title="" border=0 width=1033 height=37></div>
+<div id="image13" style="position:absolute; overflow:hidden; left:45px; top:0px; width:1033px; height:37px; z-index:11">
+<%= image_tag("line blue.jpg" , :border => 0 ,:width =>1033 ,:height =>37)%>
+</div>
 
-<div id="image4" style="position:absolute; overflow:hidden; left:1004px; top:63px; width:35px; height:23px; z-index:12"><img src="images/78.jpg" alt="" title="" border=0 width=35 height=23></div>
+<div id="image4" style="position:absolute; overflow:hidden; left:1004px; top:63px; width:35px; height:23px; z-index:12">
+  <%= image_tag("78.jpg" , :border => 0 ,:width => 35 ,:height =>23)%>
+</div>
 
 <div id="text2" style="position:absolute; overflow:hidden; left:1012px; top:69px; width:21px; height:14px; z-index:13">
 <div class="wpmd">
 <div><font color="#FFFFFF" face="Cambria" class="ws9"><B>GO</B></font></div>
 </div></div>
 
-<div id="image3" style="position:absolute; overflow:hidden; left:862px; top:167px; width:197px; height:28px; z-index:14"><img src="images/above bar.jpg" alt="" title="" border=0 width=197 height=28></div>
+<div id="image3" style="position:absolute; overflow:hidden; left:862px; top:167px; width:197px; height:28px; z-index:14">
+  <%= image_tag("above bar.jpg" , :border => 0 ,:width => 197 ,:height =>28)%>
+</div>
 
-<div id="image5" style="position:absolute; overflow:hidden; left:66px; top:168px; width:197px; height:28px; z-index:15"><img src="images/above bar.jpg" alt="" title="" border=0 width=197 height=28></div>
+<div id="image5" style="position:absolute; overflow:hidden; left:66px; top:168px; width:197px; height:28px; z-index:15">
+  <%= image_tag("above bar.jpg" , :border => 0 ,:width => 197 ,:height =>28)%>
+</div>
 
 <div id="text3" style="position:absolute; overflow:hidden; left:138px; top:177px; width:108px; height:18px; z-index:16">
 <div class="wpmd">
@@ -125,19 +156,22 @@ body {text-align:center;margin:0}
 
 <div id="text13" style="position:absolute; overflow:hidden; left:872px; top:200px; width:179px; height:204px; z-index:21">
 <div class="wpmd">
-<div style="line-height:1.50;"><font color="#000000" class="ws9">1. FEMCOM Assists in ICT Training for Grassroots Women</font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9"> 2. Malawi ICT Week &amp; E-Government Conference 2012</font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9">3. FEMCOM Assists a Gem of Africa – Chiccu Clothing Ltd</font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
-<div style="line-height:1.50;"><font color="#000000" class="ws9">4. FEMCOM welcomes an intern from University of Toronto</font></div>
+<%                                                                              
+count = 0                                                                       
+(latest_news || []).each do |post|%>                                            
+<div style="line-height:1.50;"><font color="#000000" class="ws9">               
+<%=count+=1%>.&nbsp;<a href="/news/post?id=<%=post.id%>"><%=post.title%></a></font></div>
+<%end%>                                                                         
 <div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
 </div></div>
 
-<div id="shape5" style="position:absolute; overflow:hidden; left:868px; top:451px; width:191px; height:155px; z-index:22"><img border=0 width="100%" height="100%" alt="" src="images/shape19946140.gif"></div>
+<div id="shape5" style="position:absolute; overflow:hidden; left:868px; top:451px; width:191px; height:155px; z-index:22">
+  <%= image_tag("shape19946140.gif" , :border => 0 ,:width => '100%' ,:height =>'100%')%>
+</div>
 
-<div id="image19" style="position:absolute; overflow:hidden; left:865px; top:423px; width:197px; height:28px; z-index:23"><img src="images/above bar.jpg" alt="" title="" border=0 width=197 height=28></div>
+<div id="image19" style="position:absolute; overflow:hidden; left:865px; top:423px; width:197px; height:28px; z-index:23">
+  <%= image_tag("above bar.jpg" , :border => 0 ,:width => 197 ,:height =>28)%>
+</div>
 
 <div id="text15" style="position:absolute; overflow:hidden; left:892px; top:432px; width:151px; height:18px; z-index:24">
 <div class="wpmd">
@@ -151,36 +185,49 @@ body {text-align:center;margin:0}
 
 <div id="text20" style="position:absolute; overflow:hidden; left:874px; top:502px; width:179px; height:99px; z-index:26">
 <div class="wpmd">
-<div align=justify style="line-height:1.50;"><font class="ws9">FEMCOM adapts and fosters COMESA’s Holistic Cluster Approach, which is designed as a means of enhancing collective efficiency,</font></div>
+<div align=justify style="line-height:1.50;"><font class="ws9">FEMCOM adapts and fosters COMESA&#39;s Holistic Cluster Approach, which is designed as a means of enhancing collective efficiency ....&nbsp;<a href="#">read more</a></font></div>
 </div></div>
 
-<div id="image7" style="position:absolute; overflow:hidden; left:982px; top:579px; width:68px; height:23px; z-index:27"><img src="images/78.jpg" alt="" title="" border=0 width=68 height=23></div>
 
-<div id="shape7" style="position:absolute; overflow:hidden; left:870px; top:642px; width:191px; height:153px; z-index:28"><img border=0 width="100%" height="100%" alt="" src="images/shape19946031.gif"></div>
+<div id="shape7" style="position:absolute; overflow:hidden; left:870px; top:642px; width:191px; height:153px; z-index:28">
+  <%= image_tag("shape19946031.gif" , :border => 0 ,:width => '100%' ,:height =>'100%')%>
+</div>
 
-<div id="image8" style="position:absolute; overflow:hidden; left:867px; top:623px; width:197px; height:28px; z-index:29"><img src="images/above bar.jpg" alt="" title="" border=0 width=197 height=28></div>
+<div id="image8" style="position:absolute; overflow:hidden; left:867px; top:623px; width:197px; height:28px; z-index:29">
+  <%= image_tag("above bar.jpg" , :border => 0 ,:width => 197 ,:height =>28)%>
+</div>
 
 <div id="text22" style="position:absolute; overflow:hidden; left:933px; top:632px; width:116px; height:18px; z-index:30">
 <div class="wpmd">
 <div><font color="#FFFFFF" class="ws9">Newslatter</font></div>
 </div></div>
 
-<div id="shape8" style="position:absolute; overflow:hidden; left:872px; top:824px; width:191px; height:98px; z-index:31"><img border=0 width="100%" height="100%" alt="" src="images/shape19946015.gif"></div>
+<div id="shape8" style="position:absolute; overflow:hidden; left:872px; top:824px; width:191px; height:98px; z-index:31">
+  <%= image_tag("shape19946015.gif" , :border => 0 ,:width => '100%' ,:height =>'100%')%>
+</div>
 
-<div id="image9" style="position:absolute; overflow:hidden; left:869px; top:805px; width:197px; height:28px; z-index:32"><img src="images/above bar.jpg" alt="" title="" border=0 width=197 height=28></div>
+<div id="image9" style="position:absolute; overflow:hidden; left:869px; top:805px; width:197px; height:28px; z-index:32">
+  <%= image_tag("above bar.jpg" , :border => 0 ,:width => 197 ,:height =>28)%>
+</div>
 
 <div id="text23" style="position:absolute; overflow:hidden; left:936px; top:814px; width:115px; height:18px; z-index:33">
 <div class="wpmd">
 <div><font color="#FFFFFF" class="ws9">Social Media</font></div>
 </div></div>
 
-<div id="image10" style="position:absolute; overflow:hidden; left:888px; top:884px; width:160px; height:27px; z-index:34"><a href="ftp://twitter.com/@femcomcomesa"><img src="images/follow-us-on-twitter-1.png" alt="" title="" border=0 width=160 height=27></a></div>
+<div id="image10" style="position:absolute; overflow:hidden; left:888px; top:884px; width:160px; height:27px; z-index:34"><a href="ftp://twitter.com/@femcomcomesa"><%= image_tag("follow-us-on-twitter-1.png" , :border => 0 ,:width => 160 ,:height =>27)%></a></div>
 
-<div id="image22" style="position:absolute; overflow:hidden; left:888px; top:842px; width:160px; height:27px; z-index:35"><a href="ftp://www.facebook.com/profile.php?id=100004281218608&fref=ts"><img src="images/find-us-on-facebook-5.png" alt="" title="" border=0 width=160 height=27></a></div>
+<div id="image22" style="position:absolute; overflow:hidden; left:888px; top:842px; width:160px; height:27px; z-index:35"><a href="ftp://www.facebook.com/profile.php?id=100004281218608&fref=ts">
+<%= image_tag("find-us-on-facebook-5.png" , :border => 0 ,:width => 160 ,:height =>27)%>
+</a></div>
 
-<div id="image23" style="position:absolute; overflow:hidden; left:74px; top:973px; width:965px; height:31px; z-index:36"><img src="images/base.jpg" alt="" title="" border=0 width=965 height=31></div>
+<div id="image23" style="position:absolute; overflow:hidden; left:74px; top:973px; width:965px; height:31px; z-index:36">
+  <%= image_tag("base.jpg" , :border => 0 ,:width => 965 ,:height =>31)%>
+</div>
 
-<div id="image24" style="position:absolute; overflow:hidden; left:34px; top:1002px; width:1061px; height:25px; z-index:37"><img src="images/Bar.jpg" alt="" title="" border=0 width=1061 height=25></div>
+<div id="image24" style="position:absolute; overflow:hidden; left:34px; top:1002px; width:1061px; height:25px; z-index:37">
+  <%= image_tag("Bar.jpg" , :border => 0 ,:width => 1061 ,:height =>25)%>
+</div>
 
 <div id="text25" style="position:absolute; overflow:hidden; left:47px; top:1007px; width:1029px; height:17px; z-index:38">
 <div class="wpmd">
@@ -207,20 +254,30 @@ body {text-align:center;margin:0}
 <div><BR></div>
 </div></div>
 
-<div id="g_shape1" style="position:absolute; overflow:hidden; left:70px; top:451px; width:191px; height:185px; z-index:45"><img border=0 width="100%" height="100%" alt="" src="images/shape7249453.gif"></div>
+<div id="g_shape1" style="position:absolute; overflow:hidden; left:70px; top:451px; width:191px; height:185px; z-index:45">
+  <%= image_tag("shape7249453.gif" , :border => 0 ,:width => '100%' ,:height =>'100%')%>
+</div>
 
-<div id="g_image11" style="position:absolute; overflow:hidden; left:67px; top:424px; width:197px; height:28px; z-index:46"><img src="images/above bar.jpg" alt="" title="" border=0 width=197 height=28></div>
+<div id="g_image11" style="position:absolute; overflow:hidden; left:67px; top:424px; width:197px; height:28px; z-index:46">
+  <%= image_tag("above bar.jpg" , :border => 0 ,:width => 197 ,:height =>28)%>
+</div>
 
-<div id="g_image10" style="position:absolute; overflow:hidden; left:75px; top:459px; width:180px; height:143px; z-index:47"><img src="images/anigif.gif" alt="" title="" border=0 width=180 height=143></div>
+<div id="g_image10" style="position:absolute; overflow:hidden; left:75px; top:459px; width:180px; height:143px; z-index:47">
+  <%= image_tag("anigif.gif" , :border => 0 ,:width => 180 ,:height =>143)%>
+</div>
 
 <div id="g_text7" style="position:absolute; overflow:hidden; left:94px; top:432px; width:151px; height:18px; z-index:48">
 <div class="wpmd">
 <div><font color="#FFFFFF" class="ws9">FEMCOM Board Directors</font></div>
 </div></div>
 
-<div id="g_shape2" style="position:absolute; overflow:hidden; left:69px; top:661px; width:191px; height:282px; z-index:49"><img border=0 width="100%" height="100%" alt="" src="images/shape11020000.gif"></div>
+<div id="g_shape2" style="position:absolute; overflow:hidden; left:69px; top:661px; width:191px; height:282px; z-index:49">
+  <%= image_tag("shape11020000.gif" , :border => 0 ,:width => '100%' ,:height =>'100%')%>
+</div>
 
-<div id="g_image9" style="position:absolute; overflow:hidden; left:66px; top:652px; width:197px; height:28px; z-index:50"><img src="images/above bar.jpg" alt="" title="" border=0 width=197 height=28></div>
+<div id="g_image9" style="position:absolute; overflow:hidden; left:66px; top:652px; width:197px; height:28px; z-index:50">
+  <%= image_tag("above bar.jpg" , :border => 0 ,:width => 197 ,:height =>28)%>
+</div>
 
 <div id="g_text6" style="position:absolute; overflow:hidden; left:139px; top:659px; width:108px; height:18px; z-index:51">
 <div class="wpmd">
@@ -232,7 +289,9 @@ body {text-align:center;margin:0}
 <div><font class="ws9">Watch</font></div>
 </div></div>
 
-<div id="g_image8" style="position:absolute; overflow:hidden; left:124px; top:607px; width:93px; height:23px; z-index:53"><img src="images/78.jpg" alt="" title="" border=0 width=93 height=23></div>
+<div id="g_image8" style="position:absolute; overflow:hidden; left:124px; top:607px; width:93px; height:23px; z-index:53">
+  <%= image_tag("78.jpg" , :border => 0 ,:width => 93 ,:height =>23)%>
+</div>
 
 <div id="g_text4" style="position:absolute; overflow:hidden; left:136px; top:610px; width:71px; height:15px; z-index:54">
 <div class="wpmd">
@@ -241,22 +300,24 @@ body {text-align:center;margin:0}
 
 <div id="g_text8" style="position:absolute; overflow:hidden; left:990px; top:581px; width:58px; height:19px; z-index:55">
 <div class="wpmd">
-<div><font face="Arial Narrow" class="ws9"><a href="whatwedo.php" title="" class="style1">read more...</a></font></div>
 </div></div>
 
 <div id="g_text9" style="position:absolute; overflow:hidden; left:166px; top:984px; width:806px; height:22px; z-index:56">
 <div class="wpmd">
-<div><font class="ws9"><a href="index.php" title="" class="style1">Home</a></font><font color="#000000" class="ws9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font class="ws9"><a href="about.php" title="" class="style1">About Us</a></font><font color="#000000" class="ws9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font class="ws9"><a href="whatwedo.php" title="" class="style1">What We Do</a></font><font color="#000000" class="ws9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font class="ws9"><a href="national.php" title="" class="style1">National Chapters</a></font><font color="#000000" class="ws9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font class="ws9"><a href="events.php" title="" class="style1">Events</a></font><font color="#000000" class="ws9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font class="ws9"><a href="news.php" title="" class="style1">News</a></font><font color="#000000" class="ws9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font class="ws9"><a href="Gallery.php" title="" class="style1">Gallery</a></font><font color="#000000" class="ws9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font class="ws9"><a href="resources.php" title="" class="style1">Resources</a></font><font color="#000000" class="ws9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font class="ws9"><a href="contactus.php" title="" class="style1">Contacts Us</a></font></div>
+<div><a href="/" title="" class="style1">Home</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/about_us"    title="" class="style1">About Us</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/services" title=""              class="style1">Services</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/national_chapters" title=""              class="style1">National Chapters</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/events" title="" class="style1">Events</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" title="" class="style1">Program</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/news" title=""     class="style1">News</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/gallery" title="" class="style1">Gallery</a><font                        color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/documents" title="" class="style1">Documents</a>&nbsp;&nbsp;&nbsp;&nbsp;    &nbsp; </font><a href="/media/videos" title="" class="style1">Videos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/contact_us" title=""    class="style1">Contact Us</a></div>
 </div></div>
 
 <div id="g_text10" style="position:absolute; overflow:hidden; left:176px; top:134px; width:806px; height:22px; z-index:57">
 <div class="wpmd">
-<div><font class="ws9"><a href="index.php" title="" class="style1">Home</a></font><font color="#000000" class="ws9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font class="ws9"><a href="about.php" title="" class="style1">About Us</a></font><font color="#000000" class="ws9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font class="ws9"><a href="whatwedo.php" title="" class="style1">What We Do</a></font><font color="#000000" class="ws9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font class="ws9"><a href="national.php" title="" class="style1">National Chapters</a></font><font color="#000000" class="ws9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font class="ws9"><a href="events.php" title="" class="style1">Events</a></font><font color="#000000" class="ws9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font class="ws9"><a href="news.php" title="" class="style1">News</a></font><font color="#000000" class="ws9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font class="ws9"><a href="Gallery.php" title="" class="style1">Gallery</a></font><font color="#000000" class="ws9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font class="ws9"><a href="resources.php" title="" class="style1">Resources</a></font><font color="#000000" class="ws9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font class="ws9"><a href="contactus.php" title="" class="style1">Contacts Us</a></font></div>
+<div><a href="/" title="" class="style1">Home</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/about_us"    title="" class="style1">About Us</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/services" title=""              class="style1">Services</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/national_chapters" title=""              class="style1">National Chapters</a><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/events" title="" class="style1">Events</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" title="" class="style1">Program</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/news" title=""     class="style1">News</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/gallery" title="" class="style1">Gallery</a><font                        color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/femcom/documents" title="" class="style1">Documents</a>&nbsp;&nbsp;&nbsp;&nbsp;    &nbsp; </font><a href="/media/videos" title="" class="style1">Videos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><a href="/femcom/contact_us" title=""    class="style1">Contact Us</a></div>
 </div></div>
 
 <div id="g_text11" style="position:absolute; overflow:hidden; left:1002px; top:4px; width:39px; height:21px; z-index:58">
 <div class="wpmd">
-<div><font face="Arial Narrow" class="ws9"><a href="ftp://www.hostmonster.com/cgi/webmail?referer=http://femcomcomesa.org:2095/" title="" class="style1">Webmail</a></font></div>
+<div><font face="Arial Narrow" class="ws9">
+<a href="ftp://www.hostmonster.com/cgi/webmail?referer=http://femcomcomesa.org:2095/" title="" class="style1">Webmail</a>
+<a href="ftp://www.hostmonster.com/cgi/webmail?referer=http://femcomcomesa.org:2095/" title="" class="style1">Login</a>
+</font></div>
 </div></div>
 
 </div>
