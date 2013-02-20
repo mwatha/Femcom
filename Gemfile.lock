@@ -33,8 +33,6 @@ GEM
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    flickr (1.0.2)
-      xml-simple (>= 1.0.7)
     i18n (0.5.0)
     json (1.7.7)
     mail (2.2.19)
@@ -72,15 +70,11 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.35)
-    will_paginate (3.0.3)
-    xml-simple (1.1.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   bcrypt-ruby
-  flickr
   mysql2 (~> 0.2.6)
   rails (= 3.0.9)
-  will_paginate (~> 3.0.3)
