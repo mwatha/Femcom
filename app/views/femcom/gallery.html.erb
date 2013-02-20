@@ -1,17 +1,28 @@
-<div>
-<object width="400" height="300"> <param name="flashvars"
-value="offsite=true&lang=en-
-us&page_show_url=%2Fphotos%2Fcoldmoonmanor%2Fsets%2F721576228023
-78789%2Fshow%2F&page_show_back_url=%2Fphotos%2Fcoldmoonmanor%2
-Fsets%2F72157622802378789%2F&set_id=72157622802378789&jump_to="></param>
-<param name="movie"
-value="http://www.flickr.com/apps/slideshow/show.swf?v=71649"></param>
-<param name="allowFullScreen" value="true"></param><embed type="application/x-shockwave-flash"
-src="http://www.flickr.com/apps/slideshow/show.swf?v=71649"
-allowFullScreen="true" flashvars="offsite=true&lang=en-
-us&page_show_url=%2Fphotos%2Fcoldmoonmanor%2Fsets%2F721576228023
-78789%2Fshow%2F&page_show_back_url=%2Fphotos%2Fcoldmoonmanor%2
-Fsets%2F72157622802378789%2F&set_id=72157622802378789&jump_to="
-width="400" height="300"></embed></object>
+<%= javascript_include_tag "prototype" %>
+<style>
+body { 
+  font-size: 12px;
+  background-color: Lucida Grande;
+  margin: 25px;
+}
+</style>
 
+<div>
+  <font color="#1D4A75" face="Arial Narrow" class="ws9">Albums</font>
+  <hr style="background-color:#1D4A75;height:3px;"></hr>
 </div>
+
+
+<div id="photos">
+</div>
+
+
+<script>
+  element = document.getElementById('photos');
+  new Ajax.Request("/femcom/get_pictures", {
+      onComplete: function(transport) {                                         
+      if (200 == transport.status)
+        element.innerHTML = transport.responseText;
+      }                                                                         
+    })
+</script>

@@ -1,9 +1,8 @@
-class CreatePhotos < ActiveRecord::Migration
+class CreateAlbums < ActiveRecord::Migration
   def self.up
-    create_table :photo do |t|
+    create_table :albums do |t|
+      t.string :name
       t.string :description                                                       
-      t.string :uri
-      t.integer :album_id
       t.string :creator                                                         
       t.boolean :voided
 
@@ -12,6 +11,6 @@ class CreatePhotos < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :photo
+    drop_table :albums
   end
 end

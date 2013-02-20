@@ -17,6 +17,8 @@ body {
      element.src = '/user/create_video_link';                                   
    }else if (page == 'photo') {                                                 
      element.src = '/user/upload_pictures';                                     
+   }else if (page == 'new_photo') {                                                 
+     element.src = '/user/upload_new_pictures';                                     
    }                                                                            
   }                                                                             
                                                                                 
@@ -25,15 +27,16 @@ body {
 </script>  
 
 
-<div>
-  <font color="#1D4A75" face="Arial Narrow" class="ws9">Administartion</font>
-  <hr style="background-color:#1D4A75;height:3px;"></hr>
+<div>                                                                           
+  <font color="#1D4A75" style="font-size:14px;font-weight:bold;">ADMINISTRATION</font>   
+  <hr style="background-color:#1D4A75;height:3px;"></hr>                        
 </div>
 
 <div>.................................&nbsp;<a href="javascript:adminPage('news');">Create news</a></div>
 <div>.................................&nbsp;<a href="javascript:adminPage('files');">Upload pdf</a></div>
 <div>.................................&nbsp;<a href="javascript:adminPage('event');">Create event</a></div>
-<!--div>.................................&nbsp;<a href="javascript:adminPage('photo');">Upload photo</a></div-->
+<!--div>.................................&nbsp;<a href="javascript:adminPage('photo');">Upload pictures</a></div>
+<div>.................................&nbsp;<a href="javascript:adminPage('new_photo');">Create photo album</a></div-->
 <div>.................................&nbsp;<a href="javascript:adminPage('video');">Create video link</a></div>
 <hr></hr>                                                                       
                                                                                 

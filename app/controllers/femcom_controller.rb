@@ -40,4 +40,22 @@ class FemcomController < ApplicationController
     @page_heading = "Contact us"
   end
 
+  def gallery
+    @page_heading = "Gallery"
+  end
+
+  def get_pictures
+    flickr = Flickr.new '4a1ffbf77f7785f3d6a3d95fbdc2d19b'
+    render :partial => 'photos' , 
+      :collection => flickr.photos(:tags => 'Malawi', :per_page => '50')
+  end
+
+  def album
+    @album = Album.find(params[:id])
+    pictures = @album.pictures
+    @page_heading = @album.name
+
+    @pictures = pictures.paginate(:page => 1)
+  end
+
 end

@@ -1,0 +1,33 @@
+<style>
+body { 
+  font-size: 12px;
+}
+
+table td {
+  text-align: center;
+}
+</style>
+
+<div>
+  <font color="#1D4A75" face="Arial Narrow" class="ws9"><%=@album.name%></font>
+  <hr style="background-color:#1D4A75;height:3px;"></hr>
+</div>
+
+<%(@pictures || []).each do |picture|%>                                             
+  <div style="border-style:solid;border-width:0px 0px 1px 0px;">                
+  <table style="width: 100%;">                                                                       
+    <tr>                                                                        
+      <td><a href="/images/pictures/<%=picture.uri%>"><%= image_tag("pictures/#{picture.uri}" , 
+        :border => 0 , :width =>"415" ,:height =>"250")%></a>
+      </td>                                             
+    </tr>
+    <tr>                        
+      <td style="font-size:12px; vertical-align: sub;"> 
+        <font style="color:#1D4A75 !important;">Description:</font>&nbsp;<%=picture.description%>   
+      </td>                                                                     
+    </tr>                                                                       
+  </table>                                                                      
+</div>                                           
+
+<%end%>
+

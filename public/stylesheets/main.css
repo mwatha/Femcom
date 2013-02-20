@@ -38,11 +38,12 @@ html {
 }
 
 body {
-	background: #353530;
-	color: #5A5A50;
-	font: normal 1.3em Georgia,sans-serif;
+	background-color: #3175BA;
+	color: black;
+	font: normal 12px Arial;
 	height: 100%;
 	padding-bottom: 1px; /* force scrollbars */
+	line-height: 1.3em;
 }
 
 
@@ -68,7 +69,7 @@ blockquote {
 	background: #F6F6F2 url('/images/backgrounds.gif') no-repeat 0 -414px;
 	border-bottom: 1px solid #E0E0D4;
 	border-top: 1px solid #E0E0D4;
-	color: #332;
+	color: black;
 	display: block;
 	margin: 0.6em 0 1.6em;
 	padding: 0.8em 1em 0.2em 46px;
@@ -87,7 +88,7 @@ table.data_table {
 table.data_table th {
 	background: url('/images/grain_dark.gif');
 	border: 1px solid #CCB;
-	color: #555;
+	color: black;
 	text-align: left;
 }
 table.data_table tr {border-bottom: 1px solid #DDD;}
@@ -107,7 +108,7 @@ dt,dd {padding: 8px 10px;}
 dt {
 	background: url('/images/grain_dark.gif');
 	border-bottom: 1px solid #CCB;
-	color: #555;
+	color: black;
 	font-weight: bold;
 }
 dd {
@@ -121,9 +122,9 @@ dd {
    Links 
 ------------------------------------------------------------------- */
 
-a {color: #543;}
+a {color: black;}
 a:hover {
-	color: #C40;
+	color: black;
 	text-decoration: underline;
 }
 
@@ -139,19 +140,19 @@ fieldset {
 }
 
 input, textarea, select {
-	background-color: #FFF;
+/*	background-color: #FFF;
 	border-color: #777 #CCC #CCC #777;
 	border-style: solid;
 	border-width: 1px;
 	font: normal 1em Verdana,sans-serif;
-	padding: 4px;
+	padding: 4px;*/
 }
 
 input.button {
 	background: #E9E8E8 url('/images/backgrounds.gif') repeat-x 0 -366px;
 	border: 1px solid #888;
 	border-color: #BBB #888 #888 #CCC;		
-	color: #444;
+	color: black;
 	cursor: pointer;
 	font: normal 1em Verdana,sans-serif;
 	margin-top: 5px;
@@ -160,7 +161,7 @@ input.button {
 }
 input:focus,input:active,textarea:focus,textarea:active,select:focus,select:active,input.button:hover,input.button:focus {background: #FFFFF5;}
 input.button:hover, input.button:focus {
-	color: #123;
+	color: black;
 	cursor: pointer;
 }
 

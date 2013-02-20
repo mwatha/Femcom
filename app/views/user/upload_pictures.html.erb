@@ -1,2 +1,40 @@
-<h1>User#upload_pictures</h1>
-<p>Find me in app/views/user/upload_pictures.html.erb</p>
+<style>
+  table { 
+    color: #554433;
+    font-size: 12px;   
+  }
+ 
+  #submitbtn {
+  }
+
+</style>
+
+<div id='news'>
+<form action='upload_pictures' method="post" enctype="multipart/form-data">
+<table>
+<tr>
+  <td>Select album:</td><td>&nbsp;<select id="album_options" name='album_id'>
+      <option></option>
+      <%(@albums || []).each do |album| %>
+        <option value="<%=album.id%>"><%=album.name%></option>
+      <%end%>
+     </select>
+  </td>
+</tr>
+<tr>
+  <td>Browse file:</td><td>&nbsp;<%= file_field 'upload', 'datafile' %></td>
+</tr>
+<tr>                                                                            
+  <td>Picture description:</td><td>&nbsp;<input type='text' name='picture_description' size = '15' /></td>
+</tr> 
+<tr>
+  <td colspan="2">&nbsp;</td>
+</tr>
+<tr>
+  <td colspan="2">
+    <input type='submit' value = 'Upload' id = 'submitbtn' style="width:100%;" />
+  </td>
+</tr>
+</table>
+<input type='hidden' name = 'type' value = 'pdf' />
+</form>

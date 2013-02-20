@@ -1,24 +1,5 @@
-<%= javascript_include_tag "prototype"%>
-
-<%#= stylesheet_link_tag "demo_table" %>
-<%= stylesheet_link_tag "demo_table_jui" %>
-<%= stylesheet_link_tag "demo_page" %>
-
-<%=javascript_include_tag "jquery_data_table" %>
-<%=javascript_include_tag "jquery.dataTables.min" %>
-
-<script>
-  function dataT(){
-    $('#events').dataTable();
-  }
-</script>
-
 
 <style type="text/css">
-
-body { 
-  font-size: 12px;
-}
 
 .thumb {
     width: 75px;
@@ -29,7 +10,6 @@ body {
  #events {
    border-style: solid;
    border-width: 0px;
-   font: 100%/1.45em "Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
  }
 
 
@@ -44,7 +24,7 @@ body {
 </style>
 
 <div>
-  <font color="#1D4A75" face="Arial Narrow" class="ws9"><%=@post.title%></font>
+  <font color="#1D4A75" style="font-size:12px;font-weight:bold;"><%=@post.title%></font>
   <hr style="background-color:#1D4A75;height:3px;"></hr>
 </div>
 
@@ -57,7 +37,3 @@ body {
 
 </p>
 
-
-<script>
-  dataT();
-</script>

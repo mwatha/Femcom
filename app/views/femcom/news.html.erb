@@ -16,10 +16,6 @@
 
 <style type="text/css">
 
-body { 
-  font-size: 12px;
-}
-
 .thumb {
     width: 75px;
     height: 75px;
@@ -29,7 +25,6 @@ body {
  #events {
    border-style: solid;
    border-width: 0px;
-   font: 100%/1.45em "Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
  }
 
 
@@ -44,14 +39,14 @@ body {
 </style>
 
 <div>
-  <font color="#1D4A75" face="Arial Narrow" class="ws9">News</font>
+  <font color="#1D4A75" style="font-size:14px;font-weight:bold;">NEWS</font>
   <hr style="background-color:#1D4A75;height:3px;"></hr>
 </div>
 
 
 <p>                                                                             
                                                                                 
-<table class="display" class="display" id="events" style="width:99%;font-size:10px;">
+<table class="display" class="display" id="events" style="width:99%;font-size:11px;">
 <thead>                                                                         
   <tr>                                                                          
     <th>Headline</th>                                                           
@@ -61,8 +56,8 @@ body {
 <tbody>                                                                         
  <%(@news || []).each do |news|%>                                               
   <tr class="gradeX">                                                           
-    <td class="center"><a href="/news/post?id=<%=news.id%>"><%=news.title%></a></td>
-    <td class="center"><%=news.created_at%></td>                                
+    <td class="center" width='400'><a href="/news/post?id=<%=news.id%>"><%=news.title%></a></td>
+    <td class="center"><%=news.created_at.strftime('%A, %d %b %Y')%></td>                                
   </tr>                                                                         
  <%end%>                                                                        
 </tbody>                                                                        

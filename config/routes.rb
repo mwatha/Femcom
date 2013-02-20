@@ -1,5 +1,10 @@
 Comesa::Application.routes.draw do
 
+  get "femcom/album"
+
+  get "user/upload_new_pictures"
+  post "user/upload_new_pictures"
+
   get "femcom/gallery"
 
   get "femcom/contact_us"
@@ -10,6 +15,8 @@ Comesa::Application.routes.draw do
 
   get "femcom/documents"
   get "femcom/download"
+
+  get "femcom/get_pictures"
 
   get "femcom/directors"
 
@@ -22,6 +29,7 @@ Comesa::Application.routes.draw do
   get "femcom/events"
 
   get "user/upload_pictures"
+  post "user/upload_pictures"
 
   get "user/create_events"
   post "user/create_events"

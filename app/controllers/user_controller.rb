@@ -61,4 +61,26 @@ class UserController < ApplicationController
   def number_of_events
     render :text => Event.where(:'date' => params[:date]).count and return
   end
+
+  def upload_pictures
+    if request.post?
+      album = Album.find(params[:album_id])
+      Photo.upload(album,params[:picture_description],params[:upload])
+    end
+    @albums = Album.order('name ASC,created_at DESC')
+    render :layout => false
+  end
+
+  def upload_new_pictures
+    if request.post?
+      album = Album.new()
+      album.name = params[:album]
+      album.description = params[:album_description]
+      album.creator = User.current_user
+      album.save
+      Photo.upload(album,params[:picture_description],params[:upload])
+    end
+    render :layout => false
+  end
+
 end
