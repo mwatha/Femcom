@@ -16,13 +16,3 @@ body {
 <div id="photos">
 </div>
 
-
-<script>
-  element = document.getElementById('photos');
-  new Ajax.Request("/femcom/get_pictures", {
-      onComplete: function(transport) {                                         
-      if (200 == transport.status)
-        element.innerHTML = transport.responseText;
-      }                                                                         
-    })
-</script>
