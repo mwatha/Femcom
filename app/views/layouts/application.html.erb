@@ -12,7 +12,7 @@
 
 <style type="text/css">
 .latest_news {
-  margin-left: -20px !important;
+  margin-left: -37px !important;
 }
 
 .latest_news a{
@@ -176,8 +176,11 @@ body {text-align:center;margin:0}
 <ol class='latest_news'>
 <%                                                                              
 (latest_news || []).each do |post|%>                                            
-<div style="line-height:1.50;"><font color="#000000" class="ws9">               
-<li>.&nbsp;<a href="/news/post?id=<%=post.id%>"><%=post.title%></a></li></font></div>
+<div style="line-height:1.50;">
+<font color="#000000" class="ws9">               
+  <li>&nbsp;<a href="/news/post?id=<%=post.id%>"><%=post.title%></a></li>
+</font>
+</div>
 <%end%>                                                                 
 </ol>        
 <div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
