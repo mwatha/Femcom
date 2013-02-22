@@ -6,28 +6,6 @@
   font-family: Arial,sans-serif;                                                
   }                                                                             
                                                                                 
-  #stats {                                                                      
-    width:98%;                                                                  
-    margin:10px;                                                                
-    background:white;                                                           
-  }                                                                             
-                                                                                
-  #stats a {                                                                    
-    background-color: #669999;                                                  
-    border-bottom: 1px outset black;                                            
-    border-style: outset;                                                       
-    border-top: 1px outset black;                                               
-    color: white;                                                               
-    display: block;                                                             
-    padding: 10px 16px 10px 10px;                                               
-    text-align: center;                                                         
-    text-decoration: none;                                                      
-  }                                                                             
-                                                                                
-  #stats td {                                                                   
-    width: 310px;                                                               
-  }                                                                             
-                                                                                
   #table_div {                                                                  
     overflow:auto;                                                              
     height: 320px;                                                              
@@ -43,7 +21,8 @@
 #photos img {
   width: 180px;
   height: 180px;
-  border: 0px;
+  border: 4px;
+  border-style: solid;
 }
 
 </style>
@@ -57,13 +36,9 @@
 
 
 <div id="photos">
-       <%@albums.map do |album| %>
-           <a href="/femcom/album?id=<%=album.id%>"><%= image_tag("/images/pictures/#{album.pictures.last.uri}")%></a>
-       <%end%>
-
-       <%= will_paginate @albums %> 
-
-
-
+  <%@albums.map do |album| %>
+      <a href="/femcom/album?id=<%=album.id%>"><%= image_tag("/images/pictures/#{album.pictures.last.uri}")%></a>
+  <%end%>
+  <%= will_paginate @albums %> 
 </div>
 
