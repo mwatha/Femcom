@@ -1,33 +1,67 @@
-<style>
-body { 
-  font-size: 12px;
-}
+<%= stylesheet_link_tag "ppgallery" %>                       
+<%= stylesheet_link_tag "jquery-ui-1.8.6.custom" %> 
 
-table td {
-  text-align: center;
-}
+<%= javascript_include_tag "prototype" %>                       
+<%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "jquery-ui.min" %>
+<%= javascript_include_tag "ppgallery" %>
+
+<style>
+#gallery img {                                                                   
+  width: 100px;                                                                 
+  height: 100px;                                                                
+} 
 </style>
 
-<div>
-  <font color="#1D4A75" face="Arial Narrow" class="ws9"><%=@album.name%></font>
-  <hr style="background-color:#1D4A75;height:3px;"></hr>
-</div>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#gallery').ppGallery();
+});
 
-<%(@pictures || []).each do |picture|%>                                             
-  <div style="border-style:solid;border-width:0px 0px 1px 0px;">                
-  <table style="width: 100%;">                                                                       
-    <tr>                                                                        
-      <td><a href="/images/pictures/<%=picture.uri%>"><%= image_tag("pictures/#{picture.uri}" , 
-        :border => 0 , :width =>"415" ,:height =>"250")%></a>
-      </td>                                             
-    </tr>
-    <tr>                        
-      <td style="font-size:12px; vertical-align: sub;"> 
-        <font style="color:#1D4A75 !important;">Description:</font>&nbsp;<%=picture.description%>   
-      </td>                                                                     
-    </tr>                                                                       
-  </table>                                                                      
-</div>                                           
+/*
+$('#gallery').ppGallery({
+   screenFade: 0.8, //fade screen level. default 0.5
+   screenColor: '', //choose color of background. default black
+   showTitle: 1, //toggles to show the title. default 1 (1= yes, 0= no)
+   thumbWidth: 50, //control the gallery thumbnail size. default 60(pixels)
+   maxWidth: '550', //control max width of large image and thumbnail box. leave blank for no restrictions
+   slideShowDelay: '2', //control the slideshow interval. defaults at 3 seconds
+   showHiddenGalleryButton: '', //hide the gallery and assign a button
+   autoOpen: 0 //execute the gallery when page loads default 0 (1= yes, 0= no)
+});
 
-<%end%>
+*/
+
+  function setInnerHtmlData(id,photo) {                                         
+    link = document.getElementById(id);                                           
+    link.innerHTML = '<img src="/images/pictures/' + photo + '" class="imgid_' + id + '">';
+  }                                                                             
+
+</script>
+
+
+<div>                                                                           
+  <font color="#1D4A75" style="font-size:14px;font-weight:bold;"><%=@page_heading%></font>
+  <hr style="background-color:#1D4A75;height:3px;"></hr>                        
+</div> 
+
+
+
+    <ul id="gallery">                                                          
+      <% count = 1 %>                   
+      <% (@pictures || []).each do |picture|%>                                                                        
+          <li><a id="<%=count%>" class = "aid_<%=count%>" href="/images/pictures/<%=picture.uri%>" numid="<%=count%>"></a></li> 
+      <%count+=1
+      end%>                                                                   
+    </ul> 
+
+
+    <%count = 1
+    @pictures.map do | picture | %>                            
+      <script>                                                                  
+        setInnerHtmlData("<%=count%>","<%=picture.uri%>");                 
+      </script>                                                                 
+    <%count+=1
+    end%>     
+
 

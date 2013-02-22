@@ -1,5 +1,55 @@
 <%= javascript_include_tag "prototype" %>
 
+<style type="text/css">                                                         
+  body {                                                                        
+    -moz-user-select:none;                                                      
+  font-family: Arial,sans-serif;                                                
+  }                                                                             
+                                                                                
+  #stats {                                                                      
+    width:98%;                                                                  
+    margin:10px;                                                                
+    background:white;                                                           
+  }                                                                             
+                                                                                
+  #stats a {                                                                    
+    background-color: #669999;                                                  
+    border-bottom: 1px outset black;                                            
+    border-style: outset;                                                       
+    border-top: 1px outset black;                                               
+    color: white;                                                               
+    display: block;                                                             
+    padding: 10px 16px 10px 10px;                                               
+    text-align: center;                                                         
+    text-decoration: none;                                                      
+  }                                                                             
+                                                                                
+  #stats td {                                                                   
+    width: 310px;                                                               
+  }                                                                             
+                                                                                
+  #table_div {                                                                  
+    overflow:auto;                                                              
+    height: 320px;                                                              
+    background-color: white;                                                    
+    border: #eee 1px solid;                                                     
+    border-width: 1px;                                                          
+  }                                                                             
+                                                                                
+  #tab {                                                                        
+    -moz-user-select:none;                                                      
+  }                                                                   
+  
+#photos img {
+  width: 180px;
+  height: 180px;
+  border: 0px;
+}
+
+</style>
+
+
+
 <div>
   <font color="#1D4A75" style="font-size:14px;font-weight:bold;">ALBUMS</font>
   <hr style="background-color:#1D4A75;height:3px;"></hr>
@@ -7,5 +57,13 @@
 
 
 <div id="photos">
+       <%@albums.map do |album| %>
+           <a href="/femcom/album?id=<%=album.id%>"><%= image_tag("/images/pictures/#{album.pictures.last.uri}")%></a>
+       <%end%>
+
+       <%= will_paginate @albums %> 
+
+
+
 </div>
 
