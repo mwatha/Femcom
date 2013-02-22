@@ -48,8 +48,9 @@ class FemcomController < ApplicationController
   def album
     @album = Album.find(params[:id])
     @pictures = @album.pictures
-    @page_heading = @album.name
-
+    @page_heading = 'Album'
+    @album_description = @album.name 
+    @album_description += ' - ' + @album.description unless @album.description.blank?
   end
 
 end
