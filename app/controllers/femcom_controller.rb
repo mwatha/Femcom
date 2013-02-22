@@ -41,7 +41,7 @@ class FemcomController < ApplicationController
   end
 
   def gallery
-    @albums = Album.paginate(:per_page => 10,:page => params[:page]).order("created_at DESC")
+    @albums = Album.paginate(:per_page => 9,:page => params[:page]).order("created_at DESC")
     @page_heading = "Gallery"
   end
 

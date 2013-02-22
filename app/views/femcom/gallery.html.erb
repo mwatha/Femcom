@@ -25,20 +25,59 @@
   border-style: solid;
 }
 
+#stats span {
+  font-size:11px;
+}
+
+#stats td {
+  padding-bottom: 10px;
+}
+
 </style>
 
 
+<script>                                                                        
+  function setInnerHtmlData(id,name,path,album_id) {                                   
+    td = document.getElementById(id);                                           
+    td.innerHTML = '<a  href="/femcom/album?id="' + album_id + '">';
+    td.innerHTML += '<img src="/images/pictures/' + path + '"></a><br/>';
+    td.innerHTML += '<span>' + name + '</span>'; 
+  }                                                                             
+</script> 
 
 <div>
   <font color="#1D4A75" style="font-size:14px;font-weight:bold;">ALBUMS</font>
   <hr style="background-color:#1D4A75;height:3px;"></hr>
 </div>
 
-
 <div id="photos">
-  <%@albums.map do |album| %>
-      <a href="/femcom/album?id=<%=album.id%>"><%= image_tag("/images/pictures/#{album.pictures.last.uri}")%></a>
-  <%end%>
+
+   <table id="stats">                                                          
+      <% count = 0 %>                     
+      <% (@albums || []).each do |album|%>                                                                        
+          <tr>                                                                  
+            <td id = "<%=count+= 1%>"></td>                                  
+            <td id = "<%=count+= 1%>"></td>                                  
+            <td id = "<%=count+= 1%>"></td>                                  
+          </tr>                                                                 
+      <%end%>                                                                   
+    </table>
+
+
+    <%                                                                          
+    count = 1
+    @albums.map do | album | 
+      name = (album.name + " " + album.description)[0..29] rescue nil
+      path = album.pictures.first.uri
+      %>                             
+      <script>                                                                  
+        setInnerHtmlData("<%=count%>","<%=name%>","<%=path%>","<%=album.id%>");                 
+      </script>                                                                 
+      <%count+=1%>                                                              
+    <%end%>
+
+
+
   <%= will_paginate @albums %> 
 </div>
 
