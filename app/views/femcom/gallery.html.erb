@@ -39,8 +39,7 @@
 <script>                                                                        
   function setInnerHtmlData(id,name,path,album_id) {                                   
     td = document.getElementById(id);                                           
-    td.innerHTML = '<a  href="/femcom/album?id="' + album_id + '">';
-    td.innerHTML += '<img src="/images/pictures/' + path + '"></a><br/>';
+    td.innerHTML = '<a href="/femcom/album?id=' + album_id + '"><img src="/images/pictures/' + path + '"></a><br/>';
     td.innerHTML += '<span>' + name + '</span>'; 
   }                                                                             
 </script> 
