@@ -17,6 +17,7 @@
 
 .latest_news a{
   color: #1D4A75 !important;
+  font-size: 12px;
 }
 
 .latest_events {
@@ -176,11 +177,10 @@ body {text-align:center;margin:0}
 <ol class='latest_news'>
 <%                                                                              
 (latest_news || []).each do |post|%>                                            
-<div style="line-height:1.50;">
 <font color="#000000" class="ws9">               
   <li>&nbsp;<a href="/news/post?id=<%=post.id%>"><%=post.title%></a></li>
+  <li>&nbsp;</li>
 </font>
-</div>
 <%end%>                                                                 
 </ol>        
 <div style="line-height:1.50;"><font color="#000000" class="ws9"><BR></font></div>
@@ -229,11 +229,11 @@ body {text-align:center;margin:0}
 <div><font color="#FFFFFF" class="ws9"><b>Newslatter</b></font></div>
 </div></div>
 
-<div id="shape8" style="position:absolute; overflow:hidden; left:872px; top:824px; width:191px; height:98px; z-index:31">
+<div id="shape8" style="position:absolute; overflow:hidden; left:872px; top:824px; width:191px; height:98px; z-index:31;  visibility: hidden;">
   <%= image_tag("shape19946015.gif" , :border => 0 ,:width => '100%' ,:height =>'100%')%>
 </div>
 
-<div id="image9" style="position:absolute; overflow:hidden; left:869px; top:805px; width:197px; height:28px; z-index:32">
+<div id="image9" style="visibility: hidden; position:absolute; overflow:hidden; left:869px; top:805px; width:197px; height:28px; z-index:32">
   <%= image_tag("above bar.jpg" , :border => 0 ,:width => 197 ,:height =>28)%>
 </div>
 
@@ -320,7 +320,8 @@ body {text-align:center;margin:0}
 <%
 (latest_events || []).each do |post|%>                                            
 <div style="line-height:1.50;"><font color="#000000" class="ws9">               
-<li>.&nbsp;<%=post.title%></font></li></div>
+<li>.&nbsp;<%=post.title%></font></li>
+<li>&nbsp;</li></div>
 <%end%>                                                                         
 </ul>
 </font></div>
