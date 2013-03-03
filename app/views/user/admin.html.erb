@@ -19,6 +19,8 @@ body {
      element.src = '/user/upload_pictures';                                     
    }else if (page == 'new_photo') {                                                 
      element.src = '/user/upload_new_pictures';                                     
+   }else if (page == 'news-edit') {                                                 
+     element.src = '/user/edit_news';                                     
    }                                                                            
   }                                                                             
                                                                                 
@@ -32,12 +34,18 @@ body {
   <hr style="background-color:#1D4A75;height:3px;"></hr>                        
 </div>
 
-<div>.................................&nbsp;<a href="javascript:adminPage('news');">Create news</a></div>
-<div>.................................&nbsp;<a href="javascript:adminPage('files');">Upload pdf</a></div>
-<div>.................................&nbsp;<a href="javascript:adminPage('event');">Create event</a></div>
-<div>.................................&nbsp;<a href="javascript:adminPage('photo');">Upload pictures</a></div>
-<div>.................................&nbsp;<a href="javascript:adminPage('new_photo');">Create photo album</a></div>
-<div>.................................&nbsp;<a href="javascript:adminPage('video');">Create video link</a></div>
+<div>.................................&nbsp;<a href="javascript:adminPage('news');">Create news</a>&nbsp;&nbsp;
+<a href="javascript:adminPage('news-edit');">(edit)</a></a></div>
+<div>.................................&nbsp;<a href="javascript:adminPage('files');">Upload pdf</a>&nbsp;&nbsp;
+<a href="javascript:adminPage('files-edit');">(edit)</a></a></div>
+<div>.................................&nbsp;<a href="javascript:adminPage('event');">Create event</a>&nbsp;&nbsp;
+<a href="javascript:adminPage('event-edit');">(edit)</a></a></div>
+<div>.................................&nbsp;<a href="javascript:adminPage('new_photo');">Create photo album</a>&nbsp;&nbsp;
+<a href="javascript:adminPage('new_photo-edit');">(edit)</a></a></div>
+<div>.................................&nbsp;<a href="javascript:adminPage('photo');">Upload pictures</a>&nbsp;&nbsp;
+<a href="javascript:adminPage('photo-edit');">(edit)</a></a></div>
+<div>.................................&nbsp;<a href="javascript:adminPage('video');">Create video link</a>&nbsp;&nbsp;
+<a href="javascript:adminPage('video-edit');">(edit)</a></a></div>
 <hr></hr>                                                                       
                                                                                 
 <br></br>                                                                       

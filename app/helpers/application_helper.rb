@@ -7,4 +7,7 @@ module ApplicationHelper
     Event.order("created_at DESC").limit(10)
   end
 
+  def print_news(str)                                                           
+    str.gsub("\n", "<br />")                                                    
+  end 
 end

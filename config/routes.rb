@@ -1,5 +1,12 @@
 Comesa::Application.routes.draw do
 
+  get "user/news_edit"
+  post "user/edit_news"
+
+  get "user/edit_news"
+  get "user/delete_post"
+  post "user/delete_post"
+
   get "femcom/album"
 
   get "user/upload_new_pictures"

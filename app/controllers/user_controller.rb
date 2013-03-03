@@ -78,9 +78,32 @@ class UserController < ApplicationController
       album.description = params[:album_description]
       album.creator = User.current_user
       album.save
-      Photo.upload(album,params[:picture_description],params[:upload])
+      #Photo.upload(album,params[:picture_description],params[:upload])
     end
     render :layout => false
   end
+
+  def edit_news
+    render :layout => false
+  end
+
+  def news_edit
+    @news = News.find(params[:id])
+    render :layout => false
+  end
+
+  def delete_post
+    case params[:type]
+      when 'delete_news_post'
+        News.delete(params[:id])
+      when 'update_news_post'
+        post = News.find(params[:id])
+        post.title = params[:title]
+        post.post = params[:content]
+        post.save
+    end
+    redirect_to :action => :blank
+  end
+
 
 end

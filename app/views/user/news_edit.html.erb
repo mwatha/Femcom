@@ -1,0 +1,47 @@
+<style>
+  table { 
+      color: #554433; 
+  }
+ 
+  #submitbtn {
+  }
+
+</style>
+
+
+<script>
+
+  function deletePost() {
+    document.location = "/user/delete_post?type=delete_news_post&id=<%=@news.id%>";
+  }
+
+</script>
+
+<div id='news'>
+<form action='delete_post' method="post" id = "edit_news">
+<table>
+<tr>
+  <td>News Head-line:</td><td>&nbsp;<input type='text' name='title' size = '30' value="<%=@news.title%>" /></td>
+</tr>
+<tr>
+  <td colspan="2">Body:</td>
+</tr>
+</table>
+<table>
+<tr>
+  <td>
+    <textarea cols='70' rows='15' name='content'>
+       <%=render(:inline => @news.post)%>
+    </textarea>
+  </td>
+</tr>
+<tr>
+  <td>
+    <input type='submit' value = 'Update' id = 'submitbtn' />
+    &nbsp;&nbsp;<input type='button' value = 'Delete' id = 'deletebtn' onclick="javascript:deletePost();" />
+  </td>
+</tr>
+</table>
+<input type='hidden' name = 'id' value = '<%=@news.id%>' />
+<input type='hidden' name = 'type' value = 'update_news_post' />
+</form>
