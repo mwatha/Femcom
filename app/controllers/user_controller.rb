@@ -96,6 +96,10 @@ class UserController < ApplicationController
     case params[:type]
       when 'delete_news_post'
         News.delete(params[:id])
+      when 'documents'
+        (params[:ids].split(',') || []).each do |id|
+          Document.delete(id)
+        end
       when 'update_news_post'
         post = News.find(params[:id])
         post.title = params[:title]
@@ -105,5 +109,9 @@ class UserController < ApplicationController
     redirect_to :action => :blank
   end
 
+  def edit_files
+    @documents = Document.order('created_at DESC')
+    render :layout => false
+  end
 
 end
