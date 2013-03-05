@@ -1,5 +1,6 @@
 class Photo < ActiveRecord::Base
   set_table_name :photo
+  belongs_to :album, :class_name => 'Album',:foreign_key => 'album_id'
 
   def self.upload(album,description,upload)
     name =  upload['datafile'].original_filename                            

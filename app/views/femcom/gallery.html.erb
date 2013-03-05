@@ -40,8 +40,17 @@
   function setInnerHtmlData(id,name,path,album_id) {                                   
     td = document.getElementById(id);                                           
     td.innerHTML = '<a href="/femcom/album?id=' + album_id + '"><img src="/images/pictures/' + path + '"></a><br/>';
-    td.innerHTML += '<span>' + name + '</span>'; 
-  }                                                                             
+    td.innerHTML += '<span>' + name + '</span>';
+    <%unless User.current_user.blank? %>
+      album_id = "'" + album_id + "'"; 
+      td.innerHTML += '&nbsp;<a href="javascript:deleteP(' + album_id + ');"><span>delete</span></a>'; 
+    <%end%>
+  }                               
+  
+  function deleteP(album_id) {
+    document.location = "/user/delete_post?type=album&id=" + album_id;
+  }
+                                                
 </script> 
 
 <div>

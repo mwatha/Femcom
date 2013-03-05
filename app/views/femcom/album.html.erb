@@ -37,7 +37,15 @@ $('#gallery').ppGallery({
   function setInnerHtmlData(id,photo) {                                         
     link = document.getElementById(id);                                           
     link.innerHTML = '<img src="/images/pictures/' + photo + '" class="imgid_' + id + '">';
+    <%unless User.current_user.blank? %>                                        
+      photo_id = "'" + id + "'";                                          
+      link.innerHTML += '<br /><a href="javascript:deleteP(' + photo_id + ');"><span>delete</span></a>'; 
+    <%end%>                                                                     
   }                                                                             
+                                                                                
+  function deleteP(photo_id) {                                                  
+    document.location = "/user/delete_post?type=photo&id=" + photo_id;          
+  }                                                                               
 
 </script>
 

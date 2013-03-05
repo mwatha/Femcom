@@ -94,23 +94,51 @@ class UserController < ApplicationController
 
   def delete_post
     case params[:type]
+      when 'album'
+        album = Album.find(params[:id])
+        (album.pictures || []).each do |picture|
+          `rm #{Rails.root}/public/images/pictures/#{picture.uri}`
+          Photo.delete(picture.id)
+        end
+        Album.delete(params[:id])
+        redirect_to :controller => :femcom, :action => :gallery
+        return
       when 'delete_news_post'
         News.delete(params[:id])
       when 'documents'
         (params[:ids].split(',') || []).each do |id|
           Document.delete(id)
         end
+      when 'events'
+        (params[:ids].split(',') || []).each do |id|
+          Event.delete(id)
+        end
       when 'update_news_post'
         post = News.find(params[:id])
         post.title = params[:title]
         post.post = params[:content]
         post.save
+      when 'photo'
+        photo = Photo.find(params[:id])
+        `rm #{Rails.root}/public/images/pictures/#{photo.uri}`
+        Photo.delete(params[:id])
+        if photo.album.blank?
+          redirect_to :controller => :femcom, :action => :gallery
+        else
+          redirect_to :controller => :femcom, :action => :album,:id => photo.album.id
+        end
+        return
     end
     redirect_to :action => :blank
   end
 
   def edit_files
     @documents = Document.order('created_at DESC')
+    render :layout => false
+  end
+
+  def event_edit
+    @events = Event.order('created_at DESC')
     render :layout => false
   end
 

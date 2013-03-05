@@ -1,0 +1,92 @@
+<%= javascript_include_tag "prototype"%>
+
+<%#= stylesheet_link_tag "demo_table" %>
+<%= stylesheet_link_tag "demo_table_jui" %>
+<%= stylesheet_link_tag "demo_page" %>
+
+<%=javascript_include_tag "jquery_data_table" %>
+<%=javascript_include_tag "jquery.dataTables.min" %>
+
+<script>
+  function dataT(){
+    $('#events').dataTable();
+  }
+
+  function deleteEvents() {                                                           
+    var documents_ids = [];                                                        
+    cboxes = document.getElementsByClassName('cboxes');                         
+    for(i = 0; i < cboxes.length; i++) {                                        
+      if(cboxes[i].checked)                                                     
+        documents_ids.push(cboxes[i].id);                                       
+                                                                                
+    }                                                                           
+                                                                                
+    if(documents_ids.length > 0){                                               
+      document.location = "/user/delete_post?type=events&ids=" + documents_ids.join(',');
+    }else{                                                                      
+      alert("Select record(s) to delete");                                      
+    }        
+  } 
+</script>
+
+
+<style type="text/css">
+
+.thumb {
+    width: 75px;
+    height: 75px;
+  }
+
+
+ #events {
+   border-style: solid;
+   border-width: 0px;
+ }
+
+
+
+ #events td , th{
+   border-style: solid;
+   border-width: 0px;
+   text-align: justify;
+ }
+
+
+</style>
+
+<div>
+  <font color="#1D4A75" style="font-size:14px;font-weight:bold;">CALENDER EVENTS - DELETE</font>
+  <hr style="background-color:#1D4A75;height:3px;"></hr>
+</div>
+
+
+<p>
+
+  <table class="display" class="display" id="events" style="width:99%;font-size:11px;">
+    <thead>
+      <tr>
+        <th>Event</th>
+        <th>Venue</th>
+        <th>Date</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+     <%(@events || []).each do |event|%>
+      <tr class="gradeX">
+        <td class="center"><%=event.title%></td>
+        <td class="center"><%=event.venue%></td>
+        <td class="center"><%=event.date.strftime("%A, %d %b %Y")%></td>
+        <td class="center"><input class="cboxes" id="<%=event.id%>" type="checkbox" /></td>
+      </tr>
+     <%end%>
+    </tbody>
+  </table> 
+
+ <input type="button" value = "Remove" onclick="javascript:deleteEvents();" />
+</p>
+
+
+<script>
+  dataT();
+</script>

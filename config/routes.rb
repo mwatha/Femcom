@@ -1,5 +1,7 @@
 Comesa::Application.routes.draw do
 
+  get "user/event_edit"
+
   get "user/edit_files"
 
   get "user/news_edit"
