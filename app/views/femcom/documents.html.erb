@@ -11,6 +11,10 @@
   function dataT(){
     $('#events').dataTable();
   }
+
+  function downLoad(uri) {
+    document.location = "/femcom/download?uri=" + uri;
+  }
 </script>
 
 
@@ -38,7 +42,8 @@
 </style>
 
 <div>
-  <font color="#1D4A75" style="font-size:14px;font-weight:bold;">DOWNLOADS (pdf)</font>
+  <!--font color="#1D4A75" style="font-size:14px;font-weight:bold;">DOWNLOADS (pdf)</font-->
+  <font color="#1D4A75" style="font-size:14px;font-weight:bold;">DOWNLOADS</font>
   <hr style="background-color:#1D4A75;height:3px;"></hr>
 </div>
 
@@ -56,9 +61,9 @@
     <tbody>                                                                     
      <%(@documents || []).each do |event|%>                                     
       <tr class="gradeX">                                                       
-        <td class="center"><%=event.title%></td>                                
-        <td class="center"><%=event.created_at.strftime('%A, %d %b %Y')%></td>                           
-        <td class="center"><a href="javascript:downLoad('<%=event.uri%>');">Download</a></td>
+        <td class="center" width = "210"><%=event.title%></td>                                
+        <td class="center" style="text-align:center;" width = "75"><%=event.created_at.strftime('%A, %d %b %Y')%></td>                           
+        <td class="center" style="text-align:center;" width = "10"><a href="javascript:downLoad('<%=event.uri%>');">Download</a></td>
       </tr>                                                                     
      <%end%>                                                                    
     </tbody>                                                                    

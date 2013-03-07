@@ -4,7 +4,7 @@ class Document < ActiveRecord::Base
   def self.upload(title,upload)
     name =  upload['datafile'].original_filename                            
     file_extension = name[name.rindex(".") .. name.length].strip.chomp
-    return false unless self.pdf?(file_extension)
+    #return false unless self.pdf?(file_extension)
     name = "#{Date.today.strftime('%d%m%y')}#{rand(10000)}#{file_extension}"
     directory = "#{Rails.root}/pdf"                           
     # create the file path                                                      

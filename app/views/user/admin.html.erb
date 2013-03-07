@@ -8,16 +8,22 @@ body {
   function adminPage(page) {                                                    
    var element = document.getElementById('extFrame');                           
    if (page == 'news') {                                                        
+     document.getElementById('title').innerHTML="Post news";                           
      element.src = '/user/create_news';                                         
    }else if (page == 'files') {                                                 
+     document.getElementById('title').innerHTML="Upload documents";                           
      element.src = '/user/upload_pdf';                                          
    }else if (page == 'event') {                                                 
+     document.getElementById('title').innerHTML="Create events";                           
      element.src = '/user/create_events';                                       
    }else if (page == 'video') {                                                 
+     document.getElementById('title').innerHTML="Link youtube videos";                           
      element.src = '/user/create_video_link';                                   
    }else if (page == 'photo') {                                                 
+     document.getElementById('title').innerHTML="Upload picture(s)";                           
      element.src = '/user/upload_pictures';                                     
    }else if (page == 'new_photo') {                                                 
+     document.getElementById('title').innerHTML="Create photo album";                           
      element.src = '/user/upload_new_pictures';                                     
    }else if (page == 'news-edit') {                                                 
      element.src = '/user/edit_news';                                     
@@ -50,7 +56,7 @@ body {
 <hr></hr>                                                                       
                                                                                 
 <br></br>                                                                       
-                                                                                
+<div id='title'></div><br />                                                                                
 <iframe id="extFrame" src="blank.php" style="width:99%;height:500px;"></iframe> 
                                                                                 
                                                                                 
