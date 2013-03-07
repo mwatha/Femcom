@@ -75,7 +75,7 @@
     <%                                                                          
     count = 1
     (@albums || []).map do | album | 
-      name = (album.name + " " + album.description rescue '')
+      name = (album.name + " " + album.description rescue '')[0..19]
       path = album.pictures.first.uri rescue nil
       next if path.blank?
       %>                             
