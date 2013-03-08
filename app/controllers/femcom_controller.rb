@@ -1,7 +1,7 @@
 class FemcomController < ApplicationController
 
   def events
-    @events = Event.all
+    @events = Event.order("created_at DESC")
     @page_heading = 'Events'
   end
 
@@ -53,4 +53,7 @@ class FemcomController < ApplicationController
     @album_description += ' - ' + @album.description unless @album.description.blank?
   end
 
+  def event
+    @event = Event.find(params[:id])
+  end
 end

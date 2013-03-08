@@ -1,5 +1,7 @@
 Comesa::Application.routes.draw do
 
+  get "femcom/event"
+
   get "user/edit_password"
   post "user/edit_password"
 

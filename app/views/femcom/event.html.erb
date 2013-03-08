@@ -1,0 +1,47 @@
+<style type="text/css">
+
+.thumb {
+    width: 75px;
+    height: 75px;
+  }
+
+ #events {
+   border-style: solid;
+   border-width: 0px;
+ }
+
+
+
+ #events td , th{
+   border-style: solid;
+   border-width: 0px;
+   text-align: justify;
+ }
+
+
+</style>
+
+<div>
+  <!--font color="#1D4A75" style="font-size:14px;font-weight:bold;">DOWNLOADS (pdf)</font-->
+  <font color="#1D4A75" style="font-size:14px;font-weight:bold;"><%=@event.title%></font>
+  <hr style="background-color:#1D4A75;height:3px;"></hr>
+</div>
+
+
+<p>
+
+ <table class="display" class="display" id="events" style="width:99%;font-size:11px;">
+    <thead>                                                                     
+      <tr>                                                                      
+        <th>Venue:&nbsp;<%=@event.venue%>&nbsp;(<%=@event.date.strftime('%d, %B %Y')%>)</th>                                                          
+      </tr>                                                                     
+    </thead>                                                                    
+    <tbody>                                                                     
+      <tr class="gradeX">                                                       
+        <td class="center" width = "100%"><%=@event.description%></td>                                
+      </tr>                                                                     
+    </tbody>                                                                    
+  </table>  
+
+</p>
+

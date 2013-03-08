@@ -107,7 +107,7 @@ body {text-align:center;margin:0}
   <%= image_tag("Bar1.jpg" , :border => 0 ,:width =>988 ,:height =>29)%>
 </div>
 
-<!--input name="formtext1" type="text" style="position:absolute;width:161px;left:836px;top:64px;z-index:4" -->
+<input name="formtext1" type="text" style="position:absolute;width:161px;left:836px;top:64px;z-index:4">
 <div id="shape2" style="position:absolute; overflow:hidden; left:69px; top:181px; width:191px; height:232px; z-index:5">
   <%= image_tag("shape19946281.gif" , :border => 0 ,:width =>'100%' ,:height =>'100%')%>
 </div>
@@ -135,13 +135,13 @@ body {text-align:center;margin:0}
 </div>
 
 <div id="image4" style="position:absolute; overflow:hidden; left:1004px; top:63px; width:35px; height:23px; z-index:12">
-  <%#= image_tag("78.jpg" , :border => 0 ,:width => 35 ,:height =>23)%>
+  <%= image_tag("78.jpg" , :border => 0 ,:width => 35 ,:height =>30)%>
 </div>
 
-<!--div id="text2" style="position:absolute; overflow:hidden; left:1012px; top:69px; width:21px; height:14px; z-index:13">
+<div id="text2" style="position:absolute; overflow:hidden; left:1012px; top:69px; width:21px; height:14px; z-index:13">
 <div class="wpmd">
 <div><font color="#FFFFFF" face="Cambria" class="ws9"><B>GO</B></font></div>
-</div></div -->
+</div></div>
 
 <div id="image3" style="position:absolute; overflow:hidden; left:862px; top:167px; width:197px; height:28px; z-index:14">
   <%= image_tag("above bar.jpg" , :border => 0 ,:width => 197 ,:height =>28)%>
@@ -320,7 +320,7 @@ body {text-align:center;margin:0}
 <%
 (latest_events || []).each do |post|%>                                            
 <div style="line-height:1.50;"><font color="#000000" class="ws9">               
-<li>.&nbsp;<%=post.title%></font></li>
+<li><a href="/femcom/event?id=<%=post.id%>"><%=post.title%></a></font></li>
 <li>&nbsp;</li></div>
 <%end%>                                                                         
 </ul>

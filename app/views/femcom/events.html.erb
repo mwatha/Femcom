@@ -52,16 +52,16 @@
         <th>Event</th>
         <th>Venue</th>
         <th>Date</th>
-        <th>Description</th>
+        <th>&nbsp;</th>
       </tr>
     </thead>
     <tbody>
      <%(@events || []).each do |event|%>
       <tr class="gradeX">
-        <td class="center"><%=event.title%></td>
+        <td class="center" width="200"><%=event.title%></td>
         <td class="center"><%=event.venue%></td>
-        <td class="center"><%=event.date.strftime("%A, %d %b %Y")%></td>
-        <td class="center"><%=event.description%></td>
+        <td class="center" width="120"><%=event.date.strftime("%A, %d %b %Y")%></td>
+        <td class="center" width="50"><a href="/femcom/event?id=<%=event.id%>">View</a></td>
       </tr>
      <%end%>
     </tbody>
