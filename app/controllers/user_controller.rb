@@ -141,5 +141,16 @@ class UserController < ApplicationController
     @events = Event.order('created_at DESC')
     render :layout => false
   end
+  
+  def edit_password
+    if request.post?
+      if params[:new_password] == params[:confirm_password]
+         User.find(:last).update_attributes(:password_hash => params[:new_password])
+         flash[:notice] = 'Password was successfully updated.' 
+         redirect_to :action => :blank and return
+      end
+    end
+    render :layout => false
+  end
 
 end

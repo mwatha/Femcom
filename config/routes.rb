@@ -1,5 +1,8 @@
 Comesa::Application.routes.draw do
 
+  get "user/edit_password"
+  post "user/edit_password"
+
   get "user/event_edit"
 
   get "user/edit_files"
