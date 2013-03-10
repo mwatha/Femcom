@@ -13,7 +13,12 @@
       </td>                                                                     
       <td style="font-size:12px; vertical-align: sub;">                         
         <%=video.title%><%unless video.description.blank?%>:&nbsp;              
-        <br /><%=video.description%><%end%>                                     
+        <br /><%=video.description%><%end%>
+        <%unless User.current_user.blank? %>
+          <br /><font>
+            <a href="/user/delete_post?type=video&id=<%=video.id%>">Delete</a>
+          </font>
+        <%end%>
       </td>                                                                     
     </tr>                                                                       
   </table>                                                                      

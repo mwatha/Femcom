@@ -55,5 +55,6 @@ class FemcomController < ApplicationController
 
   def event
     @event = Event.find(params[:id])
+    @page_heading = @event.title
   end
 end

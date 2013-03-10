@@ -103,6 +103,10 @@ class UserController < ApplicationController
         Album.delete(params[:id])
         redirect_to :controller => :femcom, :action => :gallery
         return
+      when 'video'
+        YoutubeLinks.delete(params[:id])
+        redirect_to :controller => :media , :action => :videos
+        return
       when 'delete_news_post'
         News.delete(params[:id])
       when 'documents'
