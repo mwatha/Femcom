@@ -9,6 +9,9 @@
 </style>
 
 <div id='news'>
+<%if flash[:notice]%>                                                           
+<font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
+<%end%>
 <form action='create_news' method="post">
 <table>
 <tr>

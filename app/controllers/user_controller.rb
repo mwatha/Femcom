@@ -30,6 +30,7 @@ class UserController < ApplicationController
   def create_news
     if request.post?
       News.create(:title => params[:title],:post => params[:content])
+      flash[:notice] = 'Successfully posted.'            
     end
     render :layout => false
   end
@@ -37,6 +38,7 @@ class UserController < ApplicationController
   def upload_pdf
     if request.post?
       Document.upload(params[:title],params[:upload])
+      flash[:notice] = 'File was successfully uploaded.'
     end
     render :layout => false
   end
@@ -45,6 +47,7 @@ class UserController < ApplicationController
     if request.post?
       YoutubeLinks.create(:title => params[:title],:link => params[:uri],
         :description => params[:description])
+      flash[:notice] = 'Video successfully linked.'
     end
     render :layout => false
   end
@@ -53,6 +56,7 @@ class UserController < ApplicationController
     if request.post?
       Event.create(:title => params[:title],:venue => params[:venue],
         :description => params[:description],:date => params[:date])
+      flash[:notice] = 'Event successfully created.'
     end
     @next_appointment_date = Date.today
     render :layout => false
@@ -66,6 +70,7 @@ class UserController < ApplicationController
     if request.post?
       album = Album.find(params[:album_id])
       Photo.upload(album,params[:picture_description],params[:upload])
+      flash[:notice] = 'Photo successfully uploaded.'
     end
     @albums = Album.order('name ASC,created_at DESC')
     render :layout => false
@@ -78,6 +83,7 @@ class UserController < ApplicationController
       album.description = params[:album_description]
       album.creator = User.current_user
       album.save
+      flash[:notice] = 'Album successfully created.'
       #Photo.upload(album,params[:picture_description],params[:upload])
     end
     render :layout => false

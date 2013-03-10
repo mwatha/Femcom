@@ -9,10 +9,14 @@
 </style>
 
 <div id='news'>
+<%if flash[:notice]%>
+<font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br />
+<%end%>
+
 <form action='upload_pdf' method="post" enctype="multipart/form-data">
 <table>
 <tr>
-  <td>Title:</td><td>&nbsp;<input type='text' name='title' size = '15' /></td>
+  <td>Title:</td><td>&nbsp;<input type='text' name='title' size = '40' /></td>
 </tr>
 <tr>
   <td>Browse file:</td><td>&nbsp;<%= file_field 'upload', 'datafile' %></td>

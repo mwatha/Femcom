@@ -11,6 +11,9 @@
 </style>
 
 <div id='news'>
+<%if flash[:notice]%>                                                           
+  <font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
+<%end%>
 <form action='upload_new_pictures' method="post" enctype="multipart/form-data">
 <table>
 <tr>
