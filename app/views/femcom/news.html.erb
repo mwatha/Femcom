@@ -59,10 +59,10 @@
   </tr>                                                                         
 </thead>                                                                        
 <tbody>                                                                         
- <%(@news || []).each do |news|%>                                               
+ <%(@news || []).each do |post|%>                                               
   <tr class="gradeX">                                                           
-    <td class="center" width='400'><a href="/news/post?id=<%=news.id%>"><%=news.title%></a></td>
-    <td class="center"><%=news.created_at.strftime('%A, %d %b %Y')%></td>                                
+    <td class="center" width='400'><a href="/news/post?id=<%=post.id%>"><%=post.title%></a></td>
+    <td class="center"><%=post.created_at.strftime('%A, %d %b %Y')%></td>                                
   </tr>                                                                         
  <%end%>                                                                        
 </tbody>                                                                        
