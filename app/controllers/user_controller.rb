@@ -90,6 +90,7 @@ class UserController < ApplicationController
   end
 
   def edit_news
+    @news = News.order("created_at DESC")
     render :layout => false
   end
 
