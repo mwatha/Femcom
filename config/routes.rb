@@ -1,5 +1,8 @@
 Comesa::Application.routes.draw do
 
+  get "user/change_home_page_photos"
+  post "user/change_home_page_photos"
+
   get "user/edit_home_page_content"
   post "user/edit_home_page_content"
 

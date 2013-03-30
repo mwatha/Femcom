@@ -17,6 +17,17 @@ class Photo < ActiveRecord::Base
     picture.album_id = album.id
     picture.save
   end
+  
+  def self.home_page(photo,upload)
+    name =  upload['datafile'].original_filename                            
+    file_extension = name[name.rindex(".") .. name.length].strip.chomp
+    name = photo #"#{Date.today.strftime('%d%m%y')}#{rand(10000)}#{file_extension}"
+    directory = "#{Rails.root}/public/images/"                           
+    # create the file path                                                      
+    path = File.join(directory, name)                                           
+    # write the file                                                            
+    File.open(path, "wb") { |f| f.write(upload['datafile'].read) }              
+  end
 
   protected
 

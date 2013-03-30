@@ -193,4 +193,13 @@ class UserController < ApplicationController
     render :layout => false
   end
 
+  def change_home_page_photos
+    if request.post?
+      Photo.home_page(params[:photo],params[:upload])
+      flash[:notice] = 'Successfully posted new picture'            
+    end
+    @photos = ["1.jpg","2.jpg","3.jpg","4.png","5.jpg"]
+    render :layout => false
+  end
+
 end

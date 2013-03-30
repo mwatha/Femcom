@@ -40,6 +40,9 @@ body {
    }else if (page == 'home-page') {                                                 
      document.getElementById('title').innerHTML="Edit home page contents";                           
      element.src = '/user/home_page';                                     
+   }else if (page == 'change-home-page-photos') {                                                 
+     document.getElementById('title').innerHTML="Change home page photos";                           
+     element.src = '/user/change_home_page_photos';                                     
    }                                                                            
   }                                                                             
                                                                                 
@@ -64,6 +67,7 @@ body {
 <div>.................................&nbsp;<a href="javascript:adminPage('video');">Create video link</a></div>
 <div>.................................&nbsp;<a href="javascript:adminPage('change-password');">Change password</a></div>
 <div>.................................&nbsp;<a href="javascript:adminPage('home-page');">Change home page</a></div>
+<div>.................................&nbsp;<a href="javascript:adminPage('change-home-page-photos');">Change home page photos</a></div>
 <hr></hr>                                                                       
                                                                                 
 <br></br>                                                                       

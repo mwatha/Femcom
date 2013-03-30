@@ -1,0 +1,112 @@
+<%= javascript_include_tag "prototype" %>
+
+<style type="text/css">                                                         
+  body {                                                                        
+    -moz-user-select:none;                                                      
+  font-family: Arial,sans-serif;                                                
+  }                                                                             
+                                                                                
+.main_photos {
+  width: 140px;
+  height: 140px;
+  border: 1px;
+  border-style: solid;
+}
+
+.photo_containers {
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+}
+
+</style>
+
+
+<script>                                                                        
+                                                
+</script> 
+
+<div>
+  <font color="#1D4A75" style="font-size:14px;font-weight:bold;">Home page main pictures</font>
+  <hr style="background-color:#1D4A75;height:3px;"></hr>
+</div>
+
+<%if flash[:notice]%>                                                           
+  <font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br />
+<%end%>
+
+<div class="photo_containers">
+  <form action='change_home_page_photos' method="post" enctype="multipart/form-data">
+    <table style="width:100%;">
+      <tr>
+        <td><img src="/images/1.jpg" class='main_photos' /></td>
+        <td>:&nbsp;<%= file_field 'upload', 'datafile' %></td>
+      </tr>
+      <tr>
+        <td colspan="2"><input style="width:100%;" type="submit" value='Change' /></td>
+      </tr>
+    </table>
+    <input type='hidden' name = 'photo' value = '1.jpg' />
+  </form>
+</div>
+
+<div class="photo_containers">
+  <form action='change_home_page_photos' method="post" enctype="multipart/form-data">
+    <table style="width:100%;">
+      <tr>
+        <td><img src="/images/2.jpg" class='main_photos' /></td>
+        <td>:&nbsp;<%= file_field 'upload', 'datafile' %></td>
+      </tr>
+      <tr>
+        <td colspan="2"><input style="width:100%;" type="submit" value='Change' /></td>
+      </tr>
+    </table>
+    <input type='hidden' name = 'photo' value = '2.jpg' />
+  </form>
+</div>
+
+<div class="photo_containers">
+  <form action='change_home_page_photos' method="post" enctype="multipart/form-data">
+    <table style="width:100%;">
+      <tr>
+        <td><img src="/images/3.jpg" class='main_photos' /></td>
+        <td>:&nbsp;<%= file_field 'upload', 'datafile' %></td>
+      </tr>
+      <tr>
+        <td colspan="2"><input style="width:100%;" type="submit" value='Change' /></td>
+      </tr>
+    </table>
+    <input type='hidden' name = 'photo' value = '3.jpg' />
+  </form>
+</div>
+
+<div class="photo_containers">
+  <form action='change_home_page_photos' method="post" enctype="multipart/form-data">
+    <table style="width:100%;">
+      <tr>
+        <td><img src="/images/5.jpg" class='main_photos' /></td>
+        <td>:&nbsp;<%= file_field 'upload', 'datafile' %></td>
+      </tr>
+      <tr>
+        <td colspan="2"><input style="width:100%;" type="submit" value='Change' /></td>
+      </tr>
+    </table>
+    <input type='hidden' name = 'photo' value = '5.jpg' />
+  </form>
+</div>
+
+<div class="photo_containers">
+  <form action='change_home_page_photos' method="post" enctype="multipart/form-data">
+    <table style="width:100%;">
+      <tr>
+        <td><img src="/images/4.png" class='main_photos' /></td>
+        <td>:&nbsp;<%= file_field 'upload', 'datafile' %></td>
+      </tr>
+      <tr>
+        <td colspan="2"><input style="width:100%;" type="submit" value='Change' /></td>
+      </tr>
+    </table>
+    <input type='hidden' name = 'photo' value = '4.png' />
+  </form>
+</div>
+
+
