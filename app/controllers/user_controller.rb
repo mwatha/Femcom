@@ -139,6 +139,9 @@ class UserController < ApplicationController
           redirect_to :controller => :femcom, :action => :album,:id => photo.album.id
         end
         return
+      when 'delete_home_page_content'
+        HomeContentPost.delete(params[:id])
+        redirect_to '/user/admin' and return
     end
     redirect_to :action => :blank
   end
@@ -160,6 +163,32 @@ class UserController < ApplicationController
          flash[:notice] = 'Password was successfully updated.' 
          redirect_to :action => :blank and return
       end
+    end
+    render :layout => false
+  end
+
+  def home_page
+    @contents = HomeContentPost.order("created_at DESC")
+    render :layout => false
+  end
+
+  def create_home_page_content
+    if request.post?
+      HomeContentPost.create(:title => params[:title],:content => params[:content])
+      flash[:notice] = 'Successfully posted.'            
+    end
+    render :layout => false
+  end
+
+  def edit_home_page_content
+    unless request.post?
+      @content = HomeContentPost.find(params[:id])
+    else
+      content = HomeContentPost.find(params[:content_id])
+      content.title = params[:title]
+      content.content = params[:content]
+      content.save
+      redirect_to :action => :home_page and return
     end
     render :layout => false
   end

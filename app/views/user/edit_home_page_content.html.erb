@@ -1,0 +1,39 @@
+<style>
+  table { 
+      color: #554433; 
+  }
+ 
+  #submitbtn {
+  }
+
+</style>
+
+<div id='news'>
+<%if flash[:notice]%>                                                           
+<font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
+<%end%>
+<form action='edit_home_page_content' method="post">
+<table>
+<tr>
+  <td>Topic:</td><td>&nbsp;<input type='text' name='title' size = '40' value="<%=@content.title%>" /></td>
+</tr>
+<tr>
+  <td colspan="2">Content:</td>
+</tr>
+</table>
+<table>
+<tr>
+  <td>
+    <textarea cols='70' rows='15' name='content'><%=@content.content%></textarea>
+  </td>
+</tr>
+<tr>
+  <td>
+    <input type='button' value = 'Delete post' id = 'deletebtn' 
+      onclick="javascript:location='/user/delete_post?type=delete_home_page_content&id=<%=@content.id%>'" />&nbsp;
+    <input type='submit' value = 'Save changes' id = 'submitbtn' />
+  </td>
+</tr>
+</table>
+<input type='hidden' name = 'content_id' value = "<%=@content.id%>" />
+</form>

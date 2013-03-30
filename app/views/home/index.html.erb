@@ -18,25 +18,13 @@ AC_RunFlashContent('width','562','height','205','quality','high','autoplay','tru
 </noscript>                                                                     
 <br/>
 <br/>
+
+<%(@contents || []).each do |content|%>
 <div>
-  <font color="#1D4A75" style="font-weight:bold;font-size:13px;">WHO IS FEMCOM?</font>
+  <font color="#1D4A75" style="font-weight:bold;font-size:13px;"><%=content.title.upcase%></font>
   <hr style="background-color:#1D4A75;height:3px;"></hr>
 </div>
 
-<p>Federation of National Associations of Women in Business in Eastern and Southern    Africa (FEMCOM) is a COMESA institution, established in July 1993 under Article 155 of the COMESA Treaty. FEMCOM has national chapters in all the 19   COMESA region countries namely: Burundi, Comoros, Democratic Republic of Congo (DRC), Djibouti, Egypt, ,Eritrea, Ethiopia, Kenya, Libya, Madagascar,   Malawi, Mauritius, Rwanda, Seychelles, Sudan, Swaziland, Uganda, Zambia and Zimbabwe</p>
-
-<div>
-  <font color="#1D4A75" style="font-weight:bold;font-size:13px;">WHAT DOES FEMCOM DO?</font>
-  <hr style="background-color:#1D4A75;height:3px;"></hr>
-</div>
-
-<p>To be recognized worldwide as one of the most effective organisations promoting the interests of women entrepreneurs in Africa. FEMCOM has 6 Strategic Priorities in line with its 2009 &#45; 2014 Medium Term Strategic Plan:</p>
-
-<div style="margin-left:20px;">                                                              
-  <div>1. Strengthening FEMCOM for Long-term Sustainability</div>
-  <div>2. Resource Mobilisation</div>
-  <div>3. Up-scaling capacity for women in business</div>
-  <div>4. Increase Trade &amp; Investment Facilitation</div>
-  <div>5. Enhancing Access to Credit and Capital for Women in Business</div>
-  <div>6. Forster Influential Policies to Empower Women in Business</div>
-</div>
+<%=render(:inline => print_news(content.content))%>
+<br />
+<%end%>

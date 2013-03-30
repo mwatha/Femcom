@@ -26,13 +26,20 @@ body {
      document.getElementById('title').innerHTML="Create photo album";                           
      element.src = '/user/upload_new_pictures';                                     
    }else if (page == 'news-edit') {                                                 
+     document.getElementById('title').innerHTML="Edit news";                           
      element.src = '/user/edit_news';                                     
    }else if (page == 'files-edit') {                                                 
+     document.getElementById('title').innerHTML="Edit documents";                           
      element.src = '/user/edit_files';                                     
    }else if (page == 'event-edit') {                                                 
+     document.getElementById('title').innerHTML="Edit events";                           
      element.src = '/user/event_edit';                                     
    }else if (page == 'change-password') {                                                 
+     document.getElementById('title').innerHTML="Change password";                           
      element.src = '/user/edit_password';                                     
+   }else if (page == 'home-page') {                                                 
+     document.getElementById('title').innerHTML="Edit home page contents";                           
+     element.src = '/user/home_page';                                     
    }                                                                            
   }                                                                             
                                                                                 
@@ -56,6 +63,7 @@ body {
 <div>.................................&nbsp;<a href="javascript:adminPage('photo');">Upload pictures</a></div>
 <div>.................................&nbsp;<a href="javascript:adminPage('video');">Create video link</a></div>
 <div>.................................&nbsp;<a href="javascript:adminPage('change-password');">Change password</a></div>
+<div>.................................&nbsp;<a href="javascript:adminPage('home-page');">Change home page</a></div>
 <hr></hr>                                                                       
                                                                                 
 <br></br>                                                                       

@@ -13,7 +13,7 @@
   }
 
   function edit(id) {
-    document.location = "/user/news_edit?id=" + id;
+    document.location = "/user/edit_home_page_content?id=" + id;
   }
 </script>
 
@@ -43,7 +43,7 @@
 </style>
 
 <div>
-  <font color="#1D4A75" style="font-size:14px;font-weight:bold;">NEWS - EDIT</font>
+  <font color="#1D4A75" style="font-size:14px;font-weight:bold;">HOME PAGE CONTENT - EDIT</font>
   <hr style="background-color:#1D4A75;height:3px;"></hr>
 </div>
 
@@ -54,22 +54,23 @@
 <thead>                                                                         
   <tr>                                                                          
     <th>Headline</th>                                                           
-    <th>Date</th>                                                           
+    <th>Content</th>                                                           
     <th>&nbsp;</th>                                                        
   </tr>                                                                         
 </thead>                                                                        
 <tbody>                                                                         
- <%(@news || []).each do |news|%>                                               
+ <%(@contents || []).each do |content|%>                                               
   <tr class="gradeX">                                                           
-    <td class="center" width='300'><%=news.title%></td>
-    <td class="center"><%=news.created_at.strftime('%A, %d %b %Y')%></td>                                
-    <td class="center"><input type="checkbox" onclick="javascript:edit('<%=news.id%>')" /></td>
+    <td class="center" width='300'><%=content.title%></td>
+    <td class="center"><%=content.created_at.strftime('%A, %d %b %Y')%></td>                                
+    <td class="center"><input type="checkbox" onclick="javascript:edit('<%=content.id%>')" /></td>
   </tr>                                                                         
  <%end%>                                                                        
 </tbody>                                                                        
 </table>                                                                        
                                                                                 
 </p>  
+<button style="width:100%;" onclick="javascript:location='/user/create_home_page_content'">Create content</button>
 
 <script>
   dataT();

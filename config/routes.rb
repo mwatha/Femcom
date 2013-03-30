@@ -1,5 +1,14 @@
 Comesa::Application.routes.draw do
 
+  get "user/edit_home_page_content"
+  post "user/edit_home_page_content"
+
+  get "user/create_home_page_content"
+  post "user/create_home_page_content"
+
+  get "user/home_page"
+  post "user/home_page"
+
   get "femcom/event"
 
   get "user/edit_password"
