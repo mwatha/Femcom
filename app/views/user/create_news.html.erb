@@ -10,8 +10,15 @@
                                                                                 
 <script type="text/javascript">
 
+function setImage(img) {
+  textarea = document.getElementById("text-area");
+  textarea.value += img;
+}
+
                                                                                 
 function InsertCodeInTextArea(textValue) {
+    setImage(textValue);
+    return
     //Get textArea HTML control 
     var txtArea = document.getElementById("text-area");
     
@@ -44,15 +51,17 @@ function InsertCodeInTextArea(textValue) {
 <%if flash[:notice]%>                                                           
 <font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
 <%end%>
-<form action='create_news' method="post">
 <table>
-<tr>
-  <td>Title:</td><td>&nbsp;<input type='text' name='title' size = '40'/></td>
-</tr>
 <tr>
   <td colspan="2">
     <%= render 'upload' %>
   </td>
+</tr>
+</table>
+<form action='create_news' method="post">
+<table>
+<tr>
+  <td>Title:</td><td>&nbsp;<input type='text' name='title' size = '40'/></td>
 </tr>
 </table>
 <table>

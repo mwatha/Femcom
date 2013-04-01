@@ -29,6 +29,21 @@ class Photo < ActiveRecord::Base
     File.open(path, "wb") { |f| f.write(upload['datafile'].read) }              
   end
 
+  def self.news(upload)
+    name =  upload['datafile'].original_filename                            
+    file_extension = name[name.rindex(".") .. name.length].strip.chomp
+    name = "#{Date.today.strftime('%d%m%y')}#{rand(10000)}#{file_extension}"
+    directory = "#{Rails.root}/public/images/news/"                           
+    # create the file path                                                      
+    path = File.join(directory, name)                                           
+    # write the file                                                            
+    File.open(path, "wb") { |f| f.write(upload['datafile'].read) }              
+    picture = NewsImages.new()
+    picture.img = name
+    picture.save
+    return name
+  end
+  
   protected
 
   def self.valid_size?(file_extension)

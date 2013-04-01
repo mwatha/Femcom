@@ -226,7 +226,7 @@ class UserController < ApplicationController
   end
 
   def upload
-    flash.now[:notice] = "Hey - done it!" 
+    @img = Photo.news(params[:upload])
     render :layout => false
   end
 
@@ -234,7 +234,7 @@ class UserController < ApplicationController
 
   def wrap_ajax_response
     response.content_type = nil
-    response.body = "<img src='/images/3.jpg' style='width:100%;' />"
+    response.body = "<img src='/images/news/#{@img}' style='width: 99%;' />"
   end
 
 end

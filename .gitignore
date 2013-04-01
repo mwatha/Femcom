@@ -9,3 +9,4 @@ db/schema.rb
 pdf/*.pdf
 *~
 public/images/pictures/*
+public/images/news/*

@@ -1,5 +1,9 @@
 <style>
-#preview { visibility: hidden; }
+#preview { 
+  visibility: hidden; 
+  height: 0px;
+  width: 0px;
+}
 
 </style>
 
@@ -13,7 +17,7 @@ $(function() {
   $("form").ajaxForm({target: '#preview'});
 });
 
-function showData() {
+function addUploadedImage() {
   var e = document.getElementById('preview');
   if (e.innerHTML.length > 0) {
     InsertCodeInTextArea(e.innerHTML);
@@ -25,11 +29,11 @@ function showData() {
 
 <% form_for 'myform', :url => 'upload', :html => {:multipart => true} do |f| %>
   <%=hidden_field_tag :format, 'js' %>
-  <%=f.file_field :photo %>&nbsp;<%=f.submit "Add image"%>
+  <%= file_field 'upload', 'datafile' %>&nbsp;<%=f.submit "Add image"%>
 <%end%>
 
 <div id = "preview"></div>
 
 <script>
-  setInterval("showData();",1000);
+  setInterval("addUploadedImage();",1000);
 </script>
