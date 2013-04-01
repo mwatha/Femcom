@@ -218,4 +218,8 @@ class UserController < ApplicationController
     render :layout => false
   end
 
+  def ajax_upload
+    render :layout => false
+  end
+
 end

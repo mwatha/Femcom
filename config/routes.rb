@@ -1,5 +1,7 @@
 Comesa::Application.routes.draw do
 
+  get "user/ajax_upload"
+
   get "user/current_focus_and_activities_list"
 
   get "user/current_focus_and_activities"
