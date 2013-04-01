@@ -1,0 +1,35 @@
+<style>
+#preview { visibility: hidden; }
+
+</style>
+
+<%= javascript_include_tag "jquery-1.9.1" %>
+<%= javascript_include_tag "jquery.form" %>
+
+<script>
+
+$(function() {
+  $('form').ajaxForm({dataType: 'script'});
+  $("form").ajaxForm({target: '#preview'});
+});
+
+function showData() {
+  var e = document.getElementById('preview');
+  if (e.innerHTML.length > 0) {
+    InsertCodeInTextArea(e.innerHTML);
+    e.innerHTML = null;
+  }
+}
+
+</script>
+
+<% form_for 'myform', :url => 'upload', :html => {:multipart => true} do |f| %>
+  <%=hidden_field_tag :format, 'js' %>
+  <%=f.file_field :photo %>&nbsp;<%=f.submit "Add image"%>
+<%end%>
+
+<div id = "preview"></div>
+
+<script>
+  setInterval("showData();",1000);
+</script>
