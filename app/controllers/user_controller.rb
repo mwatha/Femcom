@@ -1,4 +1,6 @@
 class UserController < ApplicationController
+  after_filter :wrap_ajax_response, :only => [:upload]
+
   def login
     if request.post?
       user = User.find_by_username params[:username]                                      
@@ -219,7 +221,20 @@ class UserController < ApplicationController
   end
 
   def ajax_upload
+    flash.now[:notice] = "Works!"
     render :layout => false
+  end
+
+  def upload
+    flash.now[:notice] = "Hey - done it!" 
+    render :layout => false
+  end
+
+  private
+
+  def wrap_ajax_response
+    response.content_type = nil
+    response.body = "<img src='/images/3.jpg' style='width:100%;' />"
   end
 
 end

@@ -6,36 +6,37 @@
   #submitbtn {
   }
 
-</style>
-
-
+</style>                                                                        
+                                                                                
 <script type="text/javascript">
-    function InsertCodeInTextArea(textValue) {
-        //Get textArea HTML control 
-        var txtArea = document.getElementById("text-area");
-        
-        //IE
-        if (document.selection) {
-            txtArea.focus();
-            var sel = document.selection.createRange();
-            sel.text = textValue;
-            return;
-        }
-        //Firefox, chrome, mozilla
-        else if (txtArea.selectionStart || txtArea.selectionStart == '0') {
-            var startPos = txtArea.selectionStart;
-            var endPos = txtArea.selectionEnd;
-            var scrollTop = txtArea.scrollTop;
-            txtArea.value = txtArea.value.substring(0, startPos) + textValue + txtArea.value.substring(endPos, txtArea.value.length);
-            txtArea.focus();
-            txtArea.selectionStart = startPos + textValue.length;
-            txtArea.selectionEnd = startPos + textValue.length;
-        }
-        else {
-            txtArea.value += textArea.value;
-            txtArea.focus();
-        }
-      }
+
+                                                                                
+function InsertCodeInTextArea(textValue) {
+    //Get textArea HTML control 
+    var txtArea = document.getElementById("text-area");
+    
+    //IE
+    if (document.selection) {
+        txtArea.focus();
+        var sel = document.selection.createRange();
+        sel.text = textValue;
+        return;
+    }
+    //Firefox, chrome, mozilla
+    else if (txtArea.selectionStart || txtArea.selectionStart == '0') {
+        var startPos = txtArea.selectionStart;
+        var endPos = txtArea.selectionEnd;
+        var scrollTop = txtArea.scrollTop;
+        txtArea.value = txtArea.value.substring(0, startPos) + textValue + txtArea.value.substring(endPos, txtArea.value.length);
+        txtArea.focus();
+        txtArea.selectionStart = startPos + textValue.length;
+        txtArea.selectionEnd = startPos + textValue.length;
+    }
+    else {
+      txtArea.value += textArea.value;
+      txtArea.focus();
+    }
+}
 </script>
 
 
@@ -43,15 +44,14 @@
 <%if flash[:notice]%>                                                           
 <font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
 <%end%>
-<form action='create_news' method="post" name="myform" enctype="multipart/form-data">
+<form action='create_news' method="post">
 <table>
 <tr>
   <td>Title:</td><td>&nbsp;<input type='text' name='title' size = '40'/></td>
 </tr>
 <tr>
   <td colspan="2">
-  <%= file_field 'upload', 'datafile' %>
-  <input type='button' value = 'Upload picture' id = 'uploadbtn' onclick="InsertCodeInTextArea('XXXXXXXXX');" />
+    <%= render 'upload' %>
   </td>
 </tr>
 </table>
