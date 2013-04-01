@@ -10,4 +10,8 @@ module ApplicationHelper
   def print_news(str)                                                           
     str.gsub("\n", "<br />")                                                    
   end 
+
+  def current_focus_and_activities        
+    CurrentFocusAndActivities.order("created_at DESC").limit(3)
+  end 
 end

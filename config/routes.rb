@@ -1,5 +1,10 @@
 Comesa::Application.routes.draw do
 
+  get "user/current_focus_and_activities_list"
+
+  get "user/current_focus_and_activities"
+  post "user/current_focus_and_activities"
+
   get "user/change_home_page_photos"
   post "user/change_home_page_photos"
 

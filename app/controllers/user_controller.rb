@@ -202,4 +202,20 @@ class UserController < ApplicationController
     render :layout => false
   end
 
+  def current_focus_and_activities
+    if request.post?
+      CurrentFocusAndActivities.create(:title => params[:title],:uri => params[:uri],:voided => 0)
+      flash[:notice] = 'Successfully created activity'            
+    end
+    render :layout => false
+  end
+
+  def current_focus_and_activities_list
+    unless params[:id].blank?
+      CurrentFocusAndActivities.delete(params[:id])
+    end
+    @activities = CurrentFocusAndActivities.order('created_at DESC')
+    render :layout => false
+  end
+
 end

@@ -1,0 +1,36 @@
+<style>
+  table { 
+      color: #554433; 
+  }
+ 
+  #submitbtn {
+  }
+
+</style>
+
+<div id='news'>
+<%if flash[:notice]%>                                                           
+<font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
+<%end%> 
+<form action='current_focus_and_activities' method="post">
+<table>
+<tr>
+  <td>Title:</td><td>&nbsp;<input type='text' name='title' size = '40' /></td>
+</tr>
+<tr>
+  <td>Link:</td><td>&nbsp;<input type='text' name='uri' size = '40'/></td>
+</tr>
+</table>
+<table>
+  <td>
+    &nbsp;
+  </td>
+</tr>
+<tr>
+  <td>
+    <input type='submit' value = 'Submit' id = 'submitbtn' />
+  </td>
+</tr>
+</table>
+<input type='hidden' name = 'type' value = 'video' />
+</form>
