@@ -34,12 +34,11 @@ $('#gallery').ppGallery({
 
 */
 
-  function setInnerHtmlData(id,photo) {                                         
+  function setInnerHtmlData(id,photo,picture_id) {                                         
     link = document.getElementById(id);                                           
     link.innerHTML = '<img src="/images/pictures/' + photo + '" class="imgid_' + id + '">';
     <%unless User.current_user.blank? %>                                        
-      photo_id = "'" + id + "'";                                          
-      link.innerHTML += '<br /><a href="#" onclick="javascript:deletePicture(' + photo_id + ');"><span>delete</span></a>'; 
+      link.innerHTML += '<br /><a href="#" onclick="javascript:deletePicture(' + picture_id + ');"><span>delete</span></a>'; 
     <%end%>                                                                     
   }                                                                             
                                                                                 
@@ -69,7 +68,7 @@ $('#gallery').ppGallery({
     <%count = 1
     @pictures.map do | picture | %>                            
       <script>                                                                  
-        setInnerHtmlData("<%=count%>","<%=picture.uri%>");                 
+        setInnerHtmlData("<%=count%>","<%=picture.uri%>","<%=picture.id%>");                 
       </script>                                                                 
     <%count+=1
     end%>     
