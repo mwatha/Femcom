@@ -136,7 +136,8 @@ class UserController < ApplicationController
         photo = Photo.find(params[:id])
         `rm #{Rails.root}/public/images/pictures/#{photo.uri}`
         Photo.delete(params[:id])
-        if photo.album.blank?
+        if photo.album.pictures.blank?
+          Album.delete(photo.album.id)
           redirect_to :controller => :femcom, :action => :gallery and return
         else
           redirect_to :controller => :femcom, :action => :album,:id => photo.album.id and return
