@@ -137,16 +137,15 @@ class UserController < ApplicationController
         `rm #{Rails.root}/public/images/pictures/#{photo.uri}`
         Photo.delete(params[:id])
         if photo.album.blank?
-          redirect_to :controller => :femcom, :action => :gallery
+          redirect_to :controller => :femcom, :action => :gallery and return
         else
-          redirect_to :controller => :femcom, :action => :album,:id => photo.album.id
+          redirect_to :controller => :femcom, :action => :album,:id => photo.album.id and return
         end
-        return
       when 'delete_home_page_content'
         HomeContentPost.delete(params[:id])
         redirect_to '/user/admin' and return
     end
-    redirect_to :action => :blank
+    redirect_to :action => :blank and return
   end
 
   def edit_files
