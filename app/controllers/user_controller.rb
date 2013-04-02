@@ -33,6 +33,7 @@ class UserController < ApplicationController
     if request.post?
       News.create(:title => params[:title],:post => params[:content])
       flash[:notice] = 'Successfully posted.'            
+      redirect_to :action => :blank and return
     end
     render :layout => false
   end
