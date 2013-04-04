@@ -44,6 +44,10 @@ function InsertCodeInTextArea(textValue) {
       txtArea.focus();
     }
 }
+
+function submitForm() {
+  document.getElementById('main-form').submit();
+}
 </script>
 
 
@@ -58,7 +62,7 @@ function InsertCodeInTextArea(textValue) {
   </td>
 </tr>
 </table>
-<form action='create_news' method="post">
+<form action='create_news' method="post" id="main-form">
 <table>
 <tr>
   <td>Title:</td><td>&nbsp;<input type='text' name='title' size = '40'/></td>
@@ -72,7 +76,7 @@ function InsertCodeInTextArea(textValue) {
 </tr>
 <tr>
   <td>
-    <input type='submit' value = 'Submit' id = 'submitbtn' />
+    <input type='button' value = 'Submit' id = 'submitbtn' onclick="submitForm();" />
   </td>
 </tr>
 </table>

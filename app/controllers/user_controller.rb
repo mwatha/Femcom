@@ -34,8 +34,6 @@ class UserController < ApplicationController
     if request.post?
       News.create(:title => params[:title],:post => params[:content])
       flash[:notice] = 'Successfully posted.'            
-      #redirect_to :controller => :home, :action => :blank and return
-      redirect_to "/" and return
     end
     render :layout => false
   end
@@ -62,9 +60,7 @@ class UserController < ApplicationController
       Event.create(:title => params[:title],:venue => params[:venue],
         :description => params[:description],:date => params[:date])
       flash[:notice] = 'Event successfully created.'
-      redirect_to "/" and return
     end
-    @next_appointment_date = Date.today
     render :layout => false
   end
 
@@ -241,7 +237,6 @@ class UserController < ApplicationController
     if request.post?
       Services.create(:title => params[:title],:post => params[:content])
       flash[:notice] = 'Successfully posted.'            
-      redirect_to :action => :blank and return
     end
     render :layout => false
   end
@@ -257,7 +252,8 @@ class UserController < ApplicationController
       content.title = params[:title]
       content.post = params[:post]
       content.save
-      redirect_to :root, :status => :moved_permanently
+      flash[:notice] = 'Successfully updated.'            
+      redirect_to '/user/services_list' and return
       return
     else
       @service = Services.find(params[:id])

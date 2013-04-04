@@ -25,6 +25,10 @@ function InsertCodeInTextArea(textValue) {
   setImage(textValue); 
 }
   
+
+function submitForm() {                                                         
+ document.getElementById('main-form').submit();                                
+} 
 </script>
 
 <div id='news'>
@@ -38,7 +42,7 @@ function InsertCodeInTextArea(textValue) {
 </table>
 
 
-<form action='services_edit' method="post">
+<form action='services_edit' method="post" id="main-form">
 <table>
 <tr>
   <td>Title:</td><td>&nbsp;<input type='text' name='title' size = '30' value="<%=@service.title%>" /></td>
@@ -57,7 +61,7 @@ function InsertCodeInTextArea(textValue) {
 </tr>
 <tr>
   <td>
-    <input type='submit' value = 'Update' id = 'submitbtn' />
+    <input type='button' value = 'Update' id = 'submitbtn' onclick="submitForm();" />
     &nbsp;&nbsp;<input type='button' value = 'Delete' id = 'deletebtn' onclick="javascript:deletePost();" />
   </td>
 </tr>

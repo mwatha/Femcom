@@ -28,13 +28,18 @@ function setImage(img) {
 function InsertCodeInTextArea(textValue) {                                      
   setImage(textValue);                                                          
 }            
-                   
+
+function submitForm() {                                                         
+  document.getElementById('event').submit();                                
+}                    
 </script>    
                                                                    
 </head>                                                                         
 <body>                                                                          
                                                                                 
  <div style="border-style:solid;border-width:1px 0px 0px 0px;">                 
+  <font id="flash_notice" style="color: green"><%= flash[:notice] %></font>
+
   <table id="ajax-image-uploader"> 
    <tr>                                                                        
       <td colspan="2">                                                          
@@ -64,7 +69,7 @@ function InsertCodeInTextArea(textValue) {
       <td colspan="2"><%= text_area_tag (:description, nil, :rows => '10', :id => 'text-area',:cols => '50') %></td>
     </tr>                                                                       
     <tr>                                                                        
-      <td colspan="2"><input type="submit" value="Create"</td>                  
+      <td colspan="2"><input type="button" onclick="submitForm();" value="Create"</td>                  
     </tr>                                                                       
   </table>                                                                      
   </form>                                                                       
