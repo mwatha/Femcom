@@ -29,6 +29,7 @@ class FemcomController < ApplicationController
   end
 
   def services
+    @contents = Services.order("created_at DESC")
     @page_heading = "Services"
   end
 

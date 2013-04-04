@@ -83,6 +83,17 @@
 
   #next  { float: right; }
 
+  #ajax-image-uploader td {
+    text-align: left;
+    background-color: white;
+    border-style: none;
+  }
+
+  #ajax-image-uploader {
+    width: 100%;
+  }
+
+  
 </style>
 
 
@@ -402,6 +413,16 @@
     return month[month_num];
   }
 
+
+function setImage(img) {                                                        
+  textarea = document.getElementById("text-area");                              
+  textarea.value += img;                                                        
+}                                                                               
+                                                                                
+                                                                                
+function InsertCodeInTextArea(textValue) {                                      
+  setImage(textValue);                                                        
+}
 </script>
 
 
@@ -424,6 +445,14 @@
 </div>
 
  <div style="border-style:solid;border-width:1px 0px 0px 0px;">
+  <table id="ajax-image-uploader">                                                                         
+    <tr>                                                                            
+      <td colspan="2">                                                              
+        <%= render 'upload' %>                                                      
+      </td>                                                                         
+    </tr>                                                                           
+  </table> 
+
   <form action ="create_events" method="post" id = "event">
   <table id = 'event-description' style="width:100%;">                                                      
     <tr>
@@ -436,10 +465,11 @@
       <td colspan="2">Description:</td>
     </tr>
     <tr>
-      <td colspan="2"><%= text_area_tag (:description, nil, :size => '50x10') %></td>
+      <td colspan="2"><%= text_area_tag (:description, nil, :rows => '10',
+          :id => 'text-area',:cols => '100%') %></td>
     </tr>
     <tr>
-      <td colspan="2"><button onclick="javascript:submitForm();" style="width: 300px;">Create event</button></td>
+      <td colspan="2"><button onclick="javascript:submitForm();" style="width: 100%;">Create event</button></td>
     </tr>
   </table>
   </form>

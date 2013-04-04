@@ -47,8 +47,14 @@ body {
      document.getElementById('title').innerHTML="Current focus and activities";                           
      element.src = '/user/current_focus_and_activities';                                     
    }else if (page == 'current-focus-delete') {                                                 
-     document.getElementById('title').innerHTML="Current focus and activities (Delete)";                           
+     document.getElementById('title').innerHTML="Current focus and activities (delete)";                           
      element.src = '/user/current_focus_and_activities_list';                                     
+   }else if (page == 'services') {                                                 
+     document.getElementById('title').innerHTML="Services - create";                           
+     element.src = '/user/services_create';                                     
+   }else if (page == 'services-edit') {                                                 
+     document.getElementById('title').innerHTML="Services - edit";                           
+     element.src = '/user/services_list';                                     
    }                                                                            
   }                                                                             
                                                                                 
@@ -76,7 +82,11 @@ body {
 <div>.................................&nbsp;<a href="javascript:adminPage('change-home-page-photos');">Change home page photos</a></div>
 <div>.................................&nbsp;
   <a href="javascript:adminPage('current-focus');">Add current focus & activities</a>
-  <a href="javascript:adminPage('current-focus-delete');">(Delete)</a>
+  <a href="javascript:adminPage('current-focus-delete');">(delete)</a>
+</div>
+<div>.................................&nbsp;
+  <a href="javascript:adminPage('services');">Change services content</a>
+  <a href="javascript:adminPage('services-edit');">(edit)</a>
 </div>
 <hr></hr>                                                                       
                                                                                 

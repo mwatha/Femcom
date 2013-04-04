@@ -1,5 +1,14 @@
 Comesa::Application.routes.draw do
 
+  get "user/services_edit"
+  post "user/services_edit"
+
+  get "user/services_list"
+  post "user/services_list"
+
+  get "user/services_create"
+  post "user/services_create"
+
   get "user/upload"
   post "user/upload"
 

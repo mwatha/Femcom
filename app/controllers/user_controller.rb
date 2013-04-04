@@ -23,6 +23,7 @@ class UserController < ApplicationController
 
   def admin
     @page_heading = 'Administartion'
+    #render :layout => false
   end
 
   def blank
@@ -145,6 +146,9 @@ class UserController < ApplicationController
       when 'delete_home_page_content'
         HomeContentPost.delete(params[:id])
         redirect_to '/user/admin' and return
+      when 'delete_services_post'
+        Services.delete(params[:id])
+        redirect_to '/user/blank' and return
     end
     redirect_to :action => :blank and return
   end
@@ -228,6 +232,34 @@ class UserController < ApplicationController
 
   def upload
     @img = Photo.news(params[:upload])
+    render :layout => false
+  end
+
+  def services_create
+    if request.post?
+      Services.create(:title => params[:title],:post => params[:content])
+      flash[:notice] = 'Successfully posted.'            
+      redirect_to :action => :blank and return
+    end
+    render :layout => false
+  end
+
+  def services_list
+    @list = Services.order("created_at DESC")
+    render :layout => false
+  end
+
+  def services_edit
+    if request.post?
+      content = Services.find(params[:id])
+      content.title = params[:title]
+      content.post = params[:post]
+      content.save
+      redirect_to '/user/services_list'
+      return
+    else
+      @service = Services.find(params[:id])
+    end
     render :layout => false
   end
 

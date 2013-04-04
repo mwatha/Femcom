@@ -1,25 +1,11 @@
 
-<div>
-  <font color="#1D4A75" style="font-size:14px;font-weight:bold;">COMESA’S HOLISTIC CLUSTER APPROACH</font>
-  <hr style="background-color:#1D4A75;height:3px;"></hr>
-</div>
-
-<p>FEMCOM adapts and fosters COMESA’s Holistic Cluster Approach, which is designed as a means of enhancing collective efficiency, whereby enterprises of similar sectors or production interests can collectively stand up to large firms, particularly by receiving holistic facilitations through FEMCOM-COMESA. Such holistic facilitations include provision of infrastructure, technical assistance and training programmes.</p>
-
-<p>By doing so, FEMCOM enables women in small-medium enterprises to come together in clusters, holistically minimize their costs and, ultimately, increasing value-added goods and services in the regional and international markets. Furthermore, the effectiveness of cluster productions have previously been found in countries, such as Brazil, China, Indonesia and Taiwan, resulting the basis of their economies today. Comesa`s Holistic Cluster Approach</p>
-
-<p>With collaboration of each FEMCOM chapter's focal point organizations as well as COMESA, effective clusters are expected to be in formation and operation in the following sectors:</p>
-<ol>
-<li>Textile Sector D.R. Congo, Egypt, Ethiopia, Kenya, Mauritius, Uganda</li>
-<li>Handicrafts Sector - Ethiopia, Madagascar, Rwanda, Swaziland, Uganda</li>
-<li>Services/Tourism Sector - Djibouti, Egypt, Kenya, Madagascar, Mauritius, Seychelles, Sudan, Swaziland, Zambia, Zimbabwe.</li>
-<li>Mining Sector - D.R. Congo, Malawi, Zambia, Zimbabwe.</li>
-<li>Leather Sector - Djibouti, Eritrea (sheep rearing), Ethiopia, Sudan.</li>
-<li>Horticulture Sector - Eritrea, Malawi, Rwanda</li>
-<li>Agricultural Manufacture Sector</li>
-</ol>
-
-<p>Burundi (dairy farming), Comoros (herbal medicine and spices), D.R. Congo (cassava and timber), Djibouti (salt), Egypt, Eritrea (poultry and animal feed), Kenya (poultry, dairy farming and floriculture), Libya, Madagascar (vanilla), Malawi (dairy farming, poultry, piggery, bee-keeping), Rwanda (coffee, tea and timber), Seychelles (fisheries), Sudan (herbal medicine), Swaziland, Uganda (specifically processed fruit juice, wine, mushroom, poultry and other dairy farming), Zambia (specifically poultry, bee-keeping) Zimbabwe (dairy farming, poultry, bee-keeping)</p>
-
-<p>Particular emphasis has been placed on fostering cluster productions in 'cottons' and 'cassava' sectors due to several factors: 1. Higher demand in regional and international trade, Already existing higher profiling of women, Higher efficiency in minimizing costs and increasing productivity, More employment creations and Increased exports of labor absorbing goods</p>
+<%(@contents || []).each do |content|%>                                         
+<div>                                                                           
+  <font color="#1D4A75" style="font-weight:bold;font-size:13px;"><%=content.title.upcase%></font>
+  <hr style="background-color:#1D4A75;height:3px;"></hr>                        
+</div>                                                                          
+                                                                                
+<%=render(:inline => print_news(content.post))%>                             
+<br /><br />                                                                    
+<%end%> 
 
