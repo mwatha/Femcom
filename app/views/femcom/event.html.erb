@@ -1,9 +1,11 @@
+
 <style type="text/css">
 
 .thumb {
     width: 75px;
     height: 75px;
   }
+
 
  #events {
    border-style: solid;
@@ -22,26 +24,16 @@
 </style>
 
 <div>
-  <!--font color="#1D4A75" style="font-size:14px;font-weight:bold;">DOWNLOADS (pdf)</font-->
-  <font color="#1D4A75" style="font-size:14px;font-weight:bold;"><%=@event.title%></font>
+  <font color="#1D4A75" style="font-size:12px;font-weight:bold;"><%=@event.title%></font>
   <hr style="background-color:#1D4A75;height:3px;"></hr>
 </div>
 
 
 <p>
 
- <table class="display" class="display" id="events" style="width:99%;font-size:11px;">
-    <thead>                                                                     
-      <tr>                                                                      
-        <th>Venue:&nbsp;<%=@event.venue%>&nbsp;(<%=@event.date.strftime('%d, %B %Y')%>)</th>                                                          
-      </tr>                                                                     
-    </thead>                                                                    
-    <tbody>                                                                     
-      <tr class="gradeX">                                                       
-        <td class="center" width = "100%"><%=@event.description%></td>                                
-      </tr>                                                                     
-    </tbody>                                                                    
-  </table>  
+<%unless @event.description.blank?%>                                                  
+  <%=render(:inline => print_news(@event.description))%>                              
+<%end%>
 
 </p>
 

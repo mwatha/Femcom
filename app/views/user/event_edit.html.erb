@@ -76,7 +76,7 @@
       <tr class="gradeX">
         <td class="center"><%=event.title%></td>
         <td class="center"><%=event.venue%></td>
-        <td class="center" width="140"><%=event.date.strftime("%A, %d %b %Y")%></td>
+        <td class="center" width="140"><%=event.date.strftime("%A, %d %b %Y") rescue nil%></td>
         <td style="text-align:center;width:50px;" class="center"><input class="cboxes" id="<%=event.id%>" type="checkbox" /></td>
       </tr>
      <%end%>

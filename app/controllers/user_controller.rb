@@ -255,7 +255,7 @@ class UserController < ApplicationController
       content.title = params[:title]
       content.post = params[:post]
       content.save
-      redirect_to '/user/services_list'
+      redirect_to :root, :status => :moved_permanently
       return
     else
       @service = Services.find(params[:id])
