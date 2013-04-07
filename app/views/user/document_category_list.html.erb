@@ -1,0 +1,81 @@
+<%= javascript_include_tag "prototype"%>
+
+<%#= stylesheet_link_tag "demo_table" %>
+<%= stylesheet_link_tag "demo_table_jui" %>
+<%= stylesheet_link_tag "demo_page" %>
+
+<%=javascript_include_tag "jquery_data_table" %>
+<%=javascript_include_tag "jquery.dataTables.min" %>
+
+<script>
+  function dataT(){
+    $('#events').dataTable({ "aaSorting": [] });
+  }
+
+  function edit(id) {
+    document.location = "/user/delete_post?id=" + id + "&type=delete_document_category";
+  }
+</script>
+
+
+<style type="text/css">
+
+.thumb {
+    width: 75px;
+    height: 75px;
+  }
+
+
+ #events {
+   border-style: solid;
+   border-width: 0px;
+ }
+
+
+
+ #events td , th{
+   border-style: solid;
+   border-width: 0px;
+   text-align: justify;
+ }
+
+
+</style>
+
+<div>
+  <font color="#1D4A75" style="font-size:14px;font-weight:bold;">DOCUMENT - CATEGORIES</font>
+  <hr style="background-color:#1D4A75;height:3px;"></hr>
+</div>
+
+
+<p>                                                                             
+
+<font id="flash_notice" style="color: green"><%= flash[:notice] %></font>
+                                                                                
+<table class="display" class="display" id="events" style="width:99%;font-size:11px;">
+<thead>                                                                         
+  <tr>                                                                          
+    <th>Name</th>                                                           
+    <th>Description</th>                                                           
+    <th>Date</th>                                                           
+    <th>&nbsp;</th>                                                        
+  </tr>                                                                         
+</thead>                                                                        
+<tbody>                                                                         
+ <%(@categories || []).each do |cat|%>                                               
+  <tr class="gradeX">                                                           
+    <td class="center" width='300'><%=cat.name%></td>
+    <td class="center"><%=cat.description[0..40]%> ....</td>                                
+    <td class="center"><%=cat.created_at.strftime('%A, %d %b %Y')%></td>                                
+    <td class="center"><input type="checkbox" onclick="javascript:edit('<%=cat.id%>')" /></td>
+  </tr>                                                                         
+ <%end%>                                                                        
+</tbody>                                                                        
+</table>                                                                        
+                                                                                
+</p>  
+<input type="button" value="Create" style="width:100%" onclick="location='/user/create_document_category'" />
+
+<script>
+  dataT();
+</script>

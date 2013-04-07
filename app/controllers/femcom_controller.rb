@@ -15,7 +15,12 @@ class FemcomController < ApplicationController
   end
 
   def documents
-    @documents = Document.order("created_at DESC")
+    documents = Document.order("created_at DESC")
+    @categories = []
+    (documents || []).each do |doc|
+      @categories << doc.document_category 
+    end
+    @categories = @categories.uniq rescue []
     @page_heading = 'Documents (pdf)'
   end
 
@@ -58,4 +63,10 @@ class FemcomController < ApplicationController
     @event = Event.find(params[:id])
     @page_heading = @event.title
   end
+
+  def documents_by_category
+    @category = DocumentCategory.find(params[:id])
+    @documents = @category.documents
+  end
+
 end

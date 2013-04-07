@@ -1,5 +1,13 @@
 Comesa::Application.routes.draw do
 
+  get "femcom/documents_by_category"
+
+  get "user/create_document_category"
+  post "user/create_document_category"
+
+  get "user/document_category_list"
+  post "user/document_category_list"
+
   get "user/services_edit"
   post "user/services_edit"
 

@@ -1,7 +1,8 @@
 class Document < ActiveRecord::Base
   set_table_name :document
+  belongs_to :document_category, :class_name => 'DocumentCategory', :foreign_key => 'category'
 
-  def self.upload(title,upload)
+  def self.upload(title,upload,category)
     name =  upload['datafile'].original_filename                            
     file_extension = name[name.rindex(".") .. name.length].strip.chomp
     #return false unless self.pdf?(file_extension)
@@ -13,6 +14,7 @@ class Document < ActiveRecord::Base
     File.open(path, "wb") { |f| f.write(upload['datafile'].read) }              
     document = self.new()
     document.title = title
+    document.category = category
     document.uri = 'pdf/' + name
     document.save
   end

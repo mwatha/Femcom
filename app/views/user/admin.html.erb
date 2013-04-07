@@ -55,6 +55,9 @@ body {
    }else if (page == 'services-edit') {                                                 
      document.getElementById('title').innerHTML="Services - edit";                           
      element.src = '/user/services_list';                                     
+   }else if (page == 'files-category-list') {                                                 
+     document.getElementById('title').innerHTML="Document - categories";                           
+     element.src = '/user/document_category_list';                                     
    }                                                                            
   }                                                                             
                                                                                 
@@ -73,7 +76,9 @@ body {
 <div>.................................&nbsp;<a href="javascript:adminPage('news');">Create news</a>&nbsp;&nbsp;
 <a href="javascript:adminPage('news-edit');">(edit)</a></div>
 <div>.................................&nbsp;<a href="javascript:adminPage('files');">Upload pdf</a>&nbsp;&nbsp;
-<a href="javascript:adminPage('files-edit');">(edit)</a></div>
+<a href="javascript:adminPage('files-edit');">(edit)</a>&nbsp;
+<a href="javascript:adminPage('files-category-list');">(Document categories)</a>
+</div>
 <div>.................................&nbsp;<a href="javascript:adminPage('event');">Create event</a>&nbsp;&nbsp;
 <a href="javascript:adminPage('event-edit');">(edit)</a></div>
 <div>.................................&nbsp;<a href="javascript:adminPage('new_photo');">Create photo album</a></div>

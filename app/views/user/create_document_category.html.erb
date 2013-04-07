@@ -1,0 +1,53 @@
+<html>
+<head>
+<title></title>
+
+<script type="text/javascript">                                                 
+                                                                                
+function submitForm() {                                                         
+  document.getElementById('main-form').submit();                                
+}                                                                               
+                                                                                
+function validatePost() {                                                       
+ return false;                                                                  
+}                                                                               
+</script> 
+
+</head>
+
+
+<body>
+
+<%if flash[:notice]%>                                                           
+  <font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
+<%end%>
+
+
+  <div id="content">
+
+    <form action="create_document_category" method="post" id="main-form">
+      <table>
+        <tr>
+          <td>Name:&nbsp;<input type='text' name='name' size = '40'/></td>
+        </tr>
+        <tr>
+          <td><textarea id="post" name="post" class="widgEditor nothing" cols="100%"></textarea></td>
+        </tr>
+        <tr>
+          <td><input type="submit" value="Create"  onclick="submitForm();" /></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+</body>
+
+
+
+
+
+
+
+
+
+</html>

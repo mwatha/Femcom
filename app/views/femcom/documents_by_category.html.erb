@@ -16,9 +16,6 @@
     document.location = "/femcom/download?uri=" + uri;
   }
 
-  function showDocuments(id) {
-    document.location = "/femcom/documents_by_category?id=" + id;
-  }
 </script>
 
 
@@ -52,7 +49,7 @@
 
 <div>
   <!--font color="#1D4A75" style="font-size:14px;font-weight:bold;">DOWNLOADS (pdf)</font-->
-  <font color="#1D4A75" style="font-size:14px;font-weight:bold;">DOWNLOADS</font>
+  <font color="#1D4A75" style="font-size:14px;font-weight:bold;">DOWNLOADS (<%=@category.name%>)</font>
   <hr style="background-color:#1D4A75;height:3px;"></hr>
 </div>
 
@@ -62,23 +59,21 @@
  <table class="display" class="display" id="events" style="width:99%;font-size:11px;">
     <thead>                                                                     
       <tr>                                                                      
-        <th>&nbsp;</th>                                                         
-        <th>&nbsp;</th>                                                         
+        <th>Title</th>                                                         
+        <th>Date uploaded</th>                                                         
         <th>&nbsp;</th>                                                         
       </tr>                                                                     
     </thead>                                                                    
     <tbody>                                                                     
-     <%(@categories || []).each do |category|%>                                     
+     <%(@documents || []).each do |document|%>                                     
       <tr class="gradeX">                                                       
-        <td class="center" width = "10%"><%= image_tag("folder.png" , :border => 0 ,:width => 48 ,:height =>48)%></td>                                
-        <td style="vertical-align: top;" class="center" width = "80%">
-          <b><%=category.name rescue ''%></b>
-          <br/>
-          <br/>
-          <%=category.description rescue ''%>
+        <td style="vertical-align: top;" class="center" width = "70%">
+          <%=document.title rescue ''%>
         </td>                                
-        <td class="center" style="text-align:center;" width = "10%">
-          <a href="#" onclick="showDocuments('<%=category.id%>');">View</a></td>                                
+        <td class="center" style="text-align:center;" width = "30%">
+          <%=document.created_at.strftime('%A, %d %B %Y') rescue ''%>
+        </td>                                
+        <td class="center" style="text-align:center;" width = "10"><a href="javascript:downLoad('<%=document.uri%>');">Download</a></td>
       </tr>                                                                     
      <%end%>                                                                    
     </tbody>                                                                    

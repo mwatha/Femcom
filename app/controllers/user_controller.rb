@@ -40,9 +40,10 @@ class UserController < ApplicationController
 
   def upload_pdf
     if request.post?
-      Document.upload(params[:title],params[:upload])
+      Document.upload(params[:title],params[:upload],params[:category])
       flash[:notice] = 'File was successfully uploaded.'
     end
+    @categories = DocumentCategory.order("created_at DESC")
     render :layout => false
   end
 
@@ -149,6 +150,9 @@ class UserController < ApplicationController
       when 'delete_services_post'
         Services.delete(params[:id])
         redirect_to '/user/blank' and return
+      when 'delete_document_category'
+        DocumentCategory.delete(params[:id])
+        redirect_to '/user/document_category_list' and return
     end
     redirect_to :action => :blank and return
   end
@@ -265,6 +269,20 @@ class UserController < ApplicationController
 
   def upload_post_images
     @img = Photo.news(params[:upload])
+    render :layout => false
+  end
+
+  def document_category_list
+    @categories = DocumentCategory.order("created_at DESC")
+    render :layout => false
+  end
+
+  def create_document_category
+    if request.post?
+      DocumentCategory.create(:name => params[:name],:description => params[:post])
+      flash[:notice] = 'Successfully created.'            
+      redirect_to '/user/document_category_list' and return
+    end
     render :layout => false
   end
 

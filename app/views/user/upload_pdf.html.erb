@@ -16,6 +16,16 @@
 <form action='upload_pdf' method="post" enctype="multipart/form-data">
 <table>
 <tr>
+  <td>Category:</td><td>&nbsp;
+    <select name="category">
+      <option>&nbsp;</option>
+      <%(@categories || []).each do |cat|%>
+        <option value="<%=cat.id%>"><%=cat.name%></option>
+      <%end%>
+    </select>
+  </td>
+</tr>
+<tr>
   <td>Title:</td><td>&nbsp;<input type='text' name='title' size = '40' /></td>
 </tr>
 <tr>
