@@ -8,7 +8,9 @@ module ApplicationHelper
   end
 
   def print_news(str)                                                           
-    str.gsub("\n", "<br />")                                                    
+    #str.gsub("\n", "")                                                    
+    #str.gsub("\n", "<br />")                                                    
+    str.gsub("\n", "").gsub("<p>","<br>").gsub("</p>","</br>")
   end 
 
   def current_focus_and_activities        

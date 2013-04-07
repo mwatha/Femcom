@@ -23,7 +23,7 @@ class UserController < ApplicationController
 
   def admin
     @page_heading = 'Administartion'
-    #render :layout => false
+    render :layout => false
   end
 
   def blank
@@ -32,7 +32,7 @@ class UserController < ApplicationController
 
   def create_news
     if request.post?
-      News.create(:title => params[:title],:post => params[:content])
+      News.create(:title => params[:title],:post => params[:post])
       flash[:notice] = 'Successfully posted.'            
     end
     render :layout => false
@@ -58,7 +58,7 @@ class UserController < ApplicationController
   def create_events
     if request.post?
       Event.create(:title => params[:title],:venue => params[:venue],
-        :description => params[:description],:date => params[:date])
+        :description => params[:post],:date => params[:date])
       flash[:notice] = 'Event successfully created.'
     end
     render :layout => false
@@ -126,11 +126,13 @@ class UserController < ApplicationController
         (params[:ids].split(',') || []).each do |id|
           Event.delete(id)
         end
+        redirect_to :action => :event_edit and return
       when 'update_news_post'
         post = News.find(params[:id])
         post.title = params[:title]
-        post.post = params[:content]
+        post.post = params[:post]
         post.save
+        redirect_to :action => :edit_news and return
       when 'photo'
         photo = Photo.find(params[:id])
         `rm #{Rails.root}/public/images/pictures/#{photo.uri}`
@@ -179,7 +181,7 @@ class UserController < ApplicationController
 
   def create_home_page_content
     if request.post?
-      HomeContentPost.create(:title => params[:title],:content => params[:content])
+      HomeContentPost.create(:title => params[:title],:content => params[:post])
       flash[:notice] = 'Successfully posted.'            
     end
     render :layout => false
@@ -235,7 +237,7 @@ class UserController < ApplicationController
 
   def services_create
     if request.post?
-      Services.create(:title => params[:title],:post => params[:content])
+      Services.create(:title => params[:title],:post => params[:post])
       flash[:notice] = 'Successfully posted.'            
     end
     render :layout => false
@@ -261,11 +263,16 @@ class UserController < ApplicationController
     render :layout => false
   end
 
+  def upload_post_images
+    @img = Photo.news(params[:upload])
+    render :layout => false
+  end
+
   private
 
   def wrap_ajax_response
     response.content_type = nil
-    response.body = "<img src='/images/news/#{@img}' style='width: 99%; height: 300px;' />"
+    response.body = "<img src='/images/news/#{@img}' width=99% height=300 />"
   end
 
 end

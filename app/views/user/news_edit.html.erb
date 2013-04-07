@@ -1,47 +1,82 @@
-<style>
-  table { 
-      color: #554433; 
-  }
- 
-  #submitbtn {
-  }
+<html>
+<head>
+<title></title>
 
-</style>
+<%= javascript_include_tag "widgEditor" %>                                      
+                                                                                
+<%= stylesheet_link_tag "info" %>                                               
+<%= stylesheet_link_tag "xmain" %>                                              
+<%= stylesheet_link_tag "widgEditor" %>                                         
+                                        
 
 
-<script>
+<script type="text/javascript">                                                 
+                                                                                
+function setImage(img) {                                                        
+  addIMG(img)
+}                                                                               
+                                                                                
+                                                                                
+function InsertCodeInTextArea(textValue) {                                      
+  setImage(textValue);                                                          
+}                                                                               
+                                                                                
+function submitForm() {                                                         
+  document.getElementById('main-form').submit();                                
+}                                                                               
+                                                                                
+function validatePost() {                                                       
+ return false;                                                                  
+}                                                                               
 
-  function deletePost() {
+ function deletePost() {                                                       
     document.location = "/user/delete_post?type=delete_news_post&id=<%=@news.id%>";
-  }
+  } 
+</script> 
 
-</script>
+</head>
 
-<div id='news'>
-<form action='delete_post' method="post" id = "edit_news">
-<table>
-<tr>
-  <td>News Head-line:</td><td>&nbsp;<input type='text' name='title' size = '30' value="<%=@news.title%>" /></td>
-</tr>
-<tr>
-  <td colspan="2">Body:</td>
-</tr>
-</table>
-<table>
-<tr>
-  <td>
-    <textarea cols='70' rows='15' name='content'>
-       <%=render(:inline => @news.post)%>
-    </textarea>
-  </td>
-</tr>
-<tr>
-  <td>
-    <input type='submit' value = 'Update' id = 'submitbtn' />
-    &nbsp;&nbsp;<input type='button' value = 'Delete' id = 'deletebtn' onclick="javascript:deletePost();" />
-  </td>
-</tr>
-</table>
-<input type='hidden' name = 'id' value = '<%=@news.id%>' />
-<input type='hidden' name = 'type' value = 'update_news_post' />
-</form>
+
+<body>
+
+<%if flash[:notice]%>                                                           
+  <font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
+<%end%>
+
+
+  <div id="content">
+    <table>                                                                         
+      <tr>                                                                            
+        <td colspan="2">                                                              
+          <%= render 'upload' %>                                                      
+        </td>                                                                         
+      </tr>                                                                           
+    </table>
+
+    <form action="delete_post" method="post" id="main-form">
+      <fieldset>
+        Title:&nbsp;<input type='text' name='title' size = '40' value="<%=@news.title%>" />                   
+        <textarea id="post" name="post" class="widgEditor nothing">
+          <%=render(:inline => (@news.post || ''))%>
+        </textarea>
+      </fieldset>
+      <fieldset class="submit">
+        <input type="submit" value="Update"  onclick="submitForm();" />
+        &nbsp;&nbsp;<input type='button' value = 'Delete' id = 'deletebtn' onclick="javascript:deletePost();" />
+      </fieldset>
+      <input type='hidden' name = 'id' value = '<%=@news.id%>' />                     
+      <input type='hidden' name = 'type' value = 'update_news_post' /> 
+    </form>
+  </div>
+
+</body>
+
+
+
+
+
+
+
+
+
+</html>

@@ -1,84 +1,73 @@
-<style>
-  table { 
-      color: #554433; 
-  }
- 
-  #submitbtn {
-  }
+<html>
+<head>
+<title></title>
 
-</style>                                                                        
+<%= javascript_include_tag "widgEditor" %>                                      
                                                                                 
-<script type="text/javascript">
+<%= stylesheet_link_tag "info" %>                                               
+<%= stylesheet_link_tag "xmain" %>                                              
+<%= stylesheet_link_tag "widgEditor" %>                                         
+                                        
 
-function setImage(img) {
-  textarea = document.getElementById("text-area");
-  textarea.value += img;
-}
 
+<script type="text/javascript">                                                 
                                                                                 
-function InsertCodeInTextArea(textValue) {
-    setImage(textValue);
-    return
-    //Get textArea HTML control 
-    var txtArea = document.getElementById("text-area");
-    
-    //IE
-    if (document.selection) {
-        txtArea.focus();
-        var sel = document.selection.createRange();
-        sel.text = textValue;
-        return;
-    }
-    //Firefox, chrome, mozilla
-    else if (txtArea.selectionStart || txtArea.selectionStart == '0') {
-        var startPos = txtArea.selectionStart;
-        var endPos = txtArea.selectionEnd;
-        var scrollTop = txtArea.scrollTop;
-        txtArea.value = txtArea.value.substring(0, startPos) + textValue + txtArea.value.substring(endPos, txtArea.value.length);
-        txtArea.focus();
-        txtArea.selectionStart = startPos + textValue.length;
-        txtArea.selectionEnd = startPos + textValue.length;
-    }
-    else {
-      txtArea.value += textArea.value;
-      txtArea.focus();
-    }
-}
+function setImage(img) {                                                        
+  addIMG(img)
+}                                                                               
+                                                                                
+                                                                                
+function InsertCodeInTextArea(textValue) {                                      
+  setImage(textValue);                                                          
+}                                                                               
+                                                                                
+function submitForm() {                                                         
+  document.getElementById('main-form').submit();                                
+}                                                                               
+                                                                                
+function validatePost() {                                                       
+ return false;                                                                  
+}                                                                               
+</script> 
 
-function submitForm() {
-  document.getElementById('main-form').submit();
-}
-</script>
+</head>
 
 
-<div id='news'>
+<body>
+
 <%if flash[:notice]%>                                                           
-<font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
+  <font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
 <%end%>
-<table>
-<tr>
-  <td colspan="2">
-    <%= render 'upload' %>
-  </td>
-</tr>
-</table>
-<form action='create_news' method="post" id="main-form">
-<table>
-<tr>
-  <td>Title:</td><td>&nbsp;<input type='text' name='title' size = '40'/></td>
-</tr>
-</table>
-<table>
-<tr>
-  <td>
-    <textarea cols='70' rows='15' name='content' id="text-area"></textarea>
-  </td>
-</tr>
-<tr>
-  <td>
-    <input type='button' value = 'Submit' id = 'submitbtn' onclick="submitForm();" />
-  </td>
-</tr>
-</table>
-<input type='hidden' name = 'type' value = 'news' />
-</form>
+
+
+  <div id="content">
+    <table>                                                                         
+      <tr>                                                                            
+        <td colspan="2">                                                              
+          <%= render 'upload' %>                                                      
+        </td>                                                                         
+      </tr>                                                                           
+    </table>
+
+    <form action="create_news" method="post" id="main-form">
+      <fieldset>
+        Title:&nbsp;<input type='text' name='title' size = '40'/>                   
+        <textarea id="post" name="post" class="widgEditor nothing"></textarea>
+      </fieldset>
+      <fieldset class="submit">
+        <input type="submit" value="Post"  onclick="submitForm();" />
+      </fieldset>
+    </form>
+  </div>
+
+</body>
+
+
+
+
+
+
+
+
+
+</html>

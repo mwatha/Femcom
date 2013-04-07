@@ -12,8 +12,8 @@
 <script>
 
 $(function() {
-  $('form').ajaxForm({dataType: 'script'});
-  $("form").ajaxForm({target: '#preview'});
+  $('#uploader').ajaxForm({dataType: 'script'});
+  $("#uploader").ajaxForm({target: '#preview'});
 });
 
 function addUploadedImage() {
@@ -26,7 +26,7 @@ function addUploadedImage() {
 
 </script>
 
-<%= form_for 'myform', :url => 'upload', :html => {:multipart => true} do |f| %>
+<%= form_for 'myform', :url => 'upload', :html => {:multipart => true,:id => 'uploader'} do |f| %>
   <%=hidden_field_tag :format, 'js' %>
   <%= file_field 'upload', 'datafile' %>&nbsp;<%=f.submit "Add image"%>
 <%end%>

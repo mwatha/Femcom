@@ -1,81 +1,101 @@
-<html lang="en">                                                                
-<head>                                                                          
-<meta charset="utf-7" />                                                        
-<%= stylesheet_link_tag "jquery-ui" %>                                          
+<!-- ............................................... -->
+
+
+
+
+
+
+<html>
+<head>
+<title></title>
+
+<%= javascript_include_tag "widgEditor" %>                                      
 <%= javascript_include_tag "jquery-1.9.1" %>                                    
 <%= javascript_include_tag "jquery-ui" %>                                       
-<%= stylesheet_link_tag "calender_style" %>                                     
-
-<style>
-.ui-datepicker-next, .ui-datepicker-prev {
-  background-color: slategrey;
-}
-
-</style>
                                                                                 
-<script>                                                                        
+<%= stylesheet_link_tag "info" %>                                               
+<%= stylesheet_link_tag "xmain" %>                                              
+<%= stylesheet_link_tag "widgEditor" %>                                         
+<%= stylesheet_link_tag "jquery-ui" %>                                          
+<%= stylesheet_link_tag "calender_style" %>                                     
+                                                                                
+<style>                                                                         
+.ui-datepicker-next, .ui-datepicker-prev {                                      
+  background-color: slategrey;                                                  
+}                                                                               
+                                                                                
+</style>                                                                        
+                                                                                
+<script type="text/javascript">                                                 
+                                                                                
 $(function() {                                                                  
 $( "#datepicker" ).datepicker();                                                
-});                                    
-
+});                                         
 
 function setImage(img) {                                                        
-  textarea = document.getElementById("text-area");                              
-  textarea.value += img;                                                        
+  addIMG(img)
 }                                                                               
                                                                                 
                                                                                 
 function InsertCodeInTextArea(textValue) {                                      
   setImage(textValue);                                                          
-}            
-
+}                                                                               
+                                                                                
 function submitForm() {                                                         
-  document.getElementById('event').submit();                                
-}                    
-</script>    
-                                                                   
-</head>                                                                         
-<body>                                                                          
+  document.getElementById('main-form').submit();                                
+}                                                                               
                                                                                 
- <div style="border-style:solid;border-width:1px 0px 0px 0px;">                 
-  <font id="flash_notice" style="color: green"><%= flash[:notice] %></font>
+function validatePost() {                                                       
+ return false;                                                                  
+}                                                                               
+</script> 
 
-  <table id="ajax-image-uploader"> 
-   <tr>                                                                        
-      <td colspan="2">                                                          
-        <%= render 'event_image_uploader' %>                                                  
-      </td>                                                                     
-    </tr>                                                                       
-  </table>                                                                      
-                                                                                
-  <form action ="create_events" method="post" id = "event">                     
-  <table id = 'event-description' style="width:100%;">                          
-    <tr>                                                                        
-      <td>Title</td><td><%= text_field_tag(:title, nil,:size => 40) %></td>     
-    </tr>                                                                       
-    <tr>                                                                        
-      <td>Venue</td><td><%= text_field_tag(:venue, nil,:size => 40) %></td>     
-    </tr>                                                                       
-    <tr>                                                                        
-      <td>Date</td>
-        <td>
-          <%= text_field_tag(:date, nil,:id => 'datepicker', :value => Date.today.strftime('%m/%d/%Y')) %>
-        </td>               
-    </tr>                                                                       
-    <tr>                                                                        
-      <td colspan="2">Description:</td>                                         
-    </tr>                                                                       
-    <tr>                                                                        
-      <td colspan="2"><%= text_area_tag (:description, nil, :rows => '10', :id => 'text-area',:cols => '50') %></td>
-    </tr>                                                                       
-    <tr>                                                                        
-      <td colspan="2"><input type="button" onclick="submitForm();" value="Create"</td>                  
-    </tr>                                                                       
-  </table>                                                                      
-  </form>                                                                       
-</div>                                                                          
-                                                                                
-                                                                                
-</body>                                                                         
-</html>                                                                         
+</head>
 
+
+<body>
+
+<%if flash[:notice]%>                                                           
+  <font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
+<%end%>
+
+
+  <div id="content">
+    <table>                                                                         
+      <tr>                                                                            
+        <td colspan="2">                                                              
+          <%= render 'event_image_uploader' %>                                                  
+        </td>                                                                         
+      </tr>                                                                           
+    </table>
+
+    <form action="create_events" method="post" id="main-form">
+      <fieldset>
+        Title:&nbsp;<%= text_field_tag(:title, nil,:size => 40) %>
+      </fieldset>
+      <fieldset>
+        Venue:&nbsp;<%= text_field_tag(:venue, nil,:size => 40) %>
+      </fieldset>                                                                       
+      <fieldset>
+        Date:&nbsp;<%= text_field_tag(:date, nil,:id => 'datepicker', :value => Date.today.strftime('%m/%d/%Y')) %>
+      </fieldset>
+      <fieldset>
+        <textarea id="post" name="post" class="widgEditor nothing"></textarea>
+      </fieldset>
+      <fieldset class="submit">
+        <input type="submit" value="Post"  onclick="submitForm();" />
+      </fieldset>
+    </form>
+  </div>
+
+</body>
+
+
+
+
+
+
+
+
+
+</html>

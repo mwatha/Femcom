@@ -1,70 +1,81 @@
-<style>
-  table { 
-      color: #554433; 
-  }
- 
-  #submitbtn {
-  }
+<html>
+<head>
+<title></title>
 
-</style>
+<%= javascript_include_tag "widgEditor" %>                                      
+                                                                                
+<%= stylesheet_link_tag "info" %>                                               
+<%= stylesheet_link_tag "xmain" %>                                              
+<%= stylesheet_link_tag "widgEditor" %>                                         
+                                        
 
 
-<script>
-
+<script type="text/javascript">                                                 
+                                                                                
+function setImage(img) {                                                        
+  addIMG(img)
+}                                                                               
+                                                                                
+                                                                                
   function deletePost() {
     document.location = "/user/delete_post?type=delete_services_post&id=<%=@service.id%>";
   }
 
-function setImage(img) {                                                        
-  textarea = document.getElementById("text-area");                              
-  textarea.value += img;                                                        
+function InsertCodeInTextArea(textValue) {                                      
+  setImage(textValue);                                                          
 }                                                                               
                                                                                 
-                                                                                
-function InsertCodeInTextArea(textValue) {                                      
-  setImage(textValue); 
-}
-  
-
 function submitForm() {                                                         
- document.getElementById('main-form').submit();                                
-} 
-</script>
+  document.getElementById('main-form').submit();                                
+}                                                                               
+                                                                                
+function validatePost() {                                                       
+ return false;                                                                  
+}                                                                               
+</script> 
 
-<div id='news'>
-
-<table>                                                                         
-<tr>                                                                            
-  <td colspan="2">                                                              
-    <%= render 'upload' %>                                                      
-  </td>                                                                         
-</tr>                                                                           
-</table>
+</head>
 
 
-<form action='services_edit' method="post" id="main-form">
-<table>
-<tr>
-  <td>Title:</td><td>&nbsp;<input type='text' name='title' size = '30' value="<%=@service.title%>" /></td>
-</tr>
-<tr>
-  <td colspan="2">Body:</td>
-</tr>
-</table>
-<table>
-<tr>
-  <td>
-    <textarea cols='70' rows='15' name='post' id="text-area">
-       <%=render(:inline => @service.post)%>
-    </textarea>
-  </td>
-</tr>
-<tr>
-  <td>
-    <input type='button' value = 'Update' id = 'submitbtn' onclick="submitForm();" />
-    &nbsp;&nbsp;<input type='button' value = 'Delete' id = 'deletebtn' onclick="javascript:deletePost();" />
-  </td>
-</tr>
-</table>
-<input type='hidden' name = 'id' value = '<%=@service.id%>' />
-</form>
+<body>
+
+<%if flash[:notice]%>                                                           
+  <font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
+<%end%>
+
+
+  <div id="content">
+    <table>                                                                         
+      <tr>                                                                            
+        <td colspan="2">                                                              
+          <%= render 'upload' %>                                                      
+        </td>                                                                         
+      </tr>                                                                           
+    </table>
+
+    <form action="services_edit" method="post" id="main-form">
+      <fieldset>
+        Title:&nbsp;<input type='text' name='title' size = '40' value="<%=@service.title%>" />                   
+        <textarea id="post" name="post" class="widgEditor nothing">
+          <%=render(:inline => @service.post)%> 
+        </textarea>
+      </fieldset>
+      <fieldset class="submit">
+        <input type='button' value = 'Update' id = 'submitbtn' onclick="submitForm();" />
+        &nbsp;&nbsp;<input type='button' value = 'Delete' id = 'deletebtn' onclick="javascript:deletePost();" />
+      </fieldset>
+      <input type='hidden' name = 'id' value = '<%=@service.id%>' />
+    </form>
+  </div>
+
+</body>
+
+
+
+
+
+
+
+
+
+</html>
