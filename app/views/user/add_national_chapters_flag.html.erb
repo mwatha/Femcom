@@ -1,0 +1,40 @@
+<style>
+  table { 
+    color: #554433;
+    font-size: 12px;   
+  }
+ 
+  #submitbtn {
+  }
+
+</style>
+
+<div id='news'>
+<%if flash[:notice]%>                                                           
+  <font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
+<%end%>
+<form action='add_national_chapters_flag' method="post" enctype="multipart/form-data">
+<table>
+<tr>
+  <td>Select country:</td><td>&nbsp;<select id="country" name='country_id'>
+      <option></option>
+      <%(@chapters || []).each do |chapter| %>
+        <option value="<%=chapter.id%>"><%=chapter.country%></option>
+      <%end%>
+     </select>
+  </td>
+</tr>
+<tr>
+  <td>Browse file:</td><td>&nbsp;<%= file_field 'upload', 'datafile' %></td>
+</tr>
+<tr>
+  <td colspan="2">&nbsp;</td>
+</tr>
+<tr>
+  <td colspan="2">
+    <input type='submit' value = 'Upload' id = 'submitbtn' style="width:100%;" />
+  </td>
+</tr>
+</table>
+<input type='hidden' name = 'type' value = 'pdf' />
+</form>

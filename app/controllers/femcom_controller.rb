@@ -39,6 +39,7 @@ class FemcomController < ApplicationController
   end
 
   def national_chapters
+    @chapters = NationalChapters.order("country ASC")
     @page_heading = "National chapters"
   end
 

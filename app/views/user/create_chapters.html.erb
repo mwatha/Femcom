@@ -1,0 +1,41 @@
+<style>
+  .input-containers {
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    vertical-align: top;
+  }
+</style>
+
+<form method="post" action="create_chapters">
+<table class="input-containers">
+  <tr>
+    <td>Country:&nbsp;</td><td><input type="text" name="country" size="50" /><td>
+  </tr>
+
+  <tr>
+    <td>Member name:&nbsp;</td><td><input type="text" name="member" size="50" /></td>
+  </tr>
+
+  <tr>
+    <td>Title:&nbsp;</td><td><input type="text" name="title" size="50" /></td>
+  </tr>
+
+  <tr>
+    <td style="vertical-align:top;">Address:&nbsp;</td><td><textarea name="address" rows="5" cols="50%"></textarea></td>
+  </tr>
+
+  <tr>
+    <td>Phone numbers:&nbsp;</td><td><input type="text" name="phone" size="50" /></td>
+  </tr>
+
+  <tr>
+    <td>Email addresses:&nbsp;</td><td><input type="text" name="email" size="50" /></td>
+  </tr>
+  <tr colspan="2">
+    <td>&nbsp;</td>
+  </tr>
+  <tr colspan="2">
+    <td><input type="submit" value="Create" /></td>
+  </tr>
+</table>
+</form>
