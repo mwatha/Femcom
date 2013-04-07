@@ -58,6 +58,12 @@ body {
    }else if (page == 'files-category-list') {                                                 
      document.getElementById('title').innerHTML="Document - categories";                           
      element.src = '/user/document_category_list';                                     
+   }else if (page == 'national-chapters') {                                                 
+     document.getElementById('title').innerHTML="National Chapters";                           
+     element.src = '/user/national_chapters_list';                                     
+   }else if (page == 'national-chapters-flag') {                                                 
+     document.getElementById('title').innerHTML="National Chapters";                           
+     element.src = '/user/add_national_chapters_flag';                                     
    }                                                                            
   }                                                                             
                                                                                 
@@ -94,6 +100,10 @@ body {
 <div>.................................&nbsp;
   <a href="javascript:adminPage('services');">Change services content</a>
   <a href="javascript:adminPage('services-edit');">(edit)</a>
+</div>
+<div>.................................&nbsp;
+  <a href="javascript:adminPage('national-chapters');">National Chapters</a>
+  &nbsp;<a href="javascript:adminPage('national-chapters-flag');">(add flag)</a>
 </div>
 <hr></hr>                                                                       
                                                                                 

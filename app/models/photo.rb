@@ -44,6 +44,19 @@ class Photo < ActiveRecord::Base
     return name
   end
   
+  def self.chapter(chapter, upload)
+    name =  upload['datafile'].original_filename                            
+    file_extension = name[name.rindex(".") .. name.length].strip.chomp
+    name = "#{Date.today.strftime('%d%m%y')}#{rand(10000)}#{file_extension}"
+    directory = "#{Rails.root}/public/images/NC/"                           
+    # create the file path                                                      
+    path = File.join(directory, name)                                           
+    # write the file                                                            
+    File.open(path, "wb") { |f| f.write(upload['datafile'].read) }              
+    chapter.flag = name
+    chapter.save
+  end
+  
   protected
 
   def self.valid_size?(file_extension)

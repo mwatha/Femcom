@@ -1,5 +1,16 @@
 Comesa::Application.routes.draw do
 
+  get "user/add_national_chapters_flag"
+  post "user/add_national_chapters_flag"
+
+  get "user/national_chapters_edit"
+  post "user/national_chapters_edit"
+
+  get "user/create_chapters"
+  post "user/create_chapters"
+
+  get "user/national_chapters_list"
+
   get "user/edit_event"
   post "user/edit_event"
 

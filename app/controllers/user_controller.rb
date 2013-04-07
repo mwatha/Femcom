@@ -298,6 +298,48 @@ class UserController < ApplicationController
     render :layout => false
   end
 
+  def national_chapters_list
+    @chapters = NationalChapters.order("country")
+    render :layout => false
+  end
+
+  def create_chapters
+    if request.post?
+      NationalChapters.create(:country => params[:country],:member => params[:member],
+        :title => params[:title], :address => params[:address],
+        :phone => params[:phone], :email => params[:email])
+      flash[:notice] = 'Successfully creates.'            
+      redirect_to '/user/national_chapters_list' and return
+    end
+    render :layout => false
+  end
+
+  def national_chapters_edit
+    @chapter = NationalChapters.find(params[:id])
+    if request.post?
+      @chapter.country = params[:country]
+      @chapter.member = params[:member]
+      @chapter.title = params[:title]
+      @chapter.address = params[:address]
+      @chapter.phone = params[:phone]
+      @chapter.email = params[:email]
+      @chapter.save
+      flash[:notice] = 'Successfully updated.'            
+      redirect_to '/user/national_chapters_list' and return
+    end
+    render :layout => false
+  end
+
+  def add_national_chapters_flag
+    @chapters = NationalChapters.order("country")
+    if request.post?
+      chapter = NationalChapters.find(params[:country_id])
+      Photo.chapter(chapter,params[:upload])
+      flash[:notice] = 'Photo successfully uploaded.'
+    end
+    render :layout => false
+  end
+
   private
 
   def wrap_ajax_response
