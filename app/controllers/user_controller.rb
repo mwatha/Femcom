@@ -123,10 +123,8 @@ class UserController < ApplicationController
         (params[:ids].split(',') || []).each do |id|
           Document.delete(id)
         end
-      when 'events'
-        (params[:ids].split(',') || []).each do |id|
-          Event.delete(id)
-        end
+      when 'delete_event'
+        Event.delete(params[:id])
         redirect_to :action => :event_edit and return
       when 'update_news_post'
         post = News.find(params[:id])
@@ -282,6 +280,20 @@ class UserController < ApplicationController
       DocumentCategory.create(:name => params[:name],:description => params[:post])
       flash[:notice] = 'Successfully created.'            
       redirect_to '/user/document_category_list' and return
+    end
+    render :layout => false
+  end
+
+  def edit_event
+    @event = Event.find(params[:id])
+    if request.post?
+      @event.title = params[:title]
+      @event.venue = params[:venue]
+      @event.description = params[:post]
+      @event.date = params[:date]
+      @event.save
+      flash[:notice] = 'Successfully updated.'            
+      redirect_to '/user/event_edit' and return
     end
     render :layout => false
   end

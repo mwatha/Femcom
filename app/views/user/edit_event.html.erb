@@ -1,0 +1,111 @@
+<!-- ............................................... -->
+
+
+
+
+
+
+<html>
+<head>
+<title></title>
+
+<%= javascript_include_tag "widgEditor" %>                                      
+<%= javascript_include_tag "jquery-1.9.1" %>                                    
+<%= javascript_include_tag "jquery-ui" %>                                       
+                                                                                
+<%= stylesheet_link_tag "info" %>                                               
+<%= stylesheet_link_tag "xmain" %>                                              
+<%= stylesheet_link_tag "widgEditor" %>                                         
+<%= stylesheet_link_tag "jquery-ui" %>                                          
+<%= stylesheet_link_tag "calender_style" %>                                     
+                                                                                
+<style>                                                                         
+.ui-datepicker-next, .ui-datepicker-prev {                                      
+  background-color: slategrey;                                                  
+}                                                                               
+                                                                                
+</style>                                                                        
+                                                                                
+<script type="text/javascript">                                                 
+                                                                                
+$(function() {                                                                  
+$( "#datepicker" ).datepicker();                                                
+});                                         
+
+function setImage(img) {                                                        
+  addIMG(img)
+}                                                                               
+                                                                                
+                                                                                
+function InsertCodeInTextArea(textValue) {                                      
+  setImage(textValue);                                                          
+}                                                                               
+                                                                                
+function submitForm() {                                                         
+  document.getElementById('main-form').submit();                                
+}                                                                               
+                                                                                
+function validatePost() {                                                       
+ return false;                                                                  
+}                                                        
+
+function deletePost() {                                                        
+  document.location = "/user/delete_post?type=delete_event&id=<%=@event.id%>";
+}   
+                       
+</script> 
+
+</head>
+
+
+<body>
+
+<%if flash[:notice]%>                                                           
+  <font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
+<%end%>
+
+
+  <div id="content">
+    <table>                                                                         
+      <tr>                                                                            
+        <td colspan="2">                                                              
+          <%= render 'event_image_uploader' %>                                                  
+        </td>                                                                         
+      </tr>                                                                           
+    </table>
+
+    <form action="edit_event" method="post" id="main-form">
+      <fieldset>
+        Title:&nbsp;<%= text_field_tag(:title, nil,:size => 40,:value => @event.title) %>
+      </fieldset>
+      <fieldset>
+        Venue:&nbsp;<%= text_field_tag(:venue, nil,:size => 40,:value => @event.venue) %>
+      </fieldset>                                                                       
+      <fieldset>
+        Date:&nbsp;<%= text_field_tag(:date, nil,:id => 'datepicker', 
+          :value => (@event.date.strftime('%m/%d/%Y') rescue nil)) %>
+      </fieldset>
+      <fieldset>
+        <textarea id="post" name="post" class="widgEditor nothing">
+          <%=@event.description%>
+        </textarea>
+      </fieldset>
+      <fieldset class="submit">                                                 
+        <input type="submit" value="Update"  onclick="submitForm();" />         
+        &nbsp;&nbsp;<input type='button' value = 'Delete' id = 'deletebtn' onclick="javascript:deletePost();" />
+      </fieldset>                                                               
+      <input type='hidden' name = 'id' value = '<%=@event.id%>' />               
+    </form>
+  </div>
+
+</body>
+
+
+
+
+
+
+
+
+
+</html>

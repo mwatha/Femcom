@@ -1,5 +1,8 @@
 Comesa::Application.routes.draw do
 
+  get "user/edit_event"
+  post "user/edit_event"
+
   get "femcom/documents_by_category"
 
   get "user/create_document_category"
