@@ -8,8 +8,7 @@ module ApplicationHelper
   end
 
   def print_news(str)                                                           
-    #str.gsub("\n", "")                                                    
-    #str.gsub("\n", "<br />")                                                    
+    return '' if str.blank?                    
     str.gsub("\n", "").gsub("<p>","<br>").gsub("</p>","</br>")
   end 
 
