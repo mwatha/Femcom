@@ -193,7 +193,7 @@ class UserController < ApplicationController
     if request.post?
       content = HomeContentPost.find(params[:content_id])
       content.title = params[:title]
-      content.content = params[:content]
+      content.content = params[:post]
       content.save
       redirect_to :action => :home_page and return
     else
