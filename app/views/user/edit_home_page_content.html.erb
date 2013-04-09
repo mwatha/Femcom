@@ -37,8 +37,7 @@ function validatePost() {
       <fieldset>
         Title:&nbsp;<input type='text' name='title' size = '40' value="<%=@content.title%>" />                   
         <textarea id="post" name="post" class="widgEditor nothing">
-          <%#=@content.content%>
-          <%=render(:inline => print_news(@content.content))%>
+          <%=render(:inline => (@content.content || ''))%>
         </textarea>
       </fieldset>
       <fieldset class="submit">
