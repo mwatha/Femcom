@@ -61,8 +61,8 @@
 <tbody>                                                                         
  <%(@contents || []).each do |content|%>                                               
   <tr class="gradeX">                                                           
-    <td class="center" width='300'><%=content.title%></td>
-    <td class="center"><%=content.content[0...49]%></td>                                
+    <td class="center" width='300'><%=content.title rescue nil%></td>
+    <td class="center"><%=content.content[0...49] rescue nil%></td>                                
     <td class="center"><input type="checkbox" onclick="javascript:edit('<%=content.id%>')" /></td>
   </tr>                                                                         
  <%end%>                                                                        
