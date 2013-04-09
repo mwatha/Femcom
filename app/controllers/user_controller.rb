@@ -190,14 +190,14 @@ class UserController < ApplicationController
   end
 
   def edit_home_page_content
-    unless request.post?
-      @content = HomeContentPost.find(params[:id])
-    else
+    if request.post?
       content = HomeContentPost.find(params[:content_id])
       content.title = params[:title]
       content.content = params[:content]
       content.save
       redirect_to :action => :home_page and return
+    else
+      @content = HomeContentPost.find(params[:id])
     end
     render :layout => false
   end
