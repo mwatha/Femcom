@@ -53,10 +53,10 @@ body {
      document.getElementById('title').innerHTML="Services - create";                           
      element.src = '/user/services_create';                                     
    }else if (page == 'services-edit') {                                                 
-     document.getElementById('title').innerHTML="Services - edit";                           
+     document.getElementById('title').innerHTML="Current focus and activities - edit";                           
      element.src = '/user/services_list';                                     
    }else if (page == 'files-category-list') {                                                 
-     document.getElementById('title').innerHTML="Document - categories";                           
+     document.getElementById('title').innerHTML="Resources - categories";                           
      element.src = '/user/document_category_list';                                     
    }else if (page == 'national-chapters') {                                                 
      document.getElementById('title').innerHTML="National Chapters";                           
@@ -81,9 +81,9 @@ body {
 
 <div>.................................&nbsp;<a href="javascript:adminPage('news');">Create news</a>&nbsp;&nbsp;
 <a href="javascript:adminPage('news-edit');">(edit)</a></div>
-<div>.................................&nbsp;<a href="javascript:adminPage('files');">Upload pdf</a>&nbsp;&nbsp;
+<div>.................................&nbsp;<a href="javascript:adminPage('files');">Upload resources</a>&nbsp;&nbsp;
 <a href="javascript:adminPage('files-edit');">(edit)</a>&nbsp;
-<a href="javascript:adminPage('files-category-list');">(Document categories)</a>
+<a href="javascript:adminPage('files-category-list');">(Categories)</a>
 </div>
 <div>.................................&nbsp;<a href="javascript:adminPage('event');">Create event</a>&nbsp;&nbsp;
 <a href="javascript:adminPage('event-edit');">(edit)</a></div>
@@ -98,7 +98,7 @@ body {
   <a href="javascript:adminPage('current-focus-delete');">(delete)</a>
 </div-->
 <div>.................................&nbsp;
-  <a href="javascript:adminPage('services');">Change services content</a>
+  <a href="javascript:adminPage('services');">Change current focus and activities</a>
   <a href="javascript:adminPage('services-edit');">(edit)</a>
 </div>
 <div>.................................&nbsp;
