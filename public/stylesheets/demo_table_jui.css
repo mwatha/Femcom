@@ -132,7 +132,7 @@ table.display thead th {
 	margin-left: 3px;
 	float: left;
 }
-
+/*
 .paginate_disabled_previous {
 	background-image: url('../images/back_disabled.jpg');
 }
@@ -149,7 +149,7 @@ table.display thead th {
 	background-image: url('../images/forward_enabled.jpg');
 }
 
-
+*/
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * DataTables display
@@ -194,7 +194,7 @@ table.display td.center {
 }
 
 .sorting {
-	background: url('../images/sort_both.jpg') no-repeat center right;
+	/*background: url('../images/sort_both.jpg') no-repeat center right;*/
 }
 
 

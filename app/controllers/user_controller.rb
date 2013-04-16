@@ -344,7 +344,7 @@ class UserController < ApplicationController
 
   def wrap_ajax_response
     response.content_type = nil
-    response.body = "<img src='/images/news/#{@img}' width=99% height=300 />"
+    response.body = "<img src='/images/news/#{@img}' width=558 height=300 />"
   end
 
 end

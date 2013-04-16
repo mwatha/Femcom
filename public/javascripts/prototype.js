@@ -3974,7 +3974,10 @@ Object.extend(Event, (function() {
       event.memo = memo || { };
 
       if (document.createEvent) {
-        element.dispatchEvent(event);
+        try { 
+          element.dispatchEvent(event);
+        }catch(e){ 
+        }
       } else {
         element.fireEvent(event.eventType, event);
       }
