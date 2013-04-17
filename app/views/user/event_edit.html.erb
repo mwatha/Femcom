@@ -55,7 +55,8 @@
       <tr>
         <th>Event</th>
         <th>Venue</th>
-        <th>Date</th>
+        <th>Start date</th>
+        <th>End date</th>
         <th>Description</th>
       </tr>
     </thead>
@@ -65,6 +66,7 @@
         <td class="center"><%=event.title%></td>
         <td class="center"><%=event.venue%></td>
         <td class="center" width="140"><%=event.date.strftime("%A, %d %b %Y") rescue nil%></td>
+        <td class="center" width="140"><%=event.end_date.strftime("%A, %d %b %Y") rescue nil%></td>
         <td style="text-align:center;width:50px;" class="center">
           <input class="cboxes" id="<%=event.id%>" type="checkbox" onclick="javascript:editEvent('<%=event.id%>');"/></td>
       </tr>

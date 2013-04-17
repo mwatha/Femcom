@@ -59,7 +59,7 @@ class UserController < ApplicationController
   def create_events
     if request.post?
       Event.create(:title => params[:title],:venue => params[:venue],
-        :description => params[:post],:date => params[:date])
+        :description => params[:post],:date => params[:start_date],:end_date => params[:end_date])
       flash[:notice] = 'Event successfully created.'
     end
     render :layout => false
@@ -315,7 +315,8 @@ class UserController < ApplicationController
       @event.title = params[:title]
       @event.venue = params[:venue]
       @event.description = params[:post]
-      @event.date = params[:date]
+      @event.date = params[:start_date]
+      @event.end_date = params[:end_date]
       @event.save
       flash[:notice] = 'Successfully updated.'            
       redirect_to '/user/event_edit' and return

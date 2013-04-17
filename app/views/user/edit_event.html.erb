@@ -29,7 +29,7 @@
 <script type="text/javascript">                                                 
                                                                                 
 $(function() {                                                                  
-$( "#datepicker" ).datepicker();                                                
+$( "#start_date" ).datepicker();                                                
 });                                         
 
 function setImage(img) {                                                        
@@ -82,7 +82,9 @@ function deletePost() {
         Venue:&nbsp;<%= text_field_tag(:venue, nil,:size => 40,:value => @event.venue) %>
       </fieldset>                                                                       
       <fieldset>
-        Date:&nbsp;<%= text_field_tag(:date, nil,:id => 'datepicker', 
+        Start Date:&nbsp;<%= text_field_tag(:start_date, nil,:id => 'start_date', 
+          :value => (@event.date.strftime('%m/%d/%Y') rescue nil)) %>
+        End Date:&nbsp;<%= text_field_tag(:end_date, nil,:id => 'end_date', 
           :value => (@event.date.strftime('%m/%d/%Y') rescue nil)) %>
       </fieldset>
       <fieldset>

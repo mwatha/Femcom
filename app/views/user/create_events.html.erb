@@ -29,7 +29,8 @@
 <script type="text/javascript">                                                 
                                                                                 
 $(function() {                                                                  
-$( "#datepicker" ).datepicker();                                                
+$( "#start_date" ).datepicker();                                                
+$( "#end_date" ).datepicker();                                                
 });                                         
 
 function setImage(img) {                                                        
@@ -77,7 +78,8 @@ function validatePost() {
         Venue:&nbsp;<%= text_field_tag(:venue, nil,:size => 40) %>
       </fieldset>                                                                       
       <fieldset>
-        Date:&nbsp;<%= text_field_tag(:date, nil,:id => 'datepicker', :value => Date.today.strftime('%m/%d/%Y')) %>
+        Start date:&nbsp;<%= text_field_tag(:start_date, nil,:id => 'start_date', :value => Date.today.strftime('%m/%d/%Y')) %>
+        &nbsp;&nbsp;End date:&nbsp;<%= text_field_tag(:end_date, nil,:id => 'end_date', :value => Date.today.strftime('%m/%d/%Y')) %>
       </fieldset>
       <fieldset>
         <textarea id="post" name="post" class="widgEditor nothing"></textarea>
