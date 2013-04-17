@@ -2,14 +2,6 @@
 <head>
 <title></title>
 
-<%= javascript_include_tag "widgEditor" %>                                      
-                                                                                
-<%= stylesheet_link_tag "info" %>                                               
-<%= stylesheet_link_tag "xmain" %>                                              
-<%= stylesheet_link_tag "widgEditor" %>                                         
-                                        
-
-
 <script type="text/javascript">                                                 
                                                                                 
 function submitForm() {                                                         
@@ -34,17 +26,15 @@ function validatePost() {
   <div id="content">
 
     <form action="edit_home_page_content" method="post" id="main-form">
-      <fieldset>
-        Title:&nbsp;<input type='text' name='title' size = '40' value="<%=@content.title%>" />                   
-        <textarea id="post" name="post" class="widgEditor nothing">
+        Title:&nbsp;<input type='text' name='title' size = '40' value="<%=@content.title%>" /><br />
+        <textarea id="post" name="post" cols="100%" rows=15>
           <%=render(:inline => (@content.content || ''))%>
         </textarea>
-      </fieldset>
-      <fieldset class="submit">
+      <br />
         <input type='button' value = 'Delete post' id = 'deletebtn' 
           onclick="javascript:location='/user/delete_post?type=delete_home_page_content&id=<%=@content.id%>'" />&nbsp;
         <input type="submit" value="Save changes"  onclick="submitForm();" />
-      </fieldset>
+      
       <input type='hidden' name = 'content_id' value = "<%=@content.id%>" />
     </form>
   </div>

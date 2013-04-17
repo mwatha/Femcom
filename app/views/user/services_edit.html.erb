@@ -2,18 +2,10 @@
 <head>
 <title></title>
 
-<%= javascript_include_tag "widgEditor" %>                                      
-                                                                                
-<%= stylesheet_link_tag "info" %>                                               
-<%= stylesheet_link_tag "xmain" %>                                              
-<%= stylesheet_link_tag "widgEditor" %>                                         
-                                        
-
-
 <script type="text/javascript">                                                 
                                                                                 
 function setImage(img) {                                                        
-  addIMG(img)
+  document.getElementById("post").value+= img;
 }                                                                               
                                                                                 
                                                                                 
@@ -54,16 +46,13 @@ function validatePost() {
     </table>
 
     <form action="services_edit" method="post" id="main-form">
-      <fieldset>
-        Title:&nbsp;<input type='text' name='title' size = '40' value="<%=@service.title%>" />                   
-        <textarea id="post" name="post" class="widgEditor nothing">
+        Title:&nbsp;<input type='text' name='title' size = '40' value="<%=@service.title%>" /><br />
+        <textarea id="post" name="post" cols="100%" rows=15>
           <%=render(:inline => @service.post)%> 
         </textarea>
-      </fieldset>
-      <fieldset class="submit">
-        <input type='button' value = 'Update' id = 'submitbtn' onclick="submitForm();" />
-        &nbsp;&nbsp;<input type='button' value = 'Delete' id = 'deletebtn' onclick="javascript:deletePost();" />
-      </fieldset>
+      <br />
+      <input type='button' value = 'Update' id = 'submitbtn' onclick="submitForm();" />
+      &nbsp;&nbsp;<input type='button' value = 'Delete' id = 'deletebtn' onclick="javascript:deletePost();" />
       <input type='hidden' name = 'id' value = '<%=@service.id%>' />
     </form>
   </div>

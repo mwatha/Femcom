@@ -2,18 +2,11 @@
 <head>
 <title></title>
 
-<%= javascript_include_tag "widgEditor" %>                                      
-                                                                                
-<%= stylesheet_link_tag "info" %>                                               
-<%= stylesheet_link_tag "xmain" %>                                              
-<%= stylesheet_link_tag "widgEditor" %>                                         
-                                        
-
 
 <script type="text/javascript">                                                 
                                                                                 
 function setImage(img) {                                                        
-  addIMG(img)
+  document.getElementById('post').value+=img;
 }                                                                               
                                                                                 
                                                                                 
@@ -50,13 +43,10 @@ function validatePost() {
     </table>
 
     <form action="services_create" method="post" id="main-form">
-      <fieldset>
-        Title:&nbsp;<input type='text' name='title' size = '40'/>                   
-        <textarea id="post" name="post" class="widgEditor nothing"></textarea>
-      </fieldset>
-      <fieldset class="submit">
-        <input type="submit" value="Post"  onclick="submitForm();" />
-      </fieldset>
+        Title:&nbsp;<input type='text' name='title' size = '40'/><br />
+        <textarea id="post" name="post" rows=15 cols="100%"></textarea>
+      <br />
+      <input type="submit" value="Post"  onclick="submitForm();" />
     </form>
   </div>
 
