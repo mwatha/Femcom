@@ -23,7 +23,7 @@
             <td>website:&nbsp;</td><td><a href="<%=partner.link%>"><%=partner.name%></a></td>
           </tr>
           <tr>
-            <td>Description:&nbsp;</td><td><%=chapter.address.gsub(/\n/, '<br/>').html_safe rescue nil %></td>
+            <td>Description:&nbsp;</td><td><%=render(:inline => print_news(partner.description || ''))%></td>
           </tr>
         </table>
       </td>
