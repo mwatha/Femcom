@@ -169,10 +169,10 @@ class UserController < ApplicationController
         end
       when 'delete_home_page_content'
         HomeContentPost.delete(params[:id])
-        redirect_to '/user/admin' and return
+        redirect_to '/user/home_page' and return
       when 'delete_services_post'
         Services.delete(params[:id])
-        redirect_to '/user/blank' and return
+        redirect_to '/user/services_list' and return
       when 'delete_document_category'
         DocumentCategory.delete(params[:id])
         redirect_to '/user/document_category_list' and return

@@ -19,10 +19,12 @@ class FemcomController < ApplicationController
     documents = Document.order("created_at DESC")
     @categories = []
     (documents || []).each do |doc|
+      next if doc.document_category.blank?
       @categories << doc.document_category 
     end
+    
     @categories = @categories.uniq rescue []
-    @page_heading = 'Documents (pdf)'
+    @page_heading = 'Resources'
   end
 
   def download

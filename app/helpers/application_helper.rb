@@ -8,8 +8,8 @@ module ApplicationHelper
   end
 
   def print_news(str)                                                           
-    return '' if str.blank?                    
-    str.gsub("\n", "").gsub("<p>","<br>").gsub("</p>","</br>")
+    return '' if str.blank?     
+    str.html_safe.gsub(/\r\n?/,"<br/>") 
   end 
 
   def current_focus_and_activities        

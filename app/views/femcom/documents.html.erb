@@ -75,7 +75,7 @@
           <b><%=category.name rescue ''%></b>
           <br/>
           <br/>
-          <%=category.description rescue ''%>
+            <%=render(:inline => print_news(category.description || ''))%>
         </td>                                
         <td class="center" style="text-align:center;" width = "10%">
           <a href="#" onclick="showDocuments('<%=category.id%>');">View</a></td>                                
