@@ -10,6 +10,14 @@
 <%#= javascript_include_tag "application" %>                                   
 <%= csrf_meta_tag %>  
 
+<script>
+  <% 
+    pictures = directors_pictures
+    first_director_picture = "/images/directors/#{pictures[0]}" rescue nil
+  %>
+  var pictures = ("<%=pictures.join(',')%>").split(',');
+</script>
+
 <style type="text/css">
 .latest_news {
   margin-left: -37px !important;
@@ -26,6 +34,10 @@
 
 .small_links {
   width: 200px;
+}
+
+#directors {
+ width: 180px; 
 }
 
 /*----------Text Styles----------*/
@@ -301,8 +313,8 @@ end
   <%= image_tag("above bar.jpg" , :border => 0 ,:width => 197 ,:height =>28)%>
 </div>
 
-<div id="g_image10" style="position:absolute; overflow:hidden; left:75px; top:459px; width:145px; height:143px; z-index:47">
-  <%= image_tag("anigif.gif" , :border => 0 ,:width => 145 ,:height =>143)%>
+<div id="g_image10" style="position:absolute; overflow:hidden; left:75px; top:459px; width:180px; height:143px; z-index:47">
+  <%= image_tag("#{first_director_picture}" , :border => 0 ,:width => 145 ,:height =>143,:id => 'directors')%>
 </div>
 
 <div id="g_text7" style="position:absolute; overflow:hidden; left:94px; top:432px; width:151px; height:18px; z-index:48">
@@ -338,13 +350,17 @@ end
 </font></div>
 </div></div>
 
-<div id="g_image8" style="position:absolute; overflow:hidden; left:92px; top:607px; width:93px; height:23px; z-index:53">
+<div id="g_image8" style="position:absolute; overflow:hidden; left:120px; top:607px; width:93px; height:23px; z-index:53">
   <%= image_tag("78.jpg" , :border => 0 ,:width => 93 ,:height =>23)%>
 </div>
 
-<div id="g_text4" style="position:absolute; overflow:hidden; left:102px; top:610px; width:71px; height:15px; z-index:54">
+<div id="g_text4" style="position:absolute; overflow:hidden; left:132px; top:610px; width:71px; height:15px; z-index:54">
 <div class="wpmd" style="text-align:center;">
-<div style="left: 102px;"><font class="ws8" style="text-align:center;"><a href="/femcom/directors" title="" class="style1">View Profile</a></font></div>
+<div style="left: 102px;">
+  <font class="ws8" style="text-align:center;">
+    <a href="/femcom/directors" title="" class="style1">View Profile</a>
+  </font>
+</div>
 </div></div>
 
 <div id="g_text8" style="position:absolute; overflow:hidden; left:990px; top:581px; width:58px; height:19px; z-index:55">
@@ -396,5 +412,25 @@ end
 
 </div>
 
+
+<script>
+  var viewed_pictures = [];
+
+  setInterval("changePictures();",3000);
+
+  function changePictures() {
+    for(var i = 0 ; i < pictures.length; i++) {
+      document.getElementById('directors').src = "/images/directors/" + pictures[i];
+      viewed_pictures.push(pictures[i]);
+      pictures.splice(i, 1);
+      break;
+    }
+
+    if(pictures.length < 1) {
+      pictures = viewed_pictures;
+    }
+
+  }
+</script>
 </body>
 </html>

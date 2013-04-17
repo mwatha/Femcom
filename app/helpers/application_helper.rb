@@ -24,4 +24,8 @@ module ApplicationHelper
     Partners.order('created_at DESC').where("logo IS NOT NULL").limit(3)        
   end
 
+  def directors_pictures
+    Directors.where("picture IS NOT NULL").collect{|d|d.picture}
+  end
+
 end
