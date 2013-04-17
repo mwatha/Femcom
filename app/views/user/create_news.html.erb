@@ -2,18 +2,18 @@
 <head>
 <title></title>
 
-<%= javascript_include_tag "widgEditor" %>                                      
+<%#= javascript_include_tag "widgEditor" %>                                      
                                                                                 
-<%= stylesheet_link_tag "info" %>                                               
-<%= stylesheet_link_tag "xmain" %>                                              
-<%= stylesheet_link_tag "widgEditor" %>                                         
+<%#= stylesheet_link_tag "info" %>                                               
+<%#= stylesheet_link_tag "xmain" %>                                              
+<%#= stylesheet_link_tag "widgEditor" %>                                         
                                         
 
 
 <script type="text/javascript">                                                 
                                                                                 
 function setImage(img) {                                                        
-  addIMG(img)
+  document.getElementById('post').value += img;                                
 }                                                                               
                                                                                 
                                                                                 
@@ -50,13 +50,17 @@ function validatePost() {
     </table>
 
     <form action="create_news" method="post" id="main-form">
-      <fieldset>
-        Title:&nbsp;<input type='text' name='title' size = '40'/>                   
-        <textarea id="post" name="post" class="widgEditor nothing"></textarea>
-      </fieldset>
-      <fieldset class="submit">
-        <input type="submit" value="Post"  onclick="submitForm();" />
-      </fieldset>
+      <table style="width:100%;">
+        <tr>
+          <td>Title:&nbsp;<input type='text' name='title' size = '40'/></td>
+        </tr>
+        <tr>                   
+          <td><textarea id="post" name="post" cols="100%" rows=10></textarea></td>
+        </tr>
+        <tr>
+          <td><input type="submit" value="Post"  onclick="submitForm();" style="width:99%;" /></td>
+        </tr>
+      </table>
     </form>
   </div>
 
