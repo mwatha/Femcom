@@ -104,6 +104,27 @@ class UserController < ApplicationController
 
   def delete_post
     case params[:type]
+      when 'national_chapter'
+        chapter = NationalChapters.find(params[:id])
+       `rm #{Rails.root}/public/images/NC/#{chapter.flag}`
+        NationalChapters.delete(chapter.id)
+        flash[:notice] = 'Successfully delete.' 
+        redirect_to :action => :national_chapters_list
+        return
+      when 'delete_director'
+        director = Directors.find(params[:id])
+       `rm #{Rails.root}/public/images/directors/#{director.picture}`
+        Directors.delete(director.id)
+        flash[:notice] = 'Successfully delete.' 
+        redirect_to :action => :directors
+        return
+      when 'delete_partner'
+        partner = Partners.find(params[:id])
+       `rm #{Rails.root}/public/images/partners/#{partner.logo}`
+        Partners.delete(partner.id)
+        flash[:notice] = 'Successfully delete.' 
+        redirect_to :action => :partners
+        return
       when 'album'
         album = Album.find(params[:id])
         (album.pictures || []).each do |picture|
@@ -356,6 +377,98 @@ class UserController < ApplicationController
     end
     render :layout => false
   end
+
+  def partners
+    @partners = Partners.order('name ASC')
+    render :layout => false
+  end
+
+  def directors
+    @directors = Directors.order("created_at DESC")
+    render :layout => false
+  end
+
+  def new_director
+    if request.post?
+      director = Directors.new()
+      director.name = params[:name]
+      director.title = params[:title]
+      director.description = params[:description]
+      director.save
+      flash[:notice] = 'Successfully added new director.'
+      redirect_to '/user/directors' and return
+    end
+    render :layout => false
+  end
+  
+  def director_edit
+    @director = Directors.find(params[:id])
+    if request.post?
+      @director.name = params[:name]
+      @director.title = params[:title]
+      @director.description = params[:description]
+      @director.save
+      flash[:notice] = "Successfully updated director's details."
+      redirect_to '/user/directors' and return
+    end
+    render :layout => false
+  end 
+
+  def add_director_picture
+    if request.post?
+      director = Directors.find(params[:id])
+      Photo.director(director,params[:upload])
+      flash[:notice] = 'Successfully added new director picture.'
+      redirect_to '/user/directors' and return
+    else
+      @directors = Directors.order('name ASC')
+    end
+    render :layout => false
+  end
+
+  def new_partner
+    if request.post?
+      partner = Partners.new()
+      partner.name = params[:name]
+      partner.link = params[:link]
+      partner.description = params[:description]
+      partner.save
+      flash[:notice] = 'Successfully added new partner.'
+      redirect_to '/user/partners' and return
+    end
+    render :layout => false
+  end
+  
+  def partner_edit
+    @partner = Partners.find(params[:id])
+    if request.post?
+      @partner.name = params[:name]
+      @partner.link = params[:link]
+      @partner.description = params[:description]
+      @partner.save
+      flash[:notice] = "Successfully updated partner's details."
+      redirect_to '/user/partners' and return
+    end
+    render :layout => false
+  end
+
+  def add_partner_logo
+    if request.post?
+      partner = Partners.find(params[:id])
+      Photo.partner(partner,params[:upload])
+      flash[:notice] = 'Successfully added new partner logo.'
+      redirect_to '/user/partners' and return
+    else
+      @partners = Partners.order('name ASC')
+    end
+    render :layout => false
+  end
+
+
+
+
+
+
 
   private
 

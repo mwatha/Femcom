@@ -1,0 +1,40 @@
+<style>
+  table { 
+    color: #554433;
+    font-size: 12px;   
+  }
+ 
+  #submitbtn {
+  }
+
+</style>
+
+<div id='news'>
+<%if flash[:notice]%>                                                           
+  <font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
+<%end%>
+<form action='add_director_picture' method="post" enctype="multipart/form-data">
+<table>
+<tr>
+  <td>Select director's name:</td><td>&nbsp;<select id="name" name='id'>
+      <option></option>
+      <%(@directors || []).each do |director| %>
+        <option value="<%=director.id%>"><%=director.name%></option>
+      <%end%>
+     </select>
+  </td>
+</tr>
+<tr>
+  <td>Browse file:</td><td>&nbsp;<%= file_field 'upload', 'datafile' %></td>
+</tr>
+<tr>
+  <td colspan="2">&nbsp;</td>
+</tr>
+<tr>
+  <td colspan="2">
+    <input type='submit' value = 'Upload' id = 'submitbtn' style="width:100%;" />
+  </td>
+</tr>
+</table>
+<input type='hidden' name = 'type' value = 'pdf' />
+</form>

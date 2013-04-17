@@ -67,7 +67,19 @@ body {
    }else if (page == 'edit-album') {                                                 
      document.getElementById('title').innerHTML="Edit album";                           
      element.src = '/user/album_list';                                     
-   }                                                                            
+   }else if (page == 'directors') {                                                 
+     document.getElementById('title').innerHTML="Board of directors";                           
+     element.src = '/user/directors';                                     
+   }else if (page == 'partners') {                                                 
+     document.getElementById('title').innerHTML="FEMCOM partners";                           
+     element.src = '/user/partners';                                     
+   }else if (page == 'director-picture') {                                                 
+     document.getElementById('title').innerHTML="Directors - add image";                           
+     element.src = '/user/add_director_picture';                                     
+   }else if (page == 'partners-logo') {                                                 
+     document.getElementById('title').innerHTML="FEMCOM partners - add logo";                           
+     element.src = '/user/add_partner_logo';                                     
+   }
   }                                                                             
                                                                                 
                                                                                 
@@ -109,6 +121,14 @@ body {
 <div>.................................&nbsp;
   <a href="javascript:adminPage('national-chapters');">National Chapters</a>
   &nbsp;<a href="javascript:adminPage('national-chapters-flag');">(add flag)</a>
+</div>
+<div>.................................&nbsp;
+  <a href="javascript:adminPage('directors');">Board of directors</a>
+  &nbsp;<a href="javascript:adminPage('director-picture');">(add picture)</a>
+</div>
+<div>.................................&nbsp;
+  <a href="javascript:adminPage('partners');">FEMCOM Partners</a>
+  &nbsp;<a href="javascript:adminPage('partners-logo');">(add logo)</a>
 </div>
 <hr></hr>                                                                       
                                                                                 

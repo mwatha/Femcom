@@ -1,5 +1,29 @@
 Comesa::Application.routes.draw do
 
+  get "femcom/partners"
+
+  get "user/add_partner_logo"
+  post "user/add_partner_logo"
+
+  get "user/partner_edit"
+  post "user/partner_edit"
+
+  get "user/new_partner"
+  post "user/new_partner"
+
+  get "user/add_director_picture"
+  post "user/add_director_picture"
+
+  get "user/director_edit"
+  post "user/director_edit"
+
+  get "user/new_director"
+  post "user/new_director"
+
+  get "user/directors"
+
+  get "user/partners"
+
   get "user/album_edit"
   post "user/album_edit"
 

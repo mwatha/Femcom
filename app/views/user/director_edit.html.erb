@@ -1,0 +1,50 @@
+<style>
+  table { 
+    color: #554433;
+    font-size: 12px;   
+  }
+ 
+  #submitbtn {
+  }
+
+</style>
+
+<script>
+  function deleteDirector(id) {                                                  
+    location="/user/delete_post?id=" + id + "&type=delete_director";             
+  }                                                                             
+    
+</script>
+
+
+<div id='news'>
+<%if flash[:notice]%>                                                           
+  <font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
+<%end%>
+<form action='director_edit' method="post">
+<table>
+<tr>
+  <td>Name:</td><td>&nbsp;<input type='text' name='name' size="50" value="<%=@director.name%>" /></td>
+</tr>
+<tr>
+  <td>Title:</td><td>&nbsp;<input type='text' name='title' size="50" value="<%=@director.title%>"  /></td>
+</tr>
+<tr>
+  <td style="vertical-align: top;">Description:</td>
+  <td>&nbsp;<textarea name='description' cols='99%' rows='20%'>
+    <%=render(:inline => (@director.description || ''))%>
+  </textarea>
+  </td>
+</tr>
+<tr>
+  <td colspan="2">&nbsp;</td>
+</tr>
+<tr>
+  <td colspan="2">
+    <input type='button' value = 'Delete' id = 'deletebtn' style="width:45%;" onclick="javascript:deleteDirector('<%=@director.id%>')"/>&nbsp;
+    <input type='submit' value = 'Update' id = 'submitbtn' style="width:45%;" />
+  </td>
+</tr>
+</table>
+<input type='hidden' name = 'id' value = "<%=@director.id%>" />
+</form>

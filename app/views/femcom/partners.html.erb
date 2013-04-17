@@ -1,0 +1,34 @@
+<style>
+  #chapter-contents td {
+    vertical-align: top;
+  }
+</style>
+
+<div>                                                                           
+  <font color="#1D4A75" style="font-size:14px;font-weight:bold;">OUR PARTNERS</font>
+  <hr style="background-color:#1D4A75;height:3px;"></hr>                        
+</div>                                                                          
+<br />
+
+<%(@partners || []).each do |partner|%>
+
+<div style="border-style:solid;border-width:0px 0px 1px 0px;">
+  <table>
+    <caption style="margin-left:2px;font-size:13px;text-align:left;"><%=partner.name%></caption>
+    <tr>
+      <td><%= image_tag("partners/#{partner.logo}" , :border => 0 ,:width =>'200' ,:height =>'150')%></td>
+      <td style="font-size:12px; vertical-align: sub; padding-left: 10px;">
+        <table style="font-size: 12px;" id="chapter-contents">
+          <tr>
+            <td>website:&nbsp;</td><td><a href="<%=partner.link%>"><%=partner.name%></a></td>
+          </tr>
+          <tr>
+            <td>Description:&nbsp;</td><td><%=chapter.address.gsub(/\n/, '<br/>').html_safe rescue nil %></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<%end%>

@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
      News.order("created_at DESC").limit(4)                                      
    end
 
+   def femcom_partners
+     Partners.order('created_at DESC').where("logo IS NOT NULL").limit(3)
+   end
+
   protected
 
   def perform_basic_auth

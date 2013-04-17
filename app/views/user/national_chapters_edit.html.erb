@@ -6,6 +6,13 @@
   }
 </style>
 
+<script>
+  function deleteChapter(id) {
+    location = "/user/delete_post?id=" + id + "&type=national_chapter";
+  }
+
+</script>
+
 <form method="post" action="national_chapters_edit">
 <table class="input-containers">
   <tr>
@@ -37,7 +44,10 @@
     <td>&nbsp;</td>
   </tr>
   <tr colspan="2">
-    <td><input type="submit" value="Update" /></td>
+    <td>
+      <input type="button" value="Delete" onclick="deleteChapter('<%=@chapter.id%>');" />
+      <input type="submit" value="Update" />
+    </td>
   </tr>
 </table>
 <input type="hidden" name="id" value="<%=@chapter.id%>" />

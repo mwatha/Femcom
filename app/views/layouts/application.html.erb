@@ -86,6 +86,7 @@ div#container
 	text-align:left; 
 }
 body {text-align:center;margin:0}
+
 </style>
 
 </head>
@@ -112,19 +113,28 @@ body {text-align:center;margin:0}
   <%= image_tag("shape19946281.gif" , :border => 0 ,:width =>'100%' ,:height =>'100%')%>
 </div>
 
-<div id="g_image3" style="position:absolute; overflow:hidden; left:133px; top:257px; width:54px; height:43px; z-index:6"><a href="ftp://www.actesacomesa.org"><%= image_tag("ACTESA.png" , :border => 0 ,:width =>54 ,:height =>43)%></a>
+<!--div id="g_image3" style="position:absolute; overflow:hidden; left:133px; top:257px; width:54px; height:43px; z-index:6"><a href="ftp://www.actesacomesa.org"><%#= image_tag("ACTESA.png" , :border => 0 ,:width =>54 ,:height =>43)%></a>
+</div-->
+
+<%
+  top = 0
+%>
+
+<div id="g_image4" style="position:absolute; overflow:hidden; left:75px; top:200px; width:180px; height:210px; z-index:7">
+<%(femcom_partners || []).each do |p| %>
+<a href="<%=p.link%>"><%= image_tag("/images/partners/#{p.logo}" , :border => 0 ,:width =>'70%' ,
+    :height =>'27%', :style => "left: 20px; position: absolute;top: #{top}px;")%></a>
+<%top+=65
+end
+%>
 </div>
 
-<div id="g_image4" style="position:absolute; overflow:hidden; left:126px; top:200px; width:61px; height:51px; z-index:7"><a href="ftp://www.comesa.int">
-<%= image_tag("lo.png" , :border => 0 ,:width =>61 ,:height =>51)%></a>
-</div>
+<!--div id="g_image1" style="position:absolute; overflow:hidden; left:107px; top:307px; width:109px; height:66px; z-index:8"><a href="ftp://www.caabwa.com">
+<%#= image_tag("caa.png" , :border => 0 ,:width =>109 ,:height =>66)%></a>
+</div-->
 
-<div id="g_image1" style="position:absolute; overflow:hidden; left:107px; top:307px; width:109px; height:66px; z-index:8"><a href="ftp://www.caabwa.com">
-<%= image_tag("caa.png" , :border => 0 ,:width =>109 ,:height =>66)%></a>
-</div>
-
-<div id="g_image2" style="position:absolute; overflow:hidden; left:96px; top:377px; width:133px; height:37px; z-index:9"><a href="ftp://kmhassociates.ca"><%= image_tag("KMH.png" , :border => 0 ,:width =>133 ,:height =>37)%></a>
-</div>
+<!--div id="g_image2" style="position:absolute; overflow:hidden; left:96px; top:377px; width:133px; height:37px; z-index:9"><a href="ftp://kmhassociates.ca"><%#= image_tag("KMH.png" , :border => 0 ,:width =>133 ,:height =>37)%></a>
+</div-->
 
 <div id="shape3" style="position:absolute; overflow:hidden; left:865px; top:182px; width:191px; height:228px; z-index:10">
 <%= image_tag("shape19946265.gif" , :border => 0 ,:width =>'100%' ,:height =>'100%')%>
@@ -153,7 +163,7 @@ body {text-align:center;margin:0}
 
 <div id="text3" style="position:absolute; overflow:hidden; left:138px; top:177px; width:108px; height:18px; z-index:16">
 <div class="wpmd">
-<div><font color="#FFFFFF" class="ws9">Partners</font></div>
+<div><font color="#FFFFFF" class="ws9"><a href="/femcom/partners" style="text-decoration: none;color:white;">Partners</a></font></div>
 </div></div>
 
 <div id="text5" style="position:absolute; overflow:hidden; left:929px; top:176px; width:121px; height:18px; z-index:17">

@@ -20,5 +20,8 @@ module ApplicationHelper
     Services.order("created_at DESC").first.title rescue nil
   end 
 
+  def femcom_partners                                                          
+    Partners.order('created_at DESC').where("logo IS NOT NULL").limit(3)        
+  end
 
 end

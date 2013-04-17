@@ -57,6 +57,32 @@ class Photo < ActiveRecord::Base
     chapter.save
   end
   
+  def self.director(director, upload)
+    name =  upload['datafile'].original_filename                            
+    file_extension = name[name.rindex(".") .. name.length].strip.chomp
+    name = "#{Date.today.strftime('%d%m%y')}#{rand(10000)}#{file_extension}"
+    directory = "#{Rails.root}/public/images/directors/"                           
+    # create the file path                                                      
+    path = File.join(directory, name)                                           
+    # write the file                                                            
+    File.open(path, "wb") { |f| f.write(upload['datafile'].read) }              
+    director.picture = name
+    director.save
+  end
+  
+  def self.partner(partner, upload)
+    name =  upload['datafile'].original_filename                            
+    file_extension = name[name.rindex(".") .. name.length].strip.chomp
+    name = "#{Date.today.strftime('%d%m%y')}#{rand(10000)}#{file_extension}"
+    directory = "#{Rails.root}/public/images/partners/"                           
+    # create the file path                                                      
+    path = File.join(directory, name)                                           
+    # write the file                                                            
+    File.open(path, "wb") { |f| f.write(upload['datafile'].read) }              
+    partner.logo = name
+    partner.save
+  end
+  
   protected
 
   def self.valid_size?(file_extension)

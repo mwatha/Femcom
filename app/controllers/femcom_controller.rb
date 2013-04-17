@@ -11,6 +11,7 @@ class FemcomController < ApplicationController
   end
 
   def directors
+    @directors = Directors.order('name DESC')
     @page_heading = 'Directors'
   end
 
@@ -68,6 +69,10 @@ class FemcomController < ApplicationController
   def documents_by_category
     @category = DocumentCategory.find(params[:id])
     @documents = @category.documents
+  end
+
+  def partners
+    @partners = Partners.order("name ASC")
   end
 
 end

@@ -1,0 +1,50 @@
+<style>
+  table { 
+    color: #554433;
+    font-size: 12px;   
+  }
+ 
+  #submitbtn {
+  }
+
+</style>
+
+<script>
+
+  function deletePartner(id) {
+    location="/user/delete_post?id=" + id + "&type=delete_partner";
+  }
+
+</script>
+
+<div id='news'>
+<%if flash[:notice]%>                                                           
+  <font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
+<%end%>
+<form action='partner_edit' method="post">
+<table>
+<tr>
+  <td>Name:</td><td>&nbsp;<input type='text' name='name' size="50" value="<%=@partner.name%>" /></td>
+</tr>
+<tr>
+  <td>Link:</td><td>&nbsp;<input type='text' name='link' size="50" value="<%=@partner.link%>"  /></td>
+</tr>
+<tr>
+  <td style="vertical-align: top;">Description:</td>
+  <td>&nbsp;<textarea name='description' cols='99%' rows='20%'>
+    <%=render(:inline => (@partner.description || ''))%>
+  </textarea>
+  </td>
+</tr>
+<tr>
+  <td colspan="2">&nbsp;</td>
+</tr>
+<tr>
+  <td colspan="2">
+    <input type='button' value = 'Delete' id = 'deletebtn' style="width:45%;" onclick="javascript:deletePartner('<%=@partner.id%>')"/>
+    <input type='submit' value = 'Update' id = 'submitbtn' style="width:45%;" />
+  </td>
+</tr>
+</table>
+<input type='hidden' name = 'id' value = "<%=@partner.id%>" />
+</form>
