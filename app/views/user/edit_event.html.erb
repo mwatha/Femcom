@@ -31,10 +31,25 @@ $( "#start_date" ).datepicker();
 $( "#end_date" ).datepicker();                                                
 });                                         
 
-function setImage(img) {                                                        
-   document.getElementById('post').value += img;
-}                                                                               
-                                                                                
+function setImage(myValue) {                                                        
+  var myField = document.getElementById('post');                                
+  //IE support                                                                  
+  if (document.selection) {                                                     
+      myField.focus();                                                          
+      sel = document.selection.createRange();                                   
+      sel.text = myValue;                                                       
+  }                                                                             
+  //MOZILLA and others                                                          
+  else if (myField.selectionStart || myField.selectionStart == '0') {           
+      var startPos = myField.selectionStart;                                    
+      var endPos = myField.selectionEnd;                                        
+      myField.value = myField.value.substring(0, startPos)                      
+          + myValue                                                             
+          + myField.value.substring(endPos, myField.value.length);              
+  } else {                                                                      
+      myField.value += myValue;                                                 
+  }                                                                             
+}                                                                                 
                                                                                 
 function InsertCodeInTextArea(textValue) {                                      
   setImage(textValue);                                                          
@@ -88,7 +103,7 @@ function deletePost() {
           :value => (@event.end_date.strftime('%m/%d/%Y') rescue nil)) %></td>
         </tr>                                                                   
         <tr>                                                                    
-          <td><textarea id="post" name="post" class="widgEditor nothing">
+          <td><textarea id="post" name="post" cols="100%" rows=15>
                 <%=render(:inline => print_news(@event.description || ''))%>
               </textarea>
           </td>
