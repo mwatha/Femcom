@@ -9,15 +9,13 @@
 <head>
 <title></title>
 
-<%= javascript_include_tag "widgEditor" %>                                      
 <%= javascript_include_tag "jquery-1.9.1" %>                                    
 <%= javascript_include_tag "jquery-ui" %>                                       
                                                                                 
 <%= stylesheet_link_tag "info" %>                                               
 <%= stylesheet_link_tag "xmain" %>                                              
-<%= stylesheet_link_tag "widgEditor" %>                                         
 <%= stylesheet_link_tag "jquery-ui" %>                                          
-<%= stylesheet_link_tag "calender_style" %>                                     
+<%= stylesheet_link_tag "calender_style" %>
                                                                                 
 <style>                                                                         
 .ui-datepicker-next, .ui-datepicker-prev {                                      
@@ -30,10 +28,11 @@
                                                                                 
 $(function() {                                                                  
 $( "#start_date" ).datepicker();                                                
+$( "#end_date" ).datepicker();                                                
 });                                         
 
 function setImage(img) {                                                        
-  addIMG(img)
+   document.getElementById('post').value += img;
 }                                                                               
                                                                                 
                                                                                 
@@ -74,29 +73,34 @@ function deletePost() {
       </tr>                                                                           
     </table>
 
-    <form action="edit_event" method="post" id="main-form">
-      <fieldset>
-        Title:&nbsp;<%= text_field_tag(:title, nil,:size => 40,:value => @event.title) %>
-      </fieldset>
-      <fieldset>
-        Venue:&nbsp;<%= text_field_tag(:venue, nil,:size => 40,:value => @event.venue) %>
-      </fieldset>                                                                       
-      <fieldset>
-        Start Date:&nbsp;<%= text_field_tag(:start_date, nil,:id => 'start_date', 
-          :value => (@event.date.strftime('%m/%d/%Y') rescue nil)) %>
-        End Date:&nbsp;<%= text_field_tag(:end_date, nil,:id => 'end_date', 
-          :value => (@event.date.strftime('%m/%d/%Y') rescue nil)) %>
-      </fieldset>
-      <fieldset>
-        <textarea id="post" name="post" class="widgEditor nothing">
-          <%=@event.description%>
-        </textarea>
-      </fieldset>
-      <fieldset class="submit">                                                 
-        <input type="submit" value="Update"  onclick="submitForm();" />         
+     <form action="edit_event" method="post" id="main-form">                  
+      <table style="width:100%;">                                               
+        <tr>                                                                    
+          <td>Title:&nbsp;<%= text_field_tag(:title, nil,:size => 40,:value => @event.title) %></td>   
+        </tr>                                                                   
+        <tr>                                                                    
+          <td>Venue:&nbsp;<%= text_field_tag(:venue, nil,:size => 40,:value => @event.venue) %></td>   
+        </tr>                                                                   
+        <tr>                                                                    
+          <td>Start date:&nbsp;<%= text_field_tag(:start_date, nil,:id => 'start_date', 
+              :value => (@event.date.strftime('%m/%d/%Y') rescue nil)) %>
+          &nbsp;&nbsp;End date:&nbsp;<%= text_field_tag(:end_date, nil,:id => 'end_date', 
+          :value => (@event.end_date.strftime('%m/%d/%Y') rescue nil)) %></td>
+        </tr>                                                                   
+        <tr>                                                                    
+          <td><textarea id="post" name="post" class="widgEditor nothing">
+                <%=render(:inline => print_news(@event.description || ''))%>
+              </textarea>
+          </td>
+        </tr>                                                                   
+        <tr>                                                                    
+          <td>
+            <input type="submit" value="Update"  onclick="submitForm();" />         
         &nbsp;&nbsp;<input type='button' value = 'Delete' id = 'deletebtn' onclick="javascript:deletePost();" />
-      </fieldset>                                                               
-      <input type='hidden' name = 'id' value = '<%=@event.id%>' />               
+          </td>
+        </tr>                                                                   
+      </table>  
+      <input type="hidden" name="id" value="<%=@event.id%>" />         
     </form>
   </div>
 
