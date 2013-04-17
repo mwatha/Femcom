@@ -340,6 +340,23 @@ class UserController < ApplicationController
     render :layout => false
   end
 
+  def album_list
+    @albums = Album.order("created_at DESC")
+    render :layout => false
+  end
+
+  def album_edit
+    @album = Album.find(params[:id])
+    if request.post?
+      @album.name = params[:album]
+      @album.description = params[:album_description]
+      @album.save
+      flash[:notice] = 'Album successfully updated.'
+      redirect_to '/user/album_list' and return
+    end
+    render :layout => false
+  end
+
   private
 
   def wrap_ajax_response

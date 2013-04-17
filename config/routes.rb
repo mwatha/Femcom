@@ -1,5 +1,10 @@
 Comesa::Application.routes.draw do
 
+  get "user/album_edit"
+  post "user/album_edit"
+
+  get "user/album_list"
+
   get "user/add_national_chapters_flag"
   post "user/add_national_chapters_flag"
 
