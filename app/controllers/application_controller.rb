@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
 
    def latest_news                                                               
-     News.order("created_at DESC").limit(4)                                      
+     News.order("created_at DESC").where("voided IS NULL").limit(4)                                      
    end
 
    def femcom_partners

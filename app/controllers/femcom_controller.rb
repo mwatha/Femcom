@@ -6,8 +6,24 @@ class FemcomController < ApplicationController
   end
 
   def news
-    @news = News.order("created_at DESC") 
+    @news = []
+    news = News.order("created_at DESC").where("voided IS NULL")
+    (news || []).each do |post|
+=begin
+      if months_gone(post.created_at) > 0
+        post.voided = 1
+        post.save
+        next
+      end
+=end
+      @news << post
+    end
     @page_heading = 'News'
+  end
+
+  def archives
+    @news = News.order("created_at DESC").where(:'voided' => 1) 
+    @page_heading = 'Archives'
   end
 
   def directors
@@ -75,6 +91,12 @@ class FemcomController < ApplicationController
 
   def partners
     @partners = Partners.order("name ASC")
+  end
+
+  protected
+
+  def months_gone(date_created , reference_date = Time.now)                                  
+    ((reference_date.to_time - date_created.to_time)/1.month).floor           
   end
 
 end
