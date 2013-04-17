@@ -1,5 +1,13 @@
 Comesa::Application.routes.draw do
 
+  get "user/category_edit"
+  post "user/category_edit"
+
+  get "user/video_edit"
+  post "user/video_edit"
+
+  get "user/youtube_video_list"
+
   get "femcom/partners"
 
   get "user/add_partner_logo"

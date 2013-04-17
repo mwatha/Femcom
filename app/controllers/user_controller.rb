@@ -138,6 +138,10 @@ class UserController < ApplicationController
         YoutubeLinks.delete(params[:id])
         redirect_to :controller => :media , :action => :videos
         return
+      when 'delete_video'
+        YoutubeLinks.delete(params[:id])
+        redirect_to :action => :youtube_video_list
+        return
       when 'delete_news_post'
         News.delete(params[:id])
       when 'documents'
@@ -464,11 +468,35 @@ class UserController < ApplicationController
     render :layout => false
   end
 
+  def youtube_video_list
+    @videos = YoutubeLinks.order("created_at DESC")
+    render :layout => false
+  end
 
+  def video_edit
+    @video = YoutubeLinks.find(params[:id])
+    if request.post?
+      @video.title = params[:title]
+      @video.link = params[:link]
+      @video.description = params[:description]
+      @video.save
+      flash[:notice] = "Successfully updated."
+      redirect_to '/user/youtube_video_list' and return
+    end
+    render :layout => false
+  end
 
-
-
-
+  def category_edit
+    @category = DocumentCategory.find(params[:id])
+    if request.post?
+      @category.name = params[:name]
+      @category.description = params[:description]
+      @category.save
+      flash[:notice] = "Successfully updated."
+      redirect_to '/user/document_category_list' and return
+    end
+    render :layout => false
+  end
 
   private
 

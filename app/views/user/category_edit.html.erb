@@ -1,0 +1,47 @@
+<style>
+  table { 
+    color: #554433;
+    font-size: 12px;   
+  }
+ 
+  #submitbtn {
+  }
+
+</style>
+
+<script>
+  function deleteCategory(id) {                                                  
+    document.location = "/user/delete_post?id=" + id + "&type=delete_document_category";
+  }                                                                             
+    
+</script>
+
+
+<div id='news'>
+<%if flash[:notice]%>                                                           
+  <font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
+<%end%>
+<form action='director_edit' method="post">
+<table>
+<tr>
+  <td>Name:</td><td>&nbsp;<input type='text' name='name' size="50" value="<%=@category.name%>" /></td>
+</tr>
+<tr>
+  <td style="vertical-align: top;">Description:</td>
+  <td>&nbsp;<textarea name='description' cols='99%' rows='10%'>
+    <%=render(:inline => (@category.description || ''))%>
+  </textarea>
+  </td>
+</tr>
+<tr>
+  <td colspan="2">&nbsp;</td>
+</tr>
+<tr>
+  <td colspan="2">
+    <input type='button' value = 'Delete' id = 'deletebtn' style="width:45%;" onclick="javascript:deleteCategory('<%=@category.id%>')"/>&nbsp;
+    <input type='submit' value = 'Update' id = 'submitbtn' style="width:45%;" />
+  </td>
+</tr>
+</table>
+<input type='hidden' name = 'id' value = "<%=@category.id%>" />
+</form>

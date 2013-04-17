@@ -79,6 +79,9 @@ body {
    }else if (page == 'partners-logo') {                                                 
      document.getElementById('title').innerHTML="FEMCOM partners - add logo";                           
      element.src = '/user/add_partner_logo';                                     
+   }else if (page == 'video-list') {                                                 
+     document.getElementById('title').innerHTML="Video limks - edit";                           
+     element.src = '/user/youtube_video_list';                                     
    }
   }                                                                             
                                                                                 
@@ -106,7 +109,9 @@ body {
   &nbsp;<a href="javascript:adminPage('edit-album');">(edit)</a>
 </div>
 <div>.................................&nbsp;<a href="javascript:adminPage('photo');">Upload pictures</a></div>
-<div>.................................&nbsp;<a href="javascript:adminPage('video');">Create video link</a></div>
+<div>.................................&nbsp;<a href="javascript:adminPage('video');">Create video link</a>
+  &nbsp;<a href="javascript:adminPage('video-list');">(edit)</a>
+</div>
 <div>.................................&nbsp;<a href="javascript:adminPage('change-password');">Change password</a></div>
 <div>.................................&nbsp;<a href="javascript:adminPage('home-page');">Change home page content (text)</a></div>
 <div>.................................&nbsp;<a href="javascript:adminPage('change-home-page-photos');">Change home page photos</a></div>
