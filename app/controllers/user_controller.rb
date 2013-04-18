@@ -499,6 +499,18 @@ class UserController < ApplicationController
     render :layout => false
   end
 
+  def links_other_websites_edit
+    @link = CurrentFocusAndActivities.find(params[:id])
+    if request.post?
+      @link.title = params[:title]
+      @link.uri = params[:uri]
+      @link.save
+      flash[:notice] = "Successfully updated."
+      redirect_to '/user/current_focus_and_activities_list' and return
+    end
+    render :layout => false
+  end
+
   private
 
   def wrap_ajax_response

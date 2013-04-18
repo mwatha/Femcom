@@ -1,5 +1,8 @@
 Comesa::Application.routes.draw do
 
+  get "user/links_other_websites_edit"
+  post "user/links_other_websites_edit"
+
   get "femcom/archives"
 
   get "user/category_edit"
