@@ -9,13 +9,11 @@ class FemcomController < ApplicationController
     @news = []
     news = News.order("created_at DESC").where("voided IS NULL")
     (news || []).each do |post|
-=begin
       if months_gone(post.created_at) > 0
         post.voided = 1
         post.save
         next
       end
-=end
       @news << post
     end
     @page_heading = 'News'
