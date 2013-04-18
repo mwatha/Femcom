@@ -21,6 +21,7 @@
 <style type="text/css">
 .latest_news {
   margin-left: -37px !important;
+  line-height: normal;
 }
 
 .latest_news a{
@@ -200,7 +201,7 @@ end
 <%                                                                              
 (latest_news || []).each do |post|%>                                            
 <font color="#000000" class="ws9">               
-  <li>&nbsp;<a href="/news/post?id=<%=post.id%>"><%=post.title[0..61]%></a></li>
+  <li>&nbsp;<a href="/news/post?id=<%=post.id%>"><%=post.title[0..64]%></a></li>
   <li>&nbsp;</li>
 </font>
 <%end%>                                                                 
