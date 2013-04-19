@@ -7,7 +7,7 @@ class FemcomController < ApplicationController
 
   def news
     @news = []
-    news = News.order("created_at DESC").where("voided IS NULL")
+    news = News.order("created_at DESC")
     (news || []).each do |post|
       if months_gone(post.created_at) > 0
         post.voided = 1
