@@ -12,7 +12,6 @@ class FemcomController < ApplicationController
       if months_gone(post.created_at) > 0
         post.voided = 1
         post.save
-        next
       end
       @news << post
     end
