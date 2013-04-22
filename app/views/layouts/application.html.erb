@@ -235,7 +235,7 @@ end
 <div align=justify style="line-height:1.50;padding-left:0px;">
   <ul style="margin-left:-37px;">
     <%(current_focus_and_activities || []).each do |activity|%>
-      <li><a href="<%=activity.uri%>"><%=activity.title%></a></li>
+      <li><a href="/femcom/link?id=<%=activity.id%>"><%=activity.title%></a></li>
       <li>&nbsp;</li>
     <%end%>
   </ul>

@@ -27,6 +27,16 @@
 <tr>
   <td>Link:</td><td>&nbsp;<input type='text' name='uri' size = '40'value="<%=@link.uri%>"/></td>
 </tr>
+<tr>
+  <td colspan=2>Description<td>
+</tr>
+<tr>
+  <td colspan=2>
+   <textarea id="post" name="description" cols="100%" rows=15>              
+     <%=render(:inline => (@link.description || ''))%>                      
+   </textarea> 
+  <td>
+</tr>
 </table>
 <table>
   <td>

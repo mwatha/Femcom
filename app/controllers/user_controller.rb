@@ -238,7 +238,8 @@ class UserController < ApplicationController
 
   def current_focus_and_activities
     if request.post?
-      CurrentFocusAndActivities.create(:title => params[:title],:uri => params[:uri],:voided => 0)
+      CurrentFocusAndActivities.create(:title => params[:title],:uri => params[:uri],
+        :voided => 0,:description => params[:description])
       flash[:notice] = 'Successfully created activity'            
     end
     render :layout => false
@@ -504,6 +505,7 @@ class UserController < ApplicationController
     if request.post?
       @link.title = params[:title]
       @link.uri = params[:uri]
+      @link.description = params[:description]
       @link.save
       flash[:notice] = "Successfully updated."
       redirect_to '/user/current_focus_and_activities_list' and return

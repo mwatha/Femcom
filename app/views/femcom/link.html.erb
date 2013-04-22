@@ -1,0 +1,43 @@
+
+<style type="text/css">
+
+.thumb {
+    width: 75px;
+    height: 75px;
+  }
+
+
+ #events {
+   border-style: solid;
+   border-width: 0px;
+ }
+
+
+
+ #events td , th{
+   border-style: solid;
+   border-width: 0px;
+   text-align: justify;
+   background-color: #D3D6FF !important;                                        
+   border-style: solid;                                                         
+   border-width: 1px;
+ }
+
+ #events a {
+  text-decoration: none; 
+ }
+</style>
+
+<div>
+  <font color="#1D4A75" style="font-size:14px;font-weight:bold;"><%=@link.title%></font>
+  <hr style="background-color:#1D4A75;height:3px;"></hr>
+</div>
+
+<p>                                                                             
+                                                                                
+<%=render(:inline => print_news(@link.description || ''))%>
+
+<p><a href="<%=@link.uri%>"><%=@link.title%></a></p>
+                                                                                
+</p>  
+

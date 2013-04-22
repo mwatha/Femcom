@@ -23,6 +23,11 @@ class FemcomController < ApplicationController
     @page_heading = 'Archives'
   end
 
+  def link
+    @link = CurrentFocusAndActivities.find(params[:id])
+    @page_heading = 'Link'
+  end
+
   def directors
     @directors = Directors.order('name DESC')
     @page_heading = 'Directors'
