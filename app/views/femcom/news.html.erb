@@ -57,15 +57,19 @@
 <table class="display" class="display" id="events" style="width:99%;font-size:11px;">
 <thead>                                                                         
   <tr>                                                                          
-    <th>Headline</th>                                                           
-    <th>Date posted</th>                                                        
+    <th style="border-style: none;">&nbsp;</th>                                                           
+    <!--th>Date posted</th-->                                                        
   </tr>                                                                         
 </thead>                                                                        
 <tbody>                                                                         
  <%(@news || []).each do |post|%>                                               
   <tr class="gradeX">                                                           
-    <td class="center" width='400'><a href="/news/post?id=<%=post.id%>"><%=post.title%></a></td>
-    <td class="center"><%=post.created_at.strftime('%A, %d %b %Y')%></td>                                
+    <td class="center" width='400' style="border-style: solid;border-width: 0px 0px 1px 0px; line-height: 25px;">
+      <a href="/news/post?id=<%=post.id%>">
+      <%=post.title%>
+      <!--&nbsp;&nbsp;<font style="font-size:10px;">posted on:&nbsp;
+      <%#=post.created_at.strftime('%A, %d %b %Y')%></font--></a>
+    </td>
   </tr>                                                                         
  <%end%>                                                                        
 </tbody>                                                                        
