@@ -1,3 +1,36 @@
+<script type="text/javascript">                                                 
+                                                                                
+function setImage(myValue) {                                                        
+  var myField = document.getElementById('post');                                
+  //IE support                                                                  
+  if (document.selection) {                                                     
+      myField.focus();                                                          
+      sel = document.selection.createRange();                                   
+      sel.text = myValue;                                                       
+  }                                                                             
+  //MOZILLA and others                                                          
+  else if (myField.selectionStart || myField.selectionStart == '0') {           
+      var startPos = myField.selectionStart;                                    
+      var endPos = myField.selectionEnd;                                        
+      myField.value = myField.value.substring(0, startPos)                      
+          + myValue                                                             
+          + myField.value.substring(endPos, myField.value.length);              
+  } else {                                                                      
+      myField.value += myValue;                                                 
+  }                                                                             
+}                                                                               
+                                                                                
+                                                                                
+function InsertCodeInTextArea(textValue) {                                      
+  setImage(textValue);                                                          
+}                                                                               
+                                                                                
+function submitForm() {                                                         
+  document.getElementById('main-form').submit();                                
+}                                                                               
+   
+</script>
+
 <style>
   table { 
       color: #554433; 
@@ -12,7 +45,14 @@
 <%if flash[:notice]%>                                                           
 <font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
 <%end%> 
-<form action='current_focus_and_activities' method="post">
+
+<table>                                                                         
+<tr>                                                                            
+  <td><%= render 'upload' %><td>                                                
+</tr>                                                                           
+</table>
+
+<form action='current_focus_and_activities' method="post" id="main-form">
 <table>
 <tr>
   <td>Title:</td><td>&nbsp;<input type='text' name='title' size = '40' /></td>
@@ -27,7 +67,7 @@
 </tr>
 <tr>
   <td colspan=2>
-    <textarea cols="100%" rows=15 name="description"></textarea>
+    <textarea cols="100%" rows=15 name="description" id="post"></textarea>
   </td>
 </tr>
 </table>
@@ -38,7 +78,7 @@
 </tr>
 <tr>
   <td>
-    <input type='submit' value = 'Submit' id = 'submitbtn' />
+    <input type='button' value = 'Submit' id = 'submitbtn' onclick="submitForm();" />
   </td>
 </tr>
 </table>

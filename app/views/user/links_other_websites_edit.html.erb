@@ -1,3 +1,36 @@
+<script type="text/javascript">                                                 
+                                                                                
+function setImage(myValue) {                                                        
+  var myField = document.getElementById('post');                                
+  //IE support                                                                  
+  if (document.selection) {                                                     
+      myField.focus();                                                          
+      sel = document.selection.createRange();                                   
+      sel.text = myValue;                                                       
+  }                                                                             
+  //MOZILLA and others                                                          
+  else if (myField.selectionStart || myField.selectionStart == '0') {           
+      var startPos = myField.selectionStart;                                    
+      var endPos = myField.selectionEnd;                                        
+      myField.value = myField.value.substring(0, startPos)                      
+          + myValue                                                             
+          + myField.value.substring(endPos, myField.value.length);              
+  } else {                                                                      
+      myField.value += myValue;                                                 
+  }                                                                             
+}                                                                               
+                                                                                
+                                                                                
+function InsertCodeInTextArea(textValue) {                                      
+  setImage(textValue);                                                          
+}                                                                               
+                                                                                
+function submitForm() {                                                         
+  document.getElementById('main-form').submit();                                
+} 
+
+</script>
+
 <style>
   table { 
       color: #554433; 
@@ -19,7 +52,13 @@
 <%if flash[:notice]%>                                                           
 <font id="flash_notice" style="color: green"><%= flash[:notice] %></font><br /> 
 <%end%> 
-<form action='links_other_websites_edit' method="post">
+<table>
+<tr>
+  <td><%= render 'upload' %><td>
+</tr>
+</table>
+
+<form action='links_other_websites_edit' method="post" id="main-form">
 <table>
 <tr>
   <td>Title:</td><td>&nbsp;<input type='text' name='title' size = '40' value="<%=@link.title%>"/></td>
@@ -46,7 +85,7 @@
 <tr>
   <td>
     <input type='button' value = 'Delete' id = 'deletebtn' onclick="javascript:deletePost('<%=@link.id%>');" />
-    &nbsp;<input type='submit' value = 'Update' id = 'submitbtn' />
+    &nbsp;<input type='button' value = 'Update' id = 'submitbtn' onclick="submitForm();" />
   </td>
 </tr>
 </table>

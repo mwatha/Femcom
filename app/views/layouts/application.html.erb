@@ -225,14 +225,7 @@ end
 <div><font color="#FFFFFF" class="ws9">Current Focus&nbsp;&amp;&nbsp;Activities</font></div>
 </div></div>
 
-<div id="text16" style="position:absolute; overflow:hidden; left:881px; top:456px; width:176px; height:37px; z-index:25">
-<div class="wpmd">
-<div style="line-height:1.50;"><font class="ws9"><B><a href="/femcom/services"><%=service_title%></a></B></font></div>
-</div></div>
-
-<div id="text20" style="position:absolute; overflow:hidden; left:874px; top:502px; width:179px; height:99px; z-index:26">
-<div class="wpmd">
-<div align=justify style="line-height:1.50;padding-left:0px;">
+<div id="text16" style="position:absolute; overflow:hidden; left:874px; top:456px; width:181px; height:147px; z-index:25;">
   <ul style="margin-left:-37px;">
     <%(current_focus_and_activities || []).each do |activity|%>
       <li><a href="/femcom/link?id=<%=activity.id%>"><%=activity.title%></a></li>
@@ -240,7 +233,21 @@ end
     <%end%>
   </ul>
 </div>
-</div></div>
+<!--div class="wpmd">
+<div style="line-height:1.50;"><font class="ws9"><B><a href="/femcom/services"><%#=service_title%></a></B></font></div>
+</div></div-->
+
+<!--div id="text20" style="position:absolute; overflow:hidden; left:874px; top:502px; width:179px; height:99px; z-index:26">
+<div class="wpmd">
+<div align=justify style="line-height:1.50;padding-left:0px;">
+  <ul style="margin-left:-37px;">
+    <%#(current_focus_and_activities || []).each do |activity|%>
+      <li><a href="/femcom/link?id=<%#=activity.id%>"><%#=activity.title%></a></li>
+      <li>&nbsp;</li>
+    <%#end%>
+  </ul>
+</div>
+</div></div-->
 
 
 <div id="shape7" style="position:absolute; overflow:hidden; left:870px; top:642px; width:191px; height:153px; z-index:28">
