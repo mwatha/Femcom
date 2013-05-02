@@ -155,6 +155,8 @@ class UserController < ApplicationController
         post = News.find(params[:id])
         post.title = params[:title]
         post.post = params[:post]
+        posted_datetime = params[:created_at].to_date.strftime("%Y-%m-%d #{Time.now().strftime('%H:%M:%S')}").to_time
+        post.created_at = posted_datetime
         post.save
         redirect_to :action => :edit_news and return
       when 'photo'

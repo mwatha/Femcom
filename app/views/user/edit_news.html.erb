@@ -61,7 +61,7 @@
 <tbody>                                                                         
  <%(@news || []).each do |news|%>                                               
   <tr class="gradeX">                                                           
-    <td class="center" width='300'><%=news.title%></td>
+    <td class="center" style="width: 75%;"><%=news.title%></td>
     <td class="center"><%=news.created_at.strftime('%A, %d %b %Y')%></td>                                
     <td class="center"><input type="checkbox" onclick="javascript:edit('<%=news.id%>')" /></td>
   </tr>                                                                         

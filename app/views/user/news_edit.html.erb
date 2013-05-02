@@ -1,8 +1,30 @@
+<!-- ............................................... -->
 <html>
 <head>
 <title></title>
 
+<%= javascript_include_tag "jquery-1.9.1" %>                                    
+<%= javascript_include_tag "jquery-ui" %>                                       
+                                                                                
+<%#= stylesheet_link_tag "info" %>                                               
+<%#= stylesheet_link_tag "xmain" %>                                              
+<%= stylesheet_link_tag "jquery-ui" %>                                          
+<%= stylesheet_link_tag "calender_style" %>
+
+                                                                                
+<style>                                                                         
+.ui-datepicker-next, .ui-datepicker-prev {                                      
+  background-color: slategrey;                                                  
+}                                                                               
+                                                                                
+</style>                                                                        
+                                                                                
 <script type="text/javascript">                                                 
+                                                                                
+$(function() {                                                                  
+$( "#posted_date" ).datepicker();                                                
+});                                         
+
 
 function setImage(myValue) {                                                        
   var myField = document.getElementById('post');                                
@@ -39,6 +61,13 @@ function validatePost() {
  function deletePost() {                                                       
     document.location = "/user/delete_post?type=delete_news_post&id=<%=@news.id%>";
   } 
+
+
+
+
+
+
+
 </script> 
 
 </head>
@@ -55,15 +84,18 @@ function validatePost() {
     <table>                                                                         
       <tr>                                                                            
         <td colspan="2">                                                              
-          <%= render 'upload' %>                                                      
+          <%= render 'event_image_uploader' %>                                                  
         </td>                                                                         
       </tr>                                                                           
     </table>
 
-    <form action="delete_post" method="post" id="main-form">                    
+      <form action="delete_post" method="post" id="main-form">                    
       <table style="width:100%;">                                               
         <tr>                                                                    
           <td>Title:&nbsp;<input type='text' name='title' size = '40' value="<%=@news.title%>"/></td>    
+        </tr>                                                                   
+        <tr>                                                                    
+          <td>Posted date:&nbsp;<%= text_field_tag(:created_at, nil,:id => 'posted_date', :value => @news.created_at.strftime('%m/%d/%Y')) %></td>
         </tr>                                                                   
         <tr>                                                                    
           <td>
@@ -86,16 +118,10 @@ function validatePost() {
         </tr>                                                                   
       </table>                                                                  
     </form>
+    
+
   </div>
 
 </body>
-
-
-
-
-
-
-
-
 
 </html>
